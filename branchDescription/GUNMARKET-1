@@ -1,1 +1,5 @@
-Описание простейшей модели товар-магазин
+Описание простейшей модели товар-магазин.
+Добавлены :
+model -> Product, Shop
+repo -> simpleRepo, ProductRepo, ShopRepo
+service -> ProductService, ShopService
