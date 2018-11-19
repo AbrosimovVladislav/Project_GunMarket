@@ -35,7 +35,7 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
     }
 
     @Override
-    public List<Object> getAll(String entityName, Class entityClass) {
+    public List getAll(String entityName, Class entityClass) {
         return currentSession()
                 .createQuery("from " + entityName, entityClass)
                 .list();
