@@ -1,5 +1,7 @@
 package com.gunmarket.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +22,8 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "products")
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
     private Set<Shop> shops;
 
     public Product() {
