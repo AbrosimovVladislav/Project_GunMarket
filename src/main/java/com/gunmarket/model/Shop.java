@@ -20,6 +20,12 @@ public class Shop {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "website")
+    private String website;
+
     @ManyToMany
     @JoinTable(name = "shop_product",
             joinColumns = @JoinColumn(name = "shop_Id", referencedColumnName = "shop_Id"),
@@ -29,8 +35,10 @@ public class Shop {
     public Shop() {
     }
 
-    public Shop(String name, Set<Product> products) {
+    public Shop(String name, String address, String website, Set<Product> products) {
         this.name = name;
+        this.address = address;
+        this.website = website;
         this.products = products;
     }
 
@@ -50,6 +58,22 @@ public class Shop {
         this.name = name;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
     public Set<Product> getProducts() {
         return products;
     }
@@ -63,6 +87,8 @@ public class Shop {
         return "Shop{" +
                 "shop_Id=" + shop_Id +
                 ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", website='" + website + '\'' +
                 ", products=" + products +
                 '}';
     }

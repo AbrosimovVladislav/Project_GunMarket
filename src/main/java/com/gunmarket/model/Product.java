@@ -21,6 +21,13 @@ public class Product {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "price")
+    private String price;
+
+    @ManyToOne
+    @JoinColumn(name="type_id", nullable=false)
+    private Type type;
+
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
     private Set<Shop> shops;
@@ -28,8 +35,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, Set<Shop> shops) {
+    public Product(String name, String price, Type type, Set<Shop> shops) {
         this.name = name;
+        this.price = price;
+        this.type = type;
         this.shops = shops;
     }
 
@@ -49,6 +58,22 @@ public class Product {
         this.name = name;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
     public Set<Shop> getShops() {
         return shops;
     }
@@ -62,6 +87,9 @@ public class Product {
         return "Product{" +
                 "product_Id=" + product_Id +
                 ", name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", type=" + type +
+                ", shops=" + shops +
                 '}';
     }
 
