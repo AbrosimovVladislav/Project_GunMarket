@@ -23,6 +23,7 @@
             <array>
                 <value>com.gunmarket.model.Product</value>
                 <value>com.gunmarket.model.Shop</value>
+                <value>com.gunmarket.model.Type</value>
             </array>
         </property>
         <property name="hibernateProperties">

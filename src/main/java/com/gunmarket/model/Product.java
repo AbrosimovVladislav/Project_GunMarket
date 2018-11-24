@@ -24,6 +24,7 @@ public class Product {
     @Column(name = "price")
     private String price;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="type_id", nullable=false)
     private Type type;

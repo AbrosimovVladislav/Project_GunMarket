@@ -17,13 +17,17 @@ public class Type {
     @Column(name = "type_Id", length = 8, nullable = false)
     private long type_Id;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToMany(mappedBy="type")
     private Set<Product> products;
 
     public Type() {
     }
 
-    public Type(Set<Product> products) {
+    public Type(String name, Set<Product> products) {
+        this.name = name;
         this.products = products;
     }
 
@@ -35,11 +39,28 @@ public class Type {
         this.type_Id = type_Id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Set<Product> getProducts() {
         return products;
     }
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    @Override
+    public String toString() {
+        return "Type{" +
+                "type_Id=" + type_Id +
+                ", name='" + name + '\'' +
+                ", products=" + products +
+                '}';
     }
 }
