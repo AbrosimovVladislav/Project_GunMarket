@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface ObjectSimpleRepo {
 
-    List<Object> getAll(Class entityClass);
+    List<Object> getAll(String entityName, Class entityClass);
 
 }
