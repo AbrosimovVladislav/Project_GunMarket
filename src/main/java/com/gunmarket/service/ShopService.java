@@ -4,7 +4,6 @@ import com.gunmarket.model.Shop;
 import com.gunmarket.repository.ShopRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,12 +11,13 @@ import java.util.List;
 public class ShopService {
 
     private final Class SHOP_CLASS = Shop.class;
+    private final String SHOP_NAME = "Shop";
 
     @Autowired
     private ShopRepo shopRepo;
 
     public List<Shop> getAllShops() {
-        return shopRepo.getAll(SHOP_CLASS);
+        return shopRepo.getAll(SHOP_NAME, SHOP_CLASS);
     }
 
 }

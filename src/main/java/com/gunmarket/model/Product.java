@@ -1,7 +1,6 @@
 package com.gunmarket.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
