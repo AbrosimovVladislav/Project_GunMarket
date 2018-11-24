@@ -1,12 +1,15 @@
 package com.gunmarket.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "shop")
+@Component
 public class Shop {
 
     @Id
@@ -54,6 +57,15 @@ public class Shop {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "shop_Id=" + shop_Id +
+                ", name='" + name + '\'' +
+                ", products=" + products +
+                '}';
     }
 
 }

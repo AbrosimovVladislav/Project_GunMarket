@@ -1,12 +1,16 @@
 package com.gunmarket.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "product")
+@Component
 public class Product {
 
     @Id
@@ -18,13 +22,14 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "products")
-    private Set<Product> shops;
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
+    private Set<Shop> shops;
 
     public Product() {
     }
 
-    public Product(String name, Set<Product> shops) {
+    public Product(String name, Set<Shop> shops) {
         this.name = name;
         this.shops = shops;
     }
@@ -45,11 +50,20 @@ public class Product {
         this.name = name;
     }
 
-    public Set<Product> getShops() {
+    public Set<Shop> getShops() {
         return shops;
     }
 
-    public void setShops(Set<Product> shops) {
+    public void setShops(Set<Shop> shops) {
         this.shops = shops;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "product_Id=" + product_Id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
 }

@@ -1,9 +1,9 @@
 package com.gunmarket.repository;
 
 import com.gunmarket.repository.simpleRepo.ObjectSimpleRepoImpl;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class ShopRepo extends ObjectSimpleRepoImpl {
 
 }
