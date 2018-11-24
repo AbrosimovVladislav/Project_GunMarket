@@ -10,8 +10,8 @@ import java.util.List;
 @Service
 public class ShopService {
 
-    private final Class SHOP_CLASS = Shop.class;
-    private final String SHOP_NAME = "Shop";
+    private static final Class SHOP_CLASS = Shop.class;
+    private static final String SHOP_NAME = "Shop";
 
     @Autowired
     private ShopRepo shopRepo;
