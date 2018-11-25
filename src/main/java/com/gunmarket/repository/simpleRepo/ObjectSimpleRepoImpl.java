@@ -23,17 +23,21 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
                 .list();
     }
 
-    public List getByParams(String entityName, Class entityClass, Map<String, List<String>> params) {
+    public List getByParamsDueSql(String entityName, Map<String, List<String>> params) {
         return currentSession()
-                .createSQLQuery(createSqlQueryForGetByParams(entityName, params))
+                .createSQLQuery(createSqlGetByParamsQuery(entityName, params))
                 .list();
+    }
+
+    public List getByParamsDueHql(String entityName, Map<String, List<String>> params) {
+        return null;
     }
 
     private Session currentSession() {
         return sessionFactory.openSession();
     }
 
-    private String createSqlQueryForGetByParams(String entityName, Map<String, List<String>> params) {
+    private String createSqlGetByParamsQuery(String entityName, Map<String, List<String>> params) {
         StringBuilder sb = new StringBuilder("SELECT * FROM " + entityName + " WHERE ");
         for (Map.Entry<String, List<String>> entry : params.entrySet()) {
             sb.append("(");
@@ -47,6 +51,8 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
         return sb.delete(sb.length() - AND_LENGTH, sb.length() - 1).toString();
     }
 
-    //SELECT * FROM Product WHERE price = '350' OR price = '400' AND type_id = '1' OR type_id = '2'
+    private String createHqlGetByParamsQuery(String entityName, Map<String, List<String>> params) {
+        return null;
+    }
 
 }
