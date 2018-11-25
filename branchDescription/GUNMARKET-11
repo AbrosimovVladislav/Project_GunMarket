@@ -1,0 +1,3 @@
+ObjectSimpleRepoImpl
+createSqlQueryForGetByParams
+Сделать так чтобы перед закрывающими скобками не было пробела
