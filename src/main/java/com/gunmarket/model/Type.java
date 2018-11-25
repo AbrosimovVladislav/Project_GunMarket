@@ -6,21 +6,26 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.Set;
 
+import static com.gunmarket.model.Product.PRODUCT_TYPE;
+
 @Entity
 @Table(name = "type")
 @Component
 public class Type {
 
+    public static final String TYPE_ID = "type_Id";
+    public static final String TYPE_NAME = "name";
+
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "type_Id", length = 8, nullable = false)
+    @Column(name = TYPE_ID, length = 8, nullable = false)
     private long type_Id;
 
-    @Column(name = "name")
+    @Column(name = TYPE_NAME)
     private String name;
 
-    @OneToMany(mappedBy="type")
+    @OneToMany(mappedBy=PRODUCT_TYPE)
     private Set<Product> products;
 
     public Type() {
