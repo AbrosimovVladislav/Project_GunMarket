@@ -22,7 +22,7 @@ public class ProductService {
     }
 
     public List<Product> getProductsByParams(Map<String,List<String>> params){
-        return productRepo.getByParams(PRODUCT_NAME,PRODUCT_CLASS,params);
+        return productRepo.getByParamsDueSql(PRODUCT_NAME,params);
     }
 
 }
