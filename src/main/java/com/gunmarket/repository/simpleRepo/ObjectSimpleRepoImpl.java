@@ -36,14 +36,17 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
     private String createSqlQueryForGetByParams(String entityName, Map<String, List<String>> params) {
         StringBuilder sb = new StringBuilder("SELECT * FROM " + entityName + " WHERE ");
         for (Map.Entry<String, List<String>> entry : params.entrySet()) {
+            sb.append("(");
             for (String paramValue : entry.getValue()) {
                 sb.append(entry.getKey()).append(" = '").append(paramValue).append("' OR ");
             }
             sb.delete(sb.length() - OR_LENGTH, sb.length() - 1);
-            sb.append("AND ");
+            sb.append(") AND ");
         }
 
         return sb.delete(sb.length() - AND_LENGTH, sb.length() - 1).toString();
     }
+
+    //SELECT * FROM Product WHERE price = '350' OR price = '400' AND type_id = '1' OR type_id = '2'
 
 }
