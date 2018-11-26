@@ -3,6 +3,8 @@
 Shops :
 Получить все магазины в которых есть Ак-74 и Mp-133
 SELECT * FROM shop WHERE products.contains(Ак-74 or Mp-133)
+select count(x) from Recipe as x where x.ingredients contains (select y from Ingredient where y.id = ?)
+select count(x) from Recipe as x join x.ingredients as y where y.id = ?
 
 Подумать как преобразовать запросы в данной области -> SQL or HQL
 Products :
