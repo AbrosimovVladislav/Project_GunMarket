@@ -13,29 +13,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.gunmarket.model.Shop.SHOP_ADDRESS;
+import static com.gunmarket.model.Shop.SHOP_NAME;
+
 @RestController
 public class ShopController {
 
     @Autowired
     ShopService shopService;
 
-/*    @RequestMapping(value = "/shopsByParams", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<Shop> getShopsByParams(@RequestParam(value = PRICE_NAME, required = false) String price
-            , @RequestParam(value = TYPEID_NAME, required = false) String typeId) {
-        Map<String,List<String>> params = new HashMap<String,List<String>>();
-        if(price!=null){
-            params.put(PRICE_NAME, Arrays.asList(price.split(",")));
+    @RequestMapping(value = "/shops", method = RequestMethod.GET, headers = "Accept=application/json")
+    public List<Shop> getShopsByParams(@RequestParam(value = SHOP_NAME, required = false) String name
+            , @RequestParam(value = SHOP_ADDRESS, required = false) String address) {
+        Map<String, List<String>> params = new HashMap<String, List<String>>();
+        if (name != null) {
+            params.put(SHOP_NAME, Arrays.asList(name.split(",")));
         }
-        if(typeId!=null){
-            params.put(TYPEID_NAME, Arrays.asList(typeId.split(",")));
+        if (address != null) {
+            params.put(SHOP_ADDRESS, Arrays.asList(address.split(",")));
         }
 
-        return productService.getProductsByParams(params);
-    }*/
-
-    @RequestMapping(value = "/allShops", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<Shop> getShops() {
-        return shopService.getAllShops();
+        return shopService.getShopsByParams(params);
     }
 
 }
