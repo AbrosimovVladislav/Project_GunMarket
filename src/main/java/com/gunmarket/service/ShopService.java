@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ShopService {
@@ -16,8 +17,8 @@ public class ShopService {
     @Autowired
     private ShopRepo shopRepo;
 
-    public List<Shop> getAllShops() {
-        return shopRepo.getAll(SHOP_NAME, SHOP_CLASS);
+    public List<Shop> getShopsByParams(Map<String, List<String>> params) {
+        return shopRepo.getByParamsDueHql(SHOP_NAME, params);
     }
 
 }

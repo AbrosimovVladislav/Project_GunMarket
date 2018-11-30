@@ -17,12 +17,8 @@ public class ProductService {
     @Autowired
     private ProductRepo productRepo;
 
-    public List<Product> getAllProducts() {
-        return productRepo.getAll(PRODUCT_NAME, PRODUCT_CLASS);
-    }
-
-    public List<Product> getProductsByParams(Map<String,List<String>> params){
-        return productRepo.getByParamsDueSql(PRODUCT_NAME,params);
+    public List<Product> getProductsByParams(Map<String, List<String>> params) {
+        return productRepo.getByParamsDueHql(PRODUCT_NAME, params);
     }
 
 }
