@@ -2,6 +2,7 @@ package com.gunmarket.repository.simpleRepo;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,42 +18,39 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public List getAll(String entityName, Class entityClass) {
-        return currentSession()
-                .createQuery("from " + entityName, entityClass)
-                .list();
-    }
-
-    public List getByParamsDueSql(String entityName, Map<String, List<String>> params) {
-        return currentSession()
-                .createSQLQuery(createSqlGetByParamsQuery(entityName, params))
-                .list();
-    }
-
-    public List getByParamsDueHql(String entityName, Map<String, List<String>> params) {
-        return null;
-    }
-
     private Session currentSession() {
         return sessionFactory.openSession();
     }
 
-    private String createSqlGetByParamsQuery(String entityName, Map<String, List<String>> params) {
-        StringBuilder sb = new StringBuilder("SELECT * FROM " + entityName + " WHERE ");
-        for (Map.Entry<String, List<String>> entry : params.entrySet()) {
-            sb.append("(");
-            for (String paramValue : entry.getValue()) {
-                sb.append(entry.getKey()).append(" = '").append(paramValue).append("' OR ");
+    public List getByParamsDueHql(String entityName, Map<String, List<String>> params) {
+        Query query = currentSession().createQuery(createHqlGetByParamsQuery(entityName, params));
+        int paramCounter = 0;
+        for (List<String> values : params.values()) {
+            for (String value : values) {
+                query.setParameter("p" + value + +paramCounter + "n", value);
+                paramCounter++;
             }
-            sb.delete(sb.length() - OR_LENGTH, sb.length() - 1);
-            sb.append(") AND ");
         }
 
-        return sb.delete(sb.length() - AND_LENGTH, sb.length() - 1).toString();
+        System.out.println(query.getQueryString());
+        return query.list();
     }
 
     private String createHqlGetByParamsQuery(String entityName, Map<String, List<String>> params) {
-        return null;
+        String sqlQuery = "FROM " + entityName + " WHERE ";
+        int paramCounter = 0;
+        StringBuilder sb = new StringBuilder(sqlQuery);
+        for (Map.Entry<String, List<String>> entry : params.entrySet()) {
+            sb.append("(");
+            for (String paramValue : entry.getValue()) {
+                sb.append(entry.getKey()).append(" = :p").append(paramValue).append(paramCounter).append("n OR ");
+                paramCounter++;
+            }
+            sb.delete(sb.length() - 4, sb.length() - 1);
+            sb.append(") AND ");
+        }
+
+        return sb.delete(sb.length() - 5, sb.length() - 1).toString();
     }
 
 }
