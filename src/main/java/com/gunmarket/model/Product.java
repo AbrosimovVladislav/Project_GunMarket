@@ -7,30 +7,38 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.Set;
 
+import static com.gunmarket.model.Shop.SHOP_PRODUCTS;
+import static com.gunmarket.model.Type.TYPE_ID;
+
 @Entity
 @Table(name = "product")
 @Component
 public class Product {
 
+    public static final String PRODUCT_ID = "product_Id";
+    public static final String PRODUCT_NAME = "name";
+    public static final String PRODUCT_PRICE = "price";
+    public static final String PRODUCT_TYPE = "type";
+
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "product_Id", length = 8, nullable = false)
+    @Column(name = PRODUCT_ID, length = 8, nullable = false)
     private long product_Id;
 
-    @Column(name = "name")
+    @Column(name = PRODUCT_NAME)
     private String name;
 
-    @Column(name = "price")
+    @Column(name = PRODUCT_PRICE)
     private String price;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="type_id", nullable=false)
+    @JoinColumn(name=TYPE_ID, nullable=false)
     private Type type;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = SHOP_PRODUCTS)
     private Set<Shop> shops;
 
     public Product() {
