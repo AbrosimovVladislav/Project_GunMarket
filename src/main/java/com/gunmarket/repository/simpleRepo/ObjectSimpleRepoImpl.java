@@ -1,5 +1,6 @@
 package com.gunmarket.repository.simpleRepo;
 
+import javafx.util.Pair;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -22,7 +23,13 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
         return sessionFactory.openSession();
     }
 
-    public List getByParamsDueHql(String entityName, Map<String, List<String>> params) {
+    public List getByParamsDueHql(String entityName, Map<Pair<String,String>, List<String>> params) {
+        String hqlQuery = "";
+        Query query = currentSession().createQuery(hqlQuery);
+        return query.list();
+    }
+
+    /*public List getByParamsDueHql(String entityName, Map<String, List<String>> params) {
         Query query = currentSession().createQuery(createHqlGetByParamsQuery(entityName, params));
         int paramCounter = 0;
         for (List<String> values : params.values()) {
@@ -51,6 +58,6 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
         }
 
         return sb.delete(sb.length() - 5, sb.length() - 1).toString();
-    }
+    }*/
 
 }

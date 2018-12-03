@@ -2,6 +2,7 @@ package com.gunmarket.web;
 
 import com.gunmarket.model.Product;
 import com.gunmarket.service.ProductService;
+import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +28,27 @@ public class ProductController {
     public List<Product> getProductsByParams(@RequestParam(value = PRODUCT_PRICE, required = false) String price
             , @RequestParam(value = TYPE_ID, required = false) String typeId
             , @RequestParam(value = PRODUCT_SHOPS, required = false) String shops) {
+        Map<Pair<String,String>, List<String>> params = new HashMap<>();
+        if (price != null) {
+            params.put(new Pair<String,String>(PRODUCT_PRICE,"Simple"), Arrays.asList(price.split(",")));
+        }
+        if (typeId != null) {
+            params.put(new Pair<String,String>(TYPE_ID,"Simple"), Arrays.asList(typeId.split(",")));
+        }
+        if (shops != null) {
+            params.put(new Pair<String,String>(PRODUCT_SHOPS,"Complex"), Arrays.asList(shops.split(",")));
+        }
+
+        return productService.getProductsByParams(params);
+    }
+
+/*    @Autowired
+    ProductService productService;
+
+    @RequestMapping(value = "/products", method = RequestMethod.GET, headers = "Accept=application/json")
+    public List<Product> getProductsByParams(@RequestParam(value = PRODUCT_PRICE, required = false) String price
+            , @RequestParam(value = TYPE_ID, required = false) String typeId
+            , @RequestParam(value = PRODUCT_SHOPS, required = false) String shops) {
         Map<String, List<String>> params = new HashMap<String, List<String>>();
         if (price != null) {
             params.put(PRODUCT_PRICE, Arrays.asList(price.split(",")));
@@ -39,6 +61,6 @@ public class ProductController {
         }
 
         return productService.getProductsByParams(params);
-    }
+    }*/
 
 }
