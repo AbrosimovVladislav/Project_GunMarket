@@ -7,6 +7,8 @@
 8 Sks
  */
 
+ USE gunmarket;
+
 SELECT p.product_Id, p.name, p.price FROM product AS p /*Выбор кого и откуда*/
 WHERE p.price = 400 AND type_id =1 /*Добавление простых параметров*/
 AND p.product_Id IN (SELECT p.product_Id FROM shop AS s
