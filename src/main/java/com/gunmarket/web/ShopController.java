@@ -1,7 +1,9 @@
+/*
 package com.gunmarket.web;
 
 import com.gunmarket.model.Shop;
 import com.gunmarket.service.ShopService;
+import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +29,7 @@ public class ShopController {
     public List<Shop> getShopsByParams(@RequestParam(value = SHOP_NAME, required = false) String name
             , @RequestParam(value = SHOP_ADDRESS, required = false) String address
             , @RequestParam(value = SHOP_PRODUCTS, required = false) String products) {
-        Map<String, List<String>> params = new HashMap<String, List<String>>();
+        Map<Pair<String,String>, List<String>> params = new HashMap<String, List<String>>();
         if (name != null) {
             params.put(SHOP_NAME, Arrays.asList(name.split(",")));
         }
@@ -42,3 +44,4 @@ public class ShopController {
     }
 
 }
+*/

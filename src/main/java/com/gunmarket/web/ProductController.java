@@ -21,6 +21,10 @@ import static com.gunmarket.model.Type.TYPE_ID;
 @RestController
 public class ProductController {
 
+    public static final String SIMPLE_PARAM_TYPE = "Simple";
+    public static final String OBJECTSIMPLE_PARAM_TYPE = "ObjectSimple";
+    public static final String COMPLEX_PARAM_TYPE = "Complex";
+
     @Autowired
     ProductService productService;
 
@@ -30,13 +34,13 @@ public class ProductController {
             , @RequestParam(value = PRODUCT_SHOPS, required = false) String shops) {
         Map<Pair<String,String>, List<String>> params = new HashMap<>();
         if (price != null) {
-            params.put(new Pair<String,String>(PRODUCT_PRICE,"Simple"), Arrays.asList(price.split(",")));
+            params.put(new Pair<String,String>(PRODUCT_PRICE,SIMPLE_PARAM_TYPE), Arrays.asList(price.split(",")));
         }
         if (typeId != null) {
-            params.put(new Pair<String,String>(TYPE_ID,"Simple"), Arrays.asList(typeId.split(",")));
+            params.put(new Pair<String,String>(TYPE_ID,OBJECTSIMPLE_PARAM_TYPE), Arrays.asList(typeId.split(",")));
         }
         if (shops != null) {
-            params.put(new Pair<String,String>(PRODUCT_SHOPS,"Complex"), Arrays.asList(shops.split(",")));
+            params.put(new Pair<String,String>(PRODUCT_SHOPS,COMPLEX_PARAM_TYPE), Arrays.asList(shops.split(",")));
         }
 
         return productService.getProductsByParams(params);
