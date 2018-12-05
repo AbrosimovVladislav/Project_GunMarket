@@ -42,7 +42,7 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
     }
 
     //ToDo поправить модификаторы
-    public static String createHqlGetByParamsQuery(String entityName, Map<Pair<String, String>, List<String>> params) {
+    public String createHqlGetByParamsQuery(String entityName, Map<Pair<String, String>, List<String>> params) {
 
         String resultHqlQuery = "";
         String connectorLine = ") AND " + entityName.toLowerCase() + "_Id IN (";
@@ -64,23 +64,14 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
 
     }
 
-    private static String getComlexParamQueryPart(String entityName, String paramName, List<String> paramValues, String resultHqlQuery, String connectorLine) {
-        String querySubject = entityName.toLowerCase() + "s";
-        String fromParam = replaceLastChar(paramName);
-        fromParam = firstUpperCase(fromParam);
-        String newParamName = firstLowerCase(fromParam) + "_Id";
-        String currentQPArt = "";
-        currentQPArt = currentQPArt + "SELECT " + querySubject + " FROM " + fromParam + " WHERE ";
-        for (String paramValue : paramValues) {
-            currentQPArt = currentQPArt + newParamName + " = :p" + paramValue + paramCounter + "n OR ";
-            paramCounter++;
-        }
-        // заменить на delete при работе со стрингБилдерами и будет норм работать
-        currentQPArt = currentQPArt.replace(currentQPArt.substring(currentQPArt.length() - 4, currentQPArt.length() - 1), "");
-        return resultHqlQuery + currentQPArt + connectorLine;
+    private String getComlexParamQueryPart(String entityName, String paramName, List<String> paramValues, String resultHqlQuery, String connectorLine) {
+        StringBuilder currentQPArt = createInitialPartOfComplexParamQuery(entityName, paramName)
+                .append(createParamFillingPartOfComplexParamQuery(paramName, paramValues));
+        currentQPArt.delete(currentQPArt.length() - 4, currentQPArt.length() - 1);
+        return resultHqlQuery + currentQPArt.toString() + connectorLine;
     }
 
-    private static String getSimpleParamQueryPart(String entityName, String paramName, List<String> paramValues, String resultHqlQuery, String connectorLine, String paramType) {
+    private String getSimpleParamQueryPart(String entityName, String paramName, List<String> paramValues, String resultHqlQuery, String connectorLine, String paramType) {
         if (paramType.equals(OBJECTSIMPLE_PARAM_TYPE)) {
             paramName = paramName + "_id";
         }
@@ -94,6 +85,33 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
         currentQPArt = currentQPArt.replace(currentQPArt.substring(currentQPArt.length() - 4, currentQPArt.length() - 1), "");
         return resultHqlQuery + currentQPArt + connectorLine;
     }
+
+    private StringBuilder createInitialPartOfComplexParamQuery(String entityName, String paramName) {
+        return new StringBuilder("SELECT ")
+                .append(entityName.toLowerCase() + "s")
+                .append(" FROM ")
+                .append(firstUpperCase(replaceLastChar(paramName)))
+                .append(" WHERE ");
+    }
+
+    private String createParamFillingPartOfComplexParamQuery(String paramName, List<String> paramValues) {
+        StringBuilder currentQPArt = new StringBuilder();
+        for (String paramValue : paramValues) {
+            currentQPArt
+                    .append(firstLowerCase(firstUpperCase(replaceLastChar(paramName))))
+                    .append("_Id")
+                    .append(" = :p").append(paramValue)
+                    .append(paramCounter).append("n OR ");
+            paramCounter++;
+        }
+        return currentQPArt.toString();
+    }
+
+
+/*    private static String createIdParamForComplexPart(String fromParam) {
+        return firstLowerCase(fromParam) + "_Id";
+    }*/
+
 
     private static String replaceLastChar(String str) {
         if (str != null && str.length() > 0) {
