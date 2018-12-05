@@ -46,25 +46,4 @@ public class ProductController {
         return productService.getProductsByParams(params);
     }
 
-/*    @Autowired
-    ProductService productService;
-
-    @RequestMapping(value = "/products", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<Product> getProductsByParams(@RequestParam(value = PRODUCT_PRICE, required = false) String price
-            , @RequestParam(value = TYPE_ID, required = false) String typeId
-            , @RequestParam(value = PRODUCT_SHOPS, required = false) String shops) {
-        Map<String, List<String>> params = new HashMap<String, List<String>>();
-        if (price != null) {
-            params.put(PRODUCT_PRICE, Arrays.asList(price.split(",")));
-        }
-        if (typeId != null) {
-            params.put(TYPE_ID, Arrays.asList(typeId.split(",")));
-        }
-        if (shops != null) {
-            params.put(PRODUCT_SHOPS, Arrays.asList(shops.split(",")));
-        }
-
-        return productService.getProductsByParams(params);
-    }*/
-
 }

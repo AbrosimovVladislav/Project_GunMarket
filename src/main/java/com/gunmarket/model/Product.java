@@ -35,7 +35,7 @@ public class Product {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name=TYPE_ID, nullable=false)
+    @JoinColumn(name = TYPE_ID, nullable = false)
     private Type type;
 
     @JsonIgnore
