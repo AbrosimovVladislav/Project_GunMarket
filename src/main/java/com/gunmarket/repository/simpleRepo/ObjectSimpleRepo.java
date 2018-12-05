@@ -7,6 +7,6 @@ import java.util.Map;
 
 public interface ObjectSimpleRepo {
 
-    List getByParamsDueHql(String entityName, Map<Pair<String,String>, List<String>> params);
+    List getByParamsDueHql(String entityName, Map<Pair<String, String>, List<String>> params);
 
 }

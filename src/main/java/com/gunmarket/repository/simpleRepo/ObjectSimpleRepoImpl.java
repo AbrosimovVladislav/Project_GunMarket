@@ -14,9 +14,6 @@ import java.util.Map;
 @Repository
 public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
 
-    private static final int AND_LENGTH = 5;
-    private static final int OR_LENGTH = 4;
-
     @Autowired
     private SessionFactory sessionFactory;
 
