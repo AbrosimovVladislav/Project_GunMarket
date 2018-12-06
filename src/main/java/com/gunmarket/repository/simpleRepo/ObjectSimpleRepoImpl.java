@@ -17,6 +17,8 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
     @Autowired
     private SessionFactory sessionFactory;
 
+    private static int paramRepoCounter = 0;
+
     private QueryBuilder queryBuilder = new QueryBuilder();
 
     private Session currentSession() {
@@ -27,16 +29,16 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
         //ToDo Удалить вывод
         //System.out.println("Вывод резалт парам запроса " + queryBuilder.build(entityName, params));
         Query query = currentSession().createQuery(queryBuilder.build(entityName, params));
-        int paramCounter = 0;
+        //int paramCounter = 0;
         for (List<String> values : params.values()) {
             for (String value : values) {
-                query.setParameter("p" + value + paramCounter + "n", value);
-                paramCounter++;
+                query.setParameter("p" + value + paramRepoCounter + "n", value);
+                paramRepoCounter++;
             }
         }
 
         //ToDo Удалить вывод
-        System.out.println("Вывод итогового запроса " +query.getQueryString());
+        System.out.println("Вывод итогового запроса " + query.getQueryString());
         return query.list();
     }
 
