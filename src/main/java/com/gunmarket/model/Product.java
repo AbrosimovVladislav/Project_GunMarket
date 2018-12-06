@@ -19,6 +19,7 @@ public class Product {
     public static final String PRODUCT_NAME = "name";
     public static final String PRODUCT_PRICE = "price";
     public static final String PRODUCT_TYPE = "type";
+    public static final String PRODUCT_SHOPS = "shops";
 
     @Id
     @GeneratedValue(generator = "increment")
@@ -34,7 +35,7 @@ public class Product {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name=TYPE_ID, nullable=false)
+    @JoinColumn(name = TYPE_ID, nullable = false)
     private Type type;
 
     @JsonIgnore

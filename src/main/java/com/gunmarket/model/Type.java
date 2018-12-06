@@ -25,7 +25,7 @@ public class Type {
     @Column(name = TYPE_NAME)
     private String name;
 
-    @OneToMany(mappedBy=PRODUCT_TYPE)
+    @OneToMany(mappedBy = PRODUCT_TYPE)
     private Set<Product> products;
 
     public Type() {
