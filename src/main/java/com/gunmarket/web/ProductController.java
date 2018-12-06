@@ -16,6 +16,7 @@ import java.util.Map;
 
 import static com.gunmarket.model.Product.PRODUCT_PRICE;
 import static com.gunmarket.model.Product.PRODUCT_SHOPS;
+import static com.gunmarket.model.Type.TYPE_ENTITY;
 import static com.gunmarket.model.Type.TYPE_ID;
 
 @RestController
@@ -30,14 +31,14 @@ public class ProductController {
 
     @RequestMapping(value = "/products", method = RequestMethod.GET, headers = "Accept=application/json")
     public List<Product> getProductsByParams(@RequestParam(value = PRODUCT_PRICE, required = false) String price
-            , @RequestParam(value = TYPE_ID, required = false) String typeId
+            , @RequestParam(value = TYPE_ENTITY, required = false) String type
             , @RequestParam(value = PRODUCT_SHOPS, required = false) String shops) {
         Map<Pair<String,String>, List<String>> params = new HashMap<>();
         if (price != null) {
             params.put(new Pair<String,String>(PRODUCT_PRICE,SIMPLE_PARAM_TYPE), Arrays.asList(price.split(",")));
         }
-        if (typeId != null) {
-            params.put(new Pair<String,String>(TYPE_ID,OBJECTSIMPLE_PARAM_TYPE), Arrays.asList(typeId.split(",")));
+        if (type != null) {
+            params.put(new Pair<String,String>(TYPE_ENTITY,OBJECTSIMPLE_PARAM_TYPE), Arrays.asList(type.split(",")));
         }
         if (shops != null) {
             params.put(new Pair<String,String>(PRODUCT_SHOPS,COMPLEX_PARAM_TYPE), Arrays.asList(shops.split(",")));

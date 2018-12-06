@@ -29,7 +29,6 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
         //ToDo Удалить вывод
         //System.out.println("Вывод резалт парам запроса " + queryBuilder.build(entityName, params));
         Query query = currentSession().createQuery(queryBuilder.build(entityName, params));
-        //int paramCounter = 0;
         for (List<String> values : params.values()) {
             for (String value : values) {
                 query.setParameter("p" + value + paramRepoCounter + "n", value);

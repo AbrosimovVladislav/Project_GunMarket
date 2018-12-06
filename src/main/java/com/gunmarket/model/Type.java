@@ -15,6 +15,7 @@ public class Type {
 
     public static final String TYPE_ID = "type_Id";
     public static final String TYPE_NAME = "name";
+    public static final String TYPE_ENTITY = "type";
 
     @Id
     @GeneratedValue(generator = "increment")
