@@ -27,7 +27,7 @@ public class QueryBuilder {
     private static final String CLOSING_BRACKET = ")";
     private static final String OPENING_BRACKET = "(";
 
-    private static int paramCounter = 0;
+    private static int paramQueryCounter = 0;
 
     public String build(String entityName, Map<Pair<String, String>, List<String>> params) {
 
@@ -46,7 +46,12 @@ public class QueryBuilder {
             }
         }
 
+        //ToDo Удалить вывод
+        System.out.println("Вывод текущей части " + resultHqlQuery);
+
         resultHqlQuery = resultHqlQuery.replaceFirst(CLOSING_BRACKET_REGEX, "");
+        //ToDo Удалить вывод
+        System.out.println("Вывод результата без закр.скобки " + resultHqlQuery);
         return resultHqlQuery.substring(0, resultHqlQuery.length() - connectorLine.length() + 1);
 
     }
@@ -76,10 +81,10 @@ public class QueryBuilder {
                     .append(EQUALLY_KEYWORD)
                     .append(PARAMETER_STARTING)
                     .append(paramValue)
-                    .append(paramCounter)
+                    .append(paramQueryCounter)
                     .append(PARAMETER_ENDING)
                     .append(OR_KEYWORD);
-            paramCounter++;
+            paramQueryCounter++;
         }
         return currentQPArt.toString();
     }
@@ -111,10 +116,10 @@ public class QueryBuilder {
                     .append(EQUALLY_KEYWORD)
                     .append(PARAMETER_STARTING)
                     .append(paramValue)
-                    .append(paramCounter)
+                    .append(paramQueryCounter)
                     .append(PARAMETER_ENDING)
                     .append(OR_KEYWORD);
-            paramCounter++;
+            paramQueryCounter++;
         }
         return currentQPArt.toString();
     }

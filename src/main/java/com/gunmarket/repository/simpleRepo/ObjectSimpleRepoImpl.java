@@ -24,6 +24,8 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
     }
 
     public List getByParamsDueHql(String entityName, Map<Pair<String, String>, List<String>> params) {
+        //ToDo Удалить вывод
+        //System.out.println("Вывод резалт парам запроса " + queryBuilder.build(entityName, params));
         Query query = currentSession().createQuery(queryBuilder.build(entityName, params));
         int paramCounter = 0;
         for (List<String> values : params.values()) {
@@ -33,7 +35,8 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
             }
         }
 
-        System.out.println(query.getQueryString());
+        //ToDo Удалить вывод
+        System.out.println("Вывод итогового запроса " +query.getQueryString());
         return query.list();
     }
 
