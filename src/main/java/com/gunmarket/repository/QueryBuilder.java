@@ -10,12 +10,29 @@ import static com.gunmarket.web.ProductController.OBJECTSIMPLE_PARAM_TYPE;
 
 public class QueryBuilder {
 
+    private static final String EQUALLY_KEYWORD = " = ";
+    private static final String OR_KEYWORD = " OR ";
+    private static final String SELECT_KEYWORD = "SELECT ";
+    private static final String FROM_KEYWORD = "FROM ";
+    private static final String WHERE_KEYWORD = " WHERE ";
+    private static final String IN_KEYWORD = " IN ";
+    private static final String AND_KEYWORD = " AND ";
+    private static final String PARAMETER_STARTING = ":p";
+    private static final String PARAMETER_ENDING = "n";
+    private static final String ID_LOWER_PARAMETER_ADDITION = "_id";
+    private static final String ID_UPPER_PARAMETER_ADDITION = "_Id";
+    private static final String PLURAL_ENDING_S = "s";
+    private static final String SPACE = " ";
+    private static final String CLOSING_BRACKET_REGEX = "\\)";
+    private static final String CLOSING_BRACKET = ")";
+    private static final String OPENING_BRACKET = "(";
+
     private static int paramCounter = 0;
 
     public String build(String entityName, Map<Pair<String, String>, List<String>> params) {
 
         String resultHqlQuery = "";
-        String connectorLine = ") AND " + entityName.toLowerCase() + "_Id IN (";
+        String connectorLine = createConnectorLine(entityName);
 
         for (Map.Entry<Pair<String, String>, List<String>> paramEntry : params.entrySet()) {
             String paramName = paramEntry.getKey().getKey();
@@ -29,7 +46,7 @@ public class QueryBuilder {
             }
         }
 
-        resultHqlQuery = resultHqlQuery.replaceFirst("\\)", "");
+        resultHqlQuery = resultHqlQuery.replaceFirst(CLOSING_BRACKET_REGEX, "");
         return resultHqlQuery.substring(0, resultHqlQuery.length() - connectorLine.length() + 1);
 
     }
@@ -37,18 +54,18 @@ public class QueryBuilder {
     //Построение простой части
     private String getSimpleParamQueryPart(String entityName, String paramName, List<String> paramValues, String resultHqlQuery, String connectorLine, String paramType) {
         if (paramType.equals(OBJECTSIMPLE_PARAM_TYPE)) {
-            paramName = paramName + "_id";
+            paramName = paramName + ID_LOWER_PARAMETER_ADDITION;
         }
-        return createCleaningPartOfSimpleParamQuery(resultHqlQuery,
+        return createCleaningPartOfQuery(resultHqlQuery,
                 createInitialPartOfSimpleParamQuery(entityName)
                         .append(createParamFillingPartOfSimpleParamQuery(paramName, paramValues)),
                 connectorLine);
     }
 
     private StringBuilder createInitialPartOfSimpleParamQuery(String entityName) {
-        return new StringBuilder("FROM ")
+        return new StringBuilder(FROM_KEYWORD)
                 .append(entityName)
-                .append(" WHERE ");
+                .append(WHERE_KEYWORD);
     }
 
     private String createParamFillingPartOfSimpleParamQuery(String paramName, List<String> paramValues) {
@@ -56,36 +73,33 @@ public class QueryBuilder {
         for (String paramValue : paramValues) {
             currentQPArt
                     .append(paramName)
-                    .append(" = :p")
+                    .append(EQUALLY_KEYWORD)
+                    .append(PARAMETER_STARTING)
                     .append(paramValue)
                     .append(paramCounter)
-                    .append("n OR ");
+                    .append(PARAMETER_ENDING)
+                    .append(OR_KEYWORD);
             paramCounter++;
         }
         return currentQPArt.toString();
     }
 
-    private String createCleaningPartOfSimpleParamQuery(String resultQuery, StringBuilder currentQPArt, String connectorLine) {
-        return resultQuery +
-                currentQPArt.delete(currentQPArt.length() - 4, currentQPArt.length() - 1).toString() +
-                connectorLine;
-    }
-
     //Построение составной части
     private String getComplexParamQueryPart(String entityName, String paramName, List<String> paramValues, String resultHqlQuery, String connectorLine) {
-        return createCleaningPartOfComplexParamQuery(resultHqlQuery,
+        return createCleaningPartOfQuery(resultHqlQuery,
                 createInitialPartOfComplexParamQuery(entityName, paramName)
                         .append(createParamFillingPartOfComplexParamQuery(paramName, paramValues)),
                 connectorLine);
     }
 
     private StringBuilder createInitialPartOfComplexParamQuery(String entityName, String paramName) {
-        return new StringBuilder("SELECT ")
+        return new StringBuilder(SELECT_KEYWORD)
                 .append(entityName.toLowerCase())
-                .append("s")
-                .append(" FROM ")
+                .append(PLURAL_ENDING_S)
+                .append(SPACE)
+                .append(FROM_KEYWORD)
                 .append(firstUpperCase(replaceLastChar(paramName)))
-                .append(" WHERE ");
+                .append(WHERE_KEYWORD);
     }
 
     private String createParamFillingPartOfComplexParamQuery(String paramName, List<String> paramValues) {
@@ -93,20 +107,33 @@ public class QueryBuilder {
         for (String paramValue : paramValues) {
             currentQPArt
                     .append(firstLowerCase(firstUpperCase(replaceLastChar(paramName))))
-                    .append("_Id")
-                    .append(" = :p")
+                    .append(ID_UPPER_PARAMETER_ADDITION)
+                    .append(EQUALLY_KEYWORD)
+                    .append(PARAMETER_STARTING)
                     .append(paramValue)
                     .append(paramCounter)
-                    .append("n OR ");
+                    .append(PARAMETER_ENDING)
+                    .append(OR_KEYWORD);
             paramCounter++;
         }
         return currentQPArt.toString();
     }
 
-    private String createCleaningPartOfComplexParamQuery(String resultQuery, StringBuilder currentQPArt, String connectorLine) {
+    //Общие методы для все параметров
+    private String createCleaningPartOfQuery(String resultQuery, StringBuilder currentQPArt, String connectorLine) {
         return resultQuery +
                 currentQPArt.delete(currentQPArt.length() - 4, currentQPArt.length() - 1).toString() +
                 connectorLine;
+    }
+
+    private String createConnectorLine(String entityName) {
+        return new StringBuilder(CLOSING_BRACKET)
+                .append(AND_KEYWORD)
+                .append(entityName.toLowerCase())
+                .append(ID_UPPER_PARAMETER_ADDITION)
+                .append(IN_KEYWORD)
+                .append(OPENING_BRACKET)
+                .toString();
     }
 
     //Статические методы
