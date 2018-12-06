@@ -27,7 +27,7 @@ public class QueryBuilder {
     private static final String CLOSING_BRACKET = ")";
     private static final String OPENING_BRACKET = "(";
 
-    private static int paramQueryCounter = 0;
+    private static int paramBuilderCounter = 0;
 
     public String build(String entityName, Map<Pair<String, String>, List<String>> params) {
 
@@ -81,10 +81,10 @@ public class QueryBuilder {
                     .append(EQUALLY_KEYWORD)
                     .append(PARAMETER_STARTING)
                     .append(paramValue)
-                    .append(paramQueryCounter)
+                    .append(paramBuilderCounter)
                     .append(PARAMETER_ENDING)
                     .append(OR_KEYWORD);
-            paramQueryCounter++;
+            paramBuilderCounter++;
         }
         return currentQPArt.toString();
     }
@@ -116,10 +116,10 @@ public class QueryBuilder {
                     .append(EQUALLY_KEYWORD)
                     .append(PARAMETER_STARTING)
                     .append(paramValue)
-                    .append(paramQueryCounter)
+                    .append(paramBuilderCounter)
                     .append(PARAMETER_ENDING)
                     .append(OR_KEYWORD);
-            paramQueryCounter++;
+            paramBuilderCounter++;
         }
         return currentQPArt.toString();
     }
