@@ -39,15 +39,36 @@ public class QueryBuilder {
         if (paramType.equals(OBJECTSIMPLE_PARAM_TYPE)) {
             paramName = paramName + "_id";
         }
-        String currentQPArt = "";
-        currentQPArt = currentQPArt + "FROM " + entityName + " WHERE ";
+        return createCleaningPartOfSimpleParamQuery(resultHqlQuery,
+                createInitialPartOfSimpleParamQuery(entityName)
+                        .append(createParamFillingPartOfSimpleParamQuery(paramName, paramValues)),
+                connectorLine);
+    }
+
+    private StringBuilder createInitialPartOfSimpleParamQuery(String entityName) {
+        return new StringBuilder("FROM ")
+                .append(entityName)
+                .append(" WHERE ");
+    }
+
+    private String createParamFillingPartOfSimpleParamQuery(String paramName, List<String> paramValues) {
+        StringBuilder currentQPArt = new StringBuilder();
         for (String paramValue : paramValues) {
-            currentQPArt = currentQPArt + paramName + " = :p" + paramValue + paramCounter + "n OR ";
+            currentQPArt
+                    .append(paramName)
+                    .append(" = :p")
+                    .append(paramValue)
+                    .append(paramCounter)
+                    .append("n OR ");
             paramCounter++;
         }
-        // заменить на delete при работе со стрингБилдерами и будет норм работать
-        currentQPArt = currentQPArt.replace(currentQPArt.substring(currentQPArt.length() - 4, currentQPArt.length() - 1), "");
-        return resultHqlQuery + currentQPArt + connectorLine;
+        return currentQPArt.toString();
+    }
+
+    private String createCleaningPartOfSimpleParamQuery(String resultQuery, StringBuilder currentQPArt, String connectorLine) {
+        return resultQuery +
+                currentQPArt.delete(currentQPArt.length() - 4, currentQPArt.length() - 1).toString() +
+                connectorLine;
     }
 
     //Построение составной части
@@ -73,18 +94,19 @@ public class QueryBuilder {
             currentQPArt
                     .append(firstLowerCase(firstUpperCase(replaceLastChar(paramName))))
                     .append("_Id")
-                    .append(" = :p").append(paramValue)
-                    .append(paramCounter).append("n OR ");
+                    .append(" = :p")
+                    .append(paramValue)
+                    .append(paramCounter)
+                    .append("n OR ");
             paramCounter++;
         }
         return currentQPArt.toString();
     }
 
     private String createCleaningPartOfComplexParamQuery(String resultQuery, StringBuilder currentQPArt, String connectorLine) {
-        return new StringBuilder(resultQuery)
-                .append(currentQPArt.delete(currentQPArt.length() - 4, currentQPArt.length() - 1).toString())
-                .append(connectorLine)
-                .toString();
+        return resultQuery +
+                currentQPArt.delete(currentQPArt.length() - 4, currentQPArt.length() - 1).toString() +
+                connectorLine;
     }
 
     //Статические методы
