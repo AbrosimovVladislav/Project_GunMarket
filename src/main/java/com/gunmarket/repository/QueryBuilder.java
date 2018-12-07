@@ -1,12 +1,12 @@
 package com.gunmarket.repository;
 
-import javafx.util.Pair;
+import com.gunmarket.web.HttpParameter;
 
 import java.util.List;
 import java.util.Map;
 
-import static com.gunmarket.web.ProductController.COMPLEX_PARAM_TYPE;
-import static com.gunmarket.web.ProductController.OBJECTSIMPLE_PARAM_TYPE;
+import static com.gunmarket.web.HttpParameter.COMPLEX_PARAM_TYPE;
+import static com.gunmarket.web.HttpParameter.OBJECTSIMPLE_PARAM_TYPE;
 
 public class QueryBuilder {
 
@@ -31,14 +31,14 @@ public class QueryBuilder {
 
     private static int paramBuilderCounter = 0;
 
-    public String build(String entityName, Map<Pair<String, String>, List<String>> params) {
+    public String build(String entityName, Map<HttpParameter, List<String>> params) {
 
         String resultHqlQuery = "";
         String connectorLine = createConnectorLine(entityName);
 
-        for (Map.Entry<Pair<String, String>, List<String>> paramEntry : params.entrySet()) {
-            String paramName = paramEntry.getKey().getKey();
-            String paramType = paramEntry.getKey().getValue();
+        for (Map.Entry<HttpParameter, List<String>> paramEntry : params.entrySet()) {
+            String paramName = paramEntry.getKey().getParamName();
+            String paramType = paramEntry.getKey().getParamType();
             List<String> paramValues = paramEntry.getValue();
 
             if (paramType.equals(COMPLEX_PARAM_TYPE)) {
