@@ -17,11 +17,13 @@ public class QueryBuilder {
     private static final String WHERE_KEYWORD = " WHERE ";
     private static final String IN_KEYWORD = " IN ";
     private static final String AND_KEYWORD = " AND ";
+    private static final String AS_KEYWORD = " AS ";
     private static final String PARAMETER_STARTING = ":p";
     private static final String PARAMETER_ENDING = "n";
     private static final String ID_LOWER_PARAMETER_ADDITION = "_id";
     private static final String ID_UPPER_PARAMETER_ADDITION = "_Id";
     private static final String PLURAL_ENDING_S = "s";
+    private static final String COMMA = ".";
     private static final String SPACE = " ";
     private static final String CLOSING_BRACKET_REGEX = "\\)";
     private static final String CLOSING_BRACKET = ")";
@@ -104,14 +106,18 @@ public class QueryBuilder {
                 .append(SPACE)
                 .append(FROM_KEYWORD)
                 .append(firstUpperCase(replaceLastChar(paramName)))
-                .append(WHERE_KEYWORD);
+                .append(AS_KEYWORD)
+                .append(firstUpperCase(replaceLastChar(paramName)))
+                .append(WHERE_KEYWORD); //SELECT products FROM Shop AS Shop WHERE
     }
 
     private String createParamFillingPartOfComplexParamQuery(String paramName, List<String> paramValues) {
         StringBuilder currentQPArt = new StringBuilder();
         for (String paramValue : paramValues) {
             currentQPArt
-                    .append(firstLowerCase(firstUpperCase(replaceLastChar(paramName))))
+                    .append(firstUpperCase(replaceLastChar(paramName)))
+                    .append(COMMA)
+                    .append(replaceLastChar(paramName))
                     .append(ID_UPPER_PARAMETER_ADDITION)
                     .append(EQUALLY_KEYWORD)
                     .append(PARAMETER_STARTING)
@@ -152,11 +158,6 @@ public class QueryBuilder {
     private static String firstUpperCase(String word) {
         if (word == null || word.isEmpty()) return "";//или return word;
         return word.substring(0, 1).toUpperCase() + word.substring(1);
-    }
-
-    private static String firstLowerCase(String word) {
-        if (word == null || word.isEmpty()) return "";//или return word;
-        return word.substring(0, 1).toLowerCase() + word.substring(1);
     }
 
 }

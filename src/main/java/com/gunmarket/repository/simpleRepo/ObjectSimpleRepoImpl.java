@@ -26,8 +26,8 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
     }
 
     public List getByParamsDueHql(String entityName, Map<Pair<String, String>, List<String>> params) {
-        //ToDo Удалить вывод
-        //System.out.println("Вывод резалт парам запроса " + queryBuilder.build(entityName, params));
+        /*String complex = "SELECT products FROM Shop AS Shop WHERE Shop.shop_Id=1";
+        return currentSession().createQuery(complex).list();*/
         Query query = currentSession().createQuery(queryBuilder.build(entityName, params));
         for (List<String> values : params.values()) {
             for (String value : values) {
