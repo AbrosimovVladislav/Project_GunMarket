@@ -1,4 +1,4 @@
-package com.gunmarket.repository.ImplRepo;
+package com.gunmarket.repository;
 
 import com.gunmarket.repository.simpleRepo.ObjectSimpleRepoImpl;
 import org.springframework.stereotype.Repository;
