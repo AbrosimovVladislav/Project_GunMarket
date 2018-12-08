@@ -21,7 +21,7 @@ public class Type {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = TYPE_ID, length = 8, nullable = false)
-    private long type_Id;
+    private Long type_Id;
 
     @Column(name = TYPE_NAME)
     private String name;

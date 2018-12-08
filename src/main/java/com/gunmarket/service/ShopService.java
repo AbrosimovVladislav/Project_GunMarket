@@ -1,3 +1,4 @@
+/*
 package com.gunmarket.service;
 
 import com.gunmarket.model.Shop;
@@ -23,3 +24,4 @@ public class ShopService {
     }
 
 }
+*/
