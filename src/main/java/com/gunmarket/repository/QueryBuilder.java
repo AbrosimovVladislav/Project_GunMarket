@@ -65,20 +65,24 @@ public class QueryBuilder {
         }
         return createCleaningPartOfQuery(resultHqlQuery,
                 createInitialPartOfSimpleParamQuery(entityName)
-                        .append(createParamFillingPartOfSimpleParamQuery(paramName, paramValues)),
+                        .append(createParamFillingPartOfSimpleParamQuery(entityName,paramName, paramValues)),
                 connectorLine);
     }
 
     private StringBuilder createInitialPartOfSimpleParamQuery(String entityName) {
         return new StringBuilder(FROM_KEYWORD)
                 .append(entityName)
+/*                .append(AS_KEYWORD)
+                .append(entityName)*/
                 .append(WHERE_KEYWORD);
     }
 
-    private String createParamFillingPartOfSimpleParamQuery(String paramName, List<String> paramValues) {
+    private String createParamFillingPartOfSimpleParamQuery(String entityName, String paramName, List<String> paramValues) {
         StringBuilder currentQPArt = new StringBuilder();
         for (String paramValue : paramValues) {
             currentQPArt
+/*                    .append(entityName)
+                    .append(COMMA)*/
                     .append(paramName)
                     .append(EQUALLY_KEYWORD)
                     .append(PARAMETER_STARTING)
@@ -138,12 +142,14 @@ public class QueryBuilder {
     }
 
     private String createConnectorLine(String entityName) {
-        return new StringBuilder(CLOSING_BRACKET)
-                .append(AND_KEYWORD)
-                .append(entityName.toLowerCase())
-                .append(ID_UPPER_PARAMETER_ADDITION)
-                .append(IN_KEYWORD)
-                .append(OPENING_BRACKET)
+        return new StringBuilder(CLOSING_BRACKET) //)
+                .append(AND_KEYWORD) // AND
+/*                .append(entityName)
+                .append(COMMA)*/
+                .append(entityName.toLowerCase())// product
+                .append(ID_UPPER_PARAMETER_ADDITION) // _Id
+                .append(IN_KEYWORD) // IN
+                .append(OPENING_BRACKET)// (
                 .toString();
     }
 
