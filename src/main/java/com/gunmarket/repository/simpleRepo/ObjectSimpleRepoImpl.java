@@ -1,6 +1,5 @@
 package com.gunmarket.repository.simpleRepo;
 
-import com.gunmarket.repository.QueryBuilder;
 import com.gunmarket.web.HttpParameter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
-import static com.gunmarket.repository.QueryBuilder.sortParamsMap;
+import static com.gunmarket.repository.simpleRepo.QueryBuilder.sortParamsMap;
 
 /**
  * Предполагаемые проблемы ;
@@ -19,6 +18,9 @@ import static com.gunmarket.repository.QueryBuilder.sortParamsMap;
  * что в классе работы с бд, наполнение итогого запроса значениями параметров будет
  * неправильным, так как сортировка ведется только типу параметра, а внутри одного типа
  * сортировки нет
+ */
+/**
+    Проверить предполагаемую проблему при помощи добавления новых параметров
  */
 
 @Repository
