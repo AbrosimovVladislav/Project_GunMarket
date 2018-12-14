@@ -1,4 +1,4 @@
-package com.gunmarket.repository.simpleRepo;
+package com.gunmarket.repository.basicRepo.queryBuilder;
 
 import com.gunmarket.web.HttpParameter;
 
