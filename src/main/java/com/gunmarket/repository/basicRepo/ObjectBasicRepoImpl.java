@@ -11,18 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
-import static com.gunmarket.repository.basicRepo.queryBuilder.QueryBuilder.sortParamsMap;
-
-/**
- * Предполагаемые проблемы ;
- * Если параметров будет больше 3 (по одному каждого типа), возникает вероятность того,
- * что в классе работы с бд, наполнение итогого запроса значениями параметров будет
- * неправильным, так как сортировка ведется только типу параметра, а внутри одного типа
- * сортировки нет
- */
-/**
-    Проверить предполагаемую проблему при помощи добавления новых параметров
- */
+import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.sortParamsMap;
 
 @Repository
 public class ObjectBasicRepoImpl implements ObjectBasicRepo {

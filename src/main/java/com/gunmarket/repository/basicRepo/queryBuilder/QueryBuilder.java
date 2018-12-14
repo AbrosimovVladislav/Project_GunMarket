@@ -2,8 +2,12 @@ package com.gunmarket.repository.basicRepo.queryBuilder;
 
 import com.gunmarket.web.HttpParameter;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
+import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.firstUpperCase;
+import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.replaceLastChar;
+import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.sortParamsMap;
 import static com.gunmarket.web.HttpParameter.COMPLEX_PARAM_TYPE;
 import static com.gunmarket.web.HttpParameter.OBJECTSIMPLE_PARAM_TYPE;
 
@@ -58,23 +62,6 @@ public class QueryBuilder {
 
     }
 
-    public static Map<HttpParameter, List<String>> sortParamsMap(Map<HttpParameter, List<String>> params) {
-        List<Map.Entry<HttpParameter, List<String>>> list = new ArrayList(params.entrySet());
-
-        list.sort(new Comparator<Map.Entry<HttpParameter, List<String>>>() {
-            public int compare(Map.Entry<HttpParameter, List<String>> o1, Map.Entry<HttpParameter, List<String>> o2) {
-                return (o2.getKey().getParamType()).compareTo(o1.getKey().getParamType());
-            }
-        });
-
-        Map<HttpParameter, List<String>> sortedMap = new LinkedHashMap();
-        for (Map.Entry<HttpParameter, List<String>> entry : list) {
-            sortedMap.put(entry.getKey(), entry.getValue());
-        }
-
-        return sortedMap;
-    }
-
     //Построение простой части
     private String getSimpleParamQueryPart(String entityName, String paramName, List<String> paramValues, String resultHqlQuery, String connectorLine, String paramType) {
         if (paramType.equals(OBJECTSIMPLE_PARAM_TYPE)) {
@@ -106,6 +93,7 @@ public class QueryBuilder {
                     .append(OR_KEYWORD);
             paramBuilderCounter++;
         }
+        currentQPArt.append(CLOSING_BRACKET);
         return currentQPArt.toString();
     }
 
@@ -169,26 +157,12 @@ public class QueryBuilder {
 
     private String createConnectorLine(String entityName) {
         return new StringBuilder(CLOSING_BRACKET) //)
-                .append(CLOSING_BRACKET)
                 .append(AND_KEYWORD) // AND
                 .append(entityName.toLowerCase())// product
                 .append(ID_UPPER_PARAMETER_ADDITION) // _Id
                 .append(IN_KEYWORD) // IN
                 .append(OPENING_BRACKET)// (
                 .toString();
-    }
-
-    //Статические методы
-    private static String replaceLastChar(String str) {
-        if (str != null && str.length() > 0) {
-            str = str.substring(0, str.length() - 1);
-        }
-        return str;
-    }
-
-    private static String firstUpperCase(String word) {
-        if (word == null || word.isEmpty()) return "";//или return word;
-        return word.substring(0, 1).toUpperCase() + word.substring(1);
     }
 
 }
