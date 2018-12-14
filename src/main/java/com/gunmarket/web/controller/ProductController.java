@@ -1,7 +1,8 @@
-package com.gunmarket.web;
+package com.gunmarket.web.controller;
 
 import com.gunmarket.model.Product;
 import com.gunmarket.service.ProductService;
+import com.gunmarket.web.HttpParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
