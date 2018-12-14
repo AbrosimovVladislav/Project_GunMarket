@@ -1,9 +1,7 @@
-/*
 package com.gunmarket.web;
 
 import com.gunmarket.model.Shop;
 import com.gunmarket.service.ShopService;
-import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,8 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 import static com.gunmarket.model.Shop.SHOP_ADDRESS;
-import static com.gunmarket.model.Shop.SHOP_NAME;
 import static com.gunmarket.model.Shop.SHOP_PRODUCTS;
+import static com.gunmarket.web.HttpParameter.*;
 
 @RestController
 public class ShopController {
@@ -26,22 +24,17 @@ public class ShopController {
     ShopService shopService;
 
     @RequestMapping(value = "/shops", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<Shop> getShopsByParams(@RequestParam(value = SHOP_NAME, required = false) String name
-            , @RequestParam(value = SHOP_ADDRESS, required = false) String address
+    public List<Shop> getShopsByParams(@RequestParam(value = SHOP_ADDRESS, required = false) String address
             , @RequestParam(value = SHOP_PRODUCTS, required = false) String products) {
-        Map<Pair<String,String>, List<String>> params = new HashMap<String, List<String>>();
-        if (name != null) {
-            params.put(SHOP_NAME, Arrays.asList(name.split(",")));
-        }
+        Map<HttpParameter, List<String>> params = new HashMap<>();
         if (address != null) {
-            params.put(SHOP_ADDRESS, Arrays.asList(address.split(",")));
+            params.put(new HttpParameter(SHOP_ADDRESS, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING), Arrays.asList(address.split(",")));
         }
         if (products != null) {
-            params.put(SHOP_PRODUCTS, Arrays.asList(products.split(",")));
+            params.put(new HttpParameter(SHOP_PRODUCTS, COMPLEX_PARAM_TYPE, PARAM_CLASS_LONG), Arrays.asList(products.split(",")));
         }
 
         return shopService.getShopsByParams(params);
     }
 
 }
-*/
