@@ -1,6 +1,5 @@
 package com.gunmarket.repository.simpleRepo;
 
-import com.gunmarket.repository.QueryBuilder;
 import com.gunmarket.web.HttpParameter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,6 +9,19 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+
+import static com.gunmarket.repository.simpleRepo.QueryBuilder.sortParamsMap;
+
+/**
+ * Предполагаемые проблемы ;
+ * Если параметров будет больше 3 (по одному каждого типа), возникает вероятность того,
+ * что в классе работы с бд, наполнение итогого запроса значениями параметров будет
+ * неправильным, так как сортировка ведется только типу параметра, а внутри одного типа
+ * сортировки нет
+ */
+/**
+    Проверить предполагаемую проблему при помощи добавления новых параметров
+ */
 
 @Repository
 public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
@@ -27,7 +39,7 @@ public class ObjectSimpleRepoImpl implements ObjectSimpleRepo {
 
     public List getByParamsDueHql(String entityName, Map<HttpParameter, List<String>> params) {
         Query query = currentSession().createQuery(queryBuilder.build(entityName, params));
-        for (Map.Entry<HttpParameter, List<String>> entry : params.entrySet()) {
+        for (Map.Entry<HttpParameter, List<String>> entry : sortParamsMap(params).entrySet()) {
             for (String value : entry.getValue()) {
                 String paramClass = entry.getKey().getParamClass();
                 query.setParameter("p" + value + paramRepoCounter + "n",

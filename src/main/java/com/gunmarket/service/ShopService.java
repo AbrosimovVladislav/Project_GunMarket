@@ -2,7 +2,7 @@
 package com.gunmarket.service;
 
 import com.gunmarket.model.Shop;
-import com.gunmarket.repository.ImplRepo.ShopRepo;
+import com.gunmarket.repository.ShopRepo;
 import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

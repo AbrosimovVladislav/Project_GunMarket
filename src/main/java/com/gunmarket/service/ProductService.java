@@ -1,7 +1,7 @@
 package com.gunmarket.service;
 
 import com.gunmarket.model.Product;
-import com.gunmarket.repository.ImplRepo.ProductRepo;
+import com.gunmarket.repository.ProductRepo;
 import com.gunmarket.web.HttpParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

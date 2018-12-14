@@ -1,9 +1,8 @@
-package com.gunmarket.repository;
+package com.gunmarket.repository.simpleRepo;
 
 import com.gunmarket.web.HttpParameter;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.gunmarket.web.HttpParameter.COMPLEX_PARAM_TYPE;
 import static com.gunmarket.web.HttpParameter.OBJECTSIMPLE_PARAM_TYPE;
@@ -18,6 +17,7 @@ public class QueryBuilder {
     private static final String IN_KEYWORD = " IN ";
     private static final String AND_KEYWORD = " AND ";
     private static final String AS_KEYWORD = " AS ";
+    private static final String LEFT_JOIN_KEYWORD = " LEFT JOIN ";
     private static final String PARAMETER_STARTING = ":p";
     private static final String PARAMETER_ENDING = "n";
     private static final String ID_LOWER_PARAMETER_ADDITION = "_id";
@@ -36,7 +36,7 @@ public class QueryBuilder {
         String resultHqlQuery = "";
         String connectorLine = createConnectorLine(entityName);
 
-        for (Map.Entry<HttpParameter, List<String>> paramEntry : params.entrySet()) {
+        for (Map.Entry<HttpParameter, List<String>> paramEntry : sortParamsMap(params).entrySet()) {
             String paramName = paramEntry.getKey().getParamName();
             String paramType = paramEntry.getKey().getParamType();
             List<String> paramValues = paramEntry.getValue();
@@ -58,6 +58,23 @@ public class QueryBuilder {
 
     }
 
+    public static Map<HttpParameter, List<String>> sortParamsMap(Map<HttpParameter, List<String>> params) {
+        List<Map.Entry<HttpParameter, List<String>>> list = new ArrayList(params.entrySet());
+
+        list.sort(new Comparator<Map.Entry<HttpParameter, List<String>>>() {
+            public int compare(Map.Entry<HttpParameter, List<String>> o1, Map.Entry<HttpParameter, List<String>> o2) {
+                return (o2.getKey().getParamType()).compareTo(o1.getKey().getParamType());
+            }
+        });
+
+        Map<HttpParameter, List<String>> sortedMap = new LinkedHashMap();
+        for (Map.Entry<HttpParameter, List<String>> entry : list) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+
+        return sortedMap;
+    }
+
     //Построение простой части
     private String getSimpleParamQueryPart(String entityName, String paramName, List<String> paramValues, String resultHqlQuery, String connectorLine, String paramType) {
         if (paramType.equals(OBJECTSIMPLE_PARAM_TYPE)) {
@@ -65,17 +82,18 @@ public class QueryBuilder {
         }
         return createCleaningPartOfQuery(resultHqlQuery,
                 createInitialPartOfSimpleParamQuery(entityName)
-                        .append(createParamFillingPartOfSimpleParamQuery(paramName, paramValues)),
+                        .append(createParamFillingPartOfSimpleParamQuery(entityName, paramName, paramValues)),
                 connectorLine);
     }
 
     private StringBuilder createInitialPartOfSimpleParamQuery(String entityName) {
         return new StringBuilder(FROM_KEYWORD)
                 .append(entityName)
-                .append(WHERE_KEYWORD);
+                .append(WHERE_KEYWORD)
+                .append(OPENING_BRACKET);
     }
 
-    private String createParamFillingPartOfSimpleParamQuery(String paramName, List<String> paramValues) {
+    private String createParamFillingPartOfSimpleParamQuery(String entityName, String paramName, List<String> paramValues) {
         StringBuilder currentQPArt = new StringBuilder();
         for (String paramValue : paramValues) {
             currentQPArt
@@ -101,14 +119,26 @@ public class QueryBuilder {
 
     private StringBuilder createInitialPartOfComplexParamQuery(String entityName, String paramName) {
         return new StringBuilder(SELECT_KEYWORD)
-                .append(entityName.toLowerCase())
+                .append(entityName)
                 .append(PLURAL_ENDING_S)
+                .append(COMMA)
+                .append(entityName.toLowerCase())
+                .append(ID_UPPER_PARAMETER_ADDITION)
                 .append(SPACE)
                 .append(FROM_KEYWORD)
+                .append(SPACE)
                 .append(firstUpperCase(replaceLastChar(paramName)))
                 .append(AS_KEYWORD)
                 .append(firstUpperCase(replaceLastChar(paramName)))
-                .append(WHERE_KEYWORD); //SELECT products FROM Shop AS Shop WHERE
+                .append(LEFT_JOIN_KEYWORD)
+                .append(firstUpperCase(replaceLastChar(paramName)))
+                .append(COMMA)
+                .append(entityName.toLowerCase())
+                .append(PLURAL_ENDING_S)
+                .append(SPACE)
+                .append(entityName)
+                .append(PLURAL_ENDING_S)
+                .append(WHERE_KEYWORD); //SELECT Products.product_Id FROM Shop AS Shop LEFT JOIN Shop.products Products WHERE
     }
 
     private String createParamFillingPartOfComplexParamQuery(String paramName, List<String> paramValues) {
@@ -138,12 +168,13 @@ public class QueryBuilder {
     }
 
     private String createConnectorLine(String entityName) {
-        return new StringBuilder(CLOSING_BRACKET)
-                .append(AND_KEYWORD)
-                .append(entityName.toLowerCase())
-                .append(ID_UPPER_PARAMETER_ADDITION)
-                .append(IN_KEYWORD)
-                .append(OPENING_BRACKET)
+        return new StringBuilder(CLOSING_BRACKET) //)
+                .append(CLOSING_BRACKET)
+                .append(AND_KEYWORD) // AND
+                .append(entityName.toLowerCase())// product
+                .append(ID_UPPER_PARAMETER_ADDITION) // _Id
+                .append(IN_KEYWORD) // IN
+                .append(OPENING_BRACKET)// (
                 .toString();
     }
 
