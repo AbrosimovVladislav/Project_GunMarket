@@ -1,9 +1,8 @@
-/*
 package com.gunmarket.service;
 
 import com.gunmarket.model.Shop;
 import com.gunmarket.repository.ShopRepo;
-import javafx.util.Pair;
+import com.gunmarket.web.HttpParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +18,8 @@ public class ShopService {
     @Autowired
     private ShopRepo shopRepo;
 
-    public List<Shop> getShopsByParams(Map<Pair<String, String>, List<String>> params) {
+    public List<Shop> getShopsByParams(Map<HttpParameter, List<String>> params) {
         return shopRepo.getByParamsDueHql(SHOP_NAME, params);
     }
 
 }
-*/
