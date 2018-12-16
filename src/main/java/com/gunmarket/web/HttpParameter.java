@@ -1,5 +1,7 @@
 package com.gunmarket.web;
 
+import java.util.Objects;
+
 public class HttpParameter {
 
     public static final String SIMPLE_PARAM_TYPE = "Simple";
@@ -42,4 +44,18 @@ public class HttpParameter {
         this.paramClass = paramClass;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HttpParameter that = (HttpParameter) o;
+        return Objects.equals(paramName, that.paramName) &&
+                Objects.equals(paramType, that.paramType) &&
+                Objects.equals(paramClass, that.paramClass);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(paramName, paramType, paramClass);
+    }
 }

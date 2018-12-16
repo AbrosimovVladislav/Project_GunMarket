@@ -1,22 +1,41 @@
 package com.gunmarket.repository.basicRepo.repoUtils;
 
 import com.gunmarket.web.HttpParameter;
+import com.gunmarket.web.ParameterValue;
 
 import java.util.*;
 
 public class RepoUtils {
 
-    public static Map<HttpParameter, List<String>> sortParamsMap(Map<HttpParameter, List<String>> params) {
-        List<Map.Entry<HttpParameter, List<String>>> list = new ArrayList(params.entrySet());
+    public static Map<HttpParameter, List<ParameterValue>> addMarkersToParams(Map<HttpParameter, List<String>> params) {
+        Map<HttpParameter, List<ParameterValue>> markedParamsMap = new HashMap<>();
 
-        list.sort(new Comparator<Map.Entry<HttpParameter, List<String>>>() {
-            public int compare(Map.Entry<HttpParameter, List<String>> o1, Map.Entry<HttpParameter, List<String>> o2) {
+        for (Map.Entry<HttpParameter, List<String>> paramEntry : params.entrySet()) {
+            HttpParameter markedMapKey = paramEntry.getKey();
+            List<ParameterValue> markedMapValues = new ArrayList<>();
+
+            for (String value : paramEntry.getValue()) {
+                markedMapValues.add(new ParameterValue(value));
+            }
+
+            markedParamsMap.put(markedMapKey, markedMapValues);
+
+        }
+
+        return markedParamsMap;
+    }
+
+    public static Map<HttpParameter, List<ParameterValue>> sortParamsMap(Map<HttpParameter, List<ParameterValue>> params) {
+        List<Map.Entry<HttpParameter, List<ParameterValue>>> list = new ArrayList(params.entrySet());
+
+        list.sort(new Comparator<Map.Entry<HttpParameter, List<ParameterValue>>>() {
+            public int compare(Map.Entry<HttpParameter, List<ParameterValue>> o1, Map.Entry<HttpParameter, List<ParameterValue>> o2) {
                 return (o2.getKey().getParamType()).compareTo(o1.getKey().getParamType());
             }
         });
 
-        Map<HttpParameter, List<String>> sortedMap = new LinkedHashMap();
-        for (Map.Entry<HttpParameter, List<String>> entry : list) {
+        Map<HttpParameter, List<ParameterValue>> sortedMap = new LinkedHashMap();
+        for (Map.Entry<HttpParameter, List<ParameterValue>> entry : list) {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
 

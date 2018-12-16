@@ -1,13 +1,12 @@
 package com.gunmarket.repository.basicRepo.queryBuilder;
 
 import com.gunmarket.web.HttpParameter;
+import com.gunmarket.web.ParameterValue;
 
 import java.util.List;
 import java.util.Map;
 
-import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.firstUpperCase;
-import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.replaceLastChar;
-import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.sortParamsMap;
+import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.*;
 import static com.gunmarket.web.HttpParameter.COMPLEX_PARAM_TYPE;
 import static com.gunmarket.web.HttpParameter.OBJECTSIMPLE_PARAM_TYPE;
 
@@ -22,8 +21,6 @@ public class QueryBuilder {
     private static final String AND_KEYWORD = " AND ";
     private static final String AS_KEYWORD = " AS ";
     private static final String LEFT_JOIN_KEYWORD = " LEFT JOIN ";
-    private static final String PARAMETER_STARTING = ":p";
-    private static final String PARAMETER_ENDING = "n";
     private static final String ID_LOWER_PARAMETER_ADDITION = "_id";
     private static final String ID_UPPER_PARAMETER_ADDITION = "_Id";
     private static final String PLURAL_ENDING_S = "s";
@@ -33,17 +30,15 @@ public class QueryBuilder {
     private static final String CLOSING_BRACKET = ")";
     private static final String OPENING_BRACKET = "(";
 
-    private static int paramBuilderCounter = 0;
-
-    public String build(String entityName, Map<HttpParameter, List<String>> params) {
+    public String build(String entityName, Map<HttpParameter, List<ParameterValue>> params) {
 
         String resultHqlQuery = "";
         String connectorLine = createConnectorLine(entityName);
 
-        for (Map.Entry<HttpParameter, List<String>> paramEntry : sortParamsMap(params).entrySet()) {
+        for (Map.Entry<HttpParameter, List<ParameterValue>> paramEntry : sortParamsMap(params).entrySet()) {
             String paramName = paramEntry.getKey().getParamName();
             String paramType = paramEntry.getKey().getParamType();
-            List<String> paramValues = paramEntry.getValue();
+            List<ParameterValue> paramValues = paramEntry.getValue();
 
             if (paramType.equals(COMPLEX_PARAM_TYPE)) {
                 resultHqlQuery = getComplexParamQueryPart(entityName, paramName, paramValues, resultHqlQuery, connectorLine);
@@ -63,7 +58,7 @@ public class QueryBuilder {
     }
 
     //Построение простой части
-    private String getSimpleParamQueryPart(String entityName, String paramName, List<String> paramValues, String resultHqlQuery, String connectorLine, String paramType) {
+    private String getSimpleParamQueryPart(String entityName, String paramName, List<ParameterValue> paramValues, String resultHqlQuery, String connectorLine, String paramType) {
         if (paramType.equals(OBJECTSIMPLE_PARAM_TYPE)) {
             paramName = paramName + ID_LOWER_PARAMETER_ADDITION;
         }
@@ -80,25 +75,21 @@ public class QueryBuilder {
                 .append(OPENING_BRACKET);
     }
 
-    private String createParamFillingPartOfSimpleParamQuery(String entityName, String paramName, List<String> paramValues) {
+    private String createParamFillingPartOfSimpleParamQuery(String entityName, String paramName, List<ParameterValue> paramValues) {
         StringBuilder currentQPArt = new StringBuilder();
-        for (String paramValue : paramValues) {
+        for (ParameterValue paramValue : paramValues) {
             currentQPArt
                     .append(paramName)
                     .append(EQUALLY_KEYWORD)
-                    .append(PARAMETER_STARTING)
-                    .append(paramValue)
-                    .append(paramBuilderCounter)
-                    .append(PARAMETER_ENDING)
+                    .append(paramValue.getValueMarker())
                     .append(OR_KEYWORD);
-            paramBuilderCounter++;
         }
         currentQPArt.append(CLOSING_BRACKET);
         return currentQPArt.toString();
     }
 
     //Построение составной части
-    private String getComplexParamQueryPart(String entityName, String paramName, List<String> paramValues, String resultHqlQuery, String connectorLine) {
+    private String getComplexParamQueryPart(String entityName, String paramName, List<ParameterValue> paramValues, String resultHqlQuery, String connectorLine) {
         return createCleaningPartOfQuery(resultHqlQuery,
                 createInitialPartOfComplexParamQuery(entityName, paramName)
                         .append(createParamFillingPartOfComplexParamQuery(paramName, paramValues)),
@@ -129,21 +120,17 @@ public class QueryBuilder {
                 .append(WHERE_KEYWORD); //SELECT Products.product_Id FROM Shop AS Shop LEFT JOIN Shop.products Products WHERE
     }
 
-    private String createParamFillingPartOfComplexParamQuery(String paramName, List<String> paramValues) {
+    private String createParamFillingPartOfComplexParamQuery(String paramName, List<ParameterValue> paramValues) {
         StringBuilder currentQPArt = new StringBuilder();
-        for (String paramValue : paramValues) {
+        for (ParameterValue paramValue : paramValues) {
             currentQPArt
-                    .append(firstUpperCase(replaceLastChar(paramName)))
-                    .append(COMMA)
-                    .append(replaceLastChar(paramName))
-                    .append(ID_UPPER_PARAMETER_ADDITION)
-                    .append(EQUALLY_KEYWORD)
-                    .append(PARAMETER_STARTING)
-                    .append(paramValue)
-                    .append(paramBuilderCounter)
-                    .append(PARAMETER_ENDING)
+                    .append(firstUpperCase(replaceLastChar(paramName))) // Shop
+                    .append(COMMA) // .
+                    .append(replaceLastChar(paramName)) // shop
+                    .append(ID_UPPER_PARAMETER_ADDITION) // _Id
+                    .append(EQUALLY_KEYWORD) // =
+                    .append(paramValue.getValueMarker())
                     .append(OR_KEYWORD);
-            paramBuilderCounter++;
         }
         return currentQPArt.toString();
     }
