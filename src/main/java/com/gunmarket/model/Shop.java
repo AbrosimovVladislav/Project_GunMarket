@@ -13,12 +13,12 @@ import static com.gunmarket.model.Product.PRODUCT_ID;
 @Component
 public class Shop {
 
-    public static final String SHOP_ID = "shop_Id";
-    public static final String SHOP_NAME = "name";
+    private static final String SHOP_ID = "shop_Id";
+    private static final String SHOP_NAME = "name";
     public static final String SHOP_ADDRESS = "address";
-    public static final String SHOP_WEBSITE = "website";
+    private static final String SHOP_WEBSITE = "website";
     public static final String SHOP_PRODUCTS = "products";
-    public static final String SHOPPRODUCT_TABLE = "shop_product";
+    private static final String SHOPPRODUCT_TABLE = "shop_product";
 
     @Id
     @GeneratedValue(generator = "increment")

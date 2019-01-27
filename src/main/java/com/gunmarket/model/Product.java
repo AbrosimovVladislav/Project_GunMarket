@@ -15,10 +15,10 @@ import static com.gunmarket.model.Type.TYPE_ID;
 @Component
 public class Product {
 
-    public static final String PRODUCT_ID = "product_Id";
-    public static final String PRODUCT_NAME = "name";
+    static final String PRODUCT_ID = "product_Id";
+    private static final String PRODUCT_NAME = "name";
     public static final String PRODUCT_PRICE = "price";
-    public static final String PRODUCT_TYPE = "type";
+    static final String PRODUCT_TYPE = "type";
     public static final String PRODUCT_SHOPS = "shops";
 
     @Id
