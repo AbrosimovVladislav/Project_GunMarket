@@ -13,8 +13,8 @@ import static com.gunmarket.model.Product.PRODUCT_TYPE;
 @Component
 public class Type {
 
-    public static final String TYPE_ID = "type_Id";
-    public static final String TYPE_NAME = "name";
+    static final String TYPE_ID = "type_Id";
+    private static final String TYPE_NAME = "name";
     public static final String TYPE_ENTITY = "type";
 
     @Id
