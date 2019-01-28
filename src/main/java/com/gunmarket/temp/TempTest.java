@@ -4,7 +4,6 @@ import com.gunmarket.repository.basicRepo.queryBuilder.QueryBuilder;
 import com.gunmarket.web.HttpParameter;
 import com.gunmarket.web.ParameterValue;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +13,10 @@ import static com.gunmarket.web.HttpParameter.*;
 
 
 public class TempTest {
+
+    //FROM Product WHERE (Second = :p6725387959629711552v ) AND product_Id IN (SELECT Products.product_Id FROM  Firs AS Firs LEFT JOIN Firs.products Products WHERE Firs.Firs_Id = :p5477720165956593881v ) AND product_Id IN (FROM Product WHERE (Third_id = :p5057594998588424548v ))
+    //FROM Product WHERE (Second = :p4905727906915488259v ) AND product_Id IN (SELECT Products.product_Id FROM  Firs AS Firs LEFT JOIN Firs.products Products WHERE Firs.Firs_Id = :p5487059439350119188v ) AND product_Id IN (FROM Product WHERE (Third_id = :p6600343913088077532v ))
+
 
     public static void main(String[] args) {
         QueryBuilder queryBuilder = new QueryBuilder();

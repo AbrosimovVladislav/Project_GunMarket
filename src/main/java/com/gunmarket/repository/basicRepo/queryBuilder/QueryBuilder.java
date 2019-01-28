@@ -78,13 +78,12 @@ public class QueryBuilder {
 
     private String createParamFillingPartOfSimpleParamQuery(String entityName, String paramName, List<ParameterValue> paramValues) {
         StringBuilder currentQPArt = new StringBuilder();
-        for (ParameterValue paramValue : paramValues) {
-            currentQPArt
-                    .append(paramName)
-                    .append(EQUALLY_KEYWORD)
-                    .append(paramValue.getValueMarker())
-                    .append(OR_KEYWORD);
-        }
+
+        paramValues.forEach(paramValue -> currentQPArt.append(paramName)
+                .append(EQUALLY_KEYWORD)
+                .append(paramValue.getValueMarker())
+                .append(OR_KEYWORD));
+
         currentQPArt.append(CLOSING_BRACKET);
         return currentQPArt.toString();
     }
@@ -123,16 +122,16 @@ public class QueryBuilder {
 
     private String createParamFillingPartOfComplexParamQuery(String paramName, List<ParameterValue> paramValues) {
         StringBuilder currentQPArt = new StringBuilder();
-        for (ParameterValue paramValue : paramValues) {
-            currentQPArt
-                    .append(firstUpperCase(replaceLastChar(paramName))) // Shop
-                    .append(COMMA) // .
-                    .append(replaceLastChar(paramName)) // shop
-                    .append(ID_UPPER_PARAMETER_ADDITION) // _Id
-                    .append(EQUALLY_KEYWORD) // =
-                    .append(paramValue.getValueMarker())
-                    .append(OR_KEYWORD);
-        }
+
+        paramValues.forEach(paramValue -> currentQPArt
+                .append(firstUpperCase(replaceLastChar(paramName))) // Shop
+                .append(COMMA) // .
+                .append(replaceLastChar(paramName)) // shop
+                .append(ID_UPPER_PARAMETER_ADDITION) // _Id
+                .append(EQUALLY_KEYWORD) // =
+                .append(paramValue.getValueMarker())
+                .append(OR_KEYWORD));
+        
         return currentQPArt.toString();
     }
 
