@@ -16,6 +16,7 @@
         <hibernate-version>5.3.6.Final</hibernate-version>
         <mysql-version>8.0.12</mysql-version>
         <jackson-version>2.9.6</jackson-version>
+        <guava-version>27.0.1-jre</guava-version>
     </properties>
 
     <dependencies>
@@ -78,7 +79,14 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava-version}</version>
+        </dependency>
     </dependencies>
+
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>

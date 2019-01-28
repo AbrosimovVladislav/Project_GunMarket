@@ -6,7 +6,8 @@ import com.gunmarket.web.ParameterValue;
 import java.util.List;
 import java.util.Map;
 
-import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.*;
+import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.firstUpperCase;
+import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.replaceLastChar;
 import static com.gunmarket.web.HttpParameter.COMPLEX_PARAM_TYPE;
 import static com.gunmarket.web.HttpParameter.OBJECTSIMPLE_PARAM_TYPE;
 
@@ -35,7 +36,7 @@ public class QueryBuilder {
         String resultHqlQuery = "";
         String connectorLine = createConnectorLine(entityName);
 
-        for (Map.Entry<HttpParameter, List<ParameterValue>> paramEntry : sortParamsMap(params).entrySet()) {
+        for (Map.Entry<HttpParameter, List<ParameterValue>> paramEntry : params.entrySet()) {
             String paramName = paramEntry.getKey().getParamName();
             String paramType = paramEntry.getKey().getParamType();
             List<ParameterValue> paramValues = paramEntry.getValue();
@@ -48,11 +49,11 @@ public class QueryBuilder {
         }
 
         //ToDo Удалить вывод
-        System.out.println("Вывод текущей части " + resultHqlQuery);
+        //System.out.println("Вывод текущей части " + resultHqlQuery);
 
         resultHqlQuery = resultHqlQuery.replaceFirst(CLOSING_BRACKET_REGEX, "");
         //ToDo Удалить вывод
-        System.out.println("Вывод результата без закр.скобки " + resultHqlQuery);
+        //System.out.println("Вывод результата без закр.скобки " + resultHqlQuery);
         return resultHqlQuery.substring(0, resultHqlQuery.length() - connectorLine.length() + 1);
 
     }

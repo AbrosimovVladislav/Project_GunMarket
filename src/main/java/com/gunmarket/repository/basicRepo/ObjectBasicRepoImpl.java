@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.addMarkersToParams;
-import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.sortParamsMap;
 
 @Repository
 public class ObjectBasicRepoImpl implements ObjectBasicRepo {
@@ -31,7 +30,7 @@ public class ObjectBasicRepoImpl implements ObjectBasicRepo {
         Map<HttpParameter, List<ParameterValue>> markedparams = addMarkersToParams(params);
 
         Query query = currentSession().createQuery(queryBuilder.build(entityName, markedparams));
-        for (Map.Entry<HttpParameter, List<ParameterValue>> entry : sortParamsMap(markedparams).entrySet()) {
+        for (Map.Entry<HttpParameter, List<ParameterValue>> entry : markedparams.entrySet()) {
             for (ParameterValue parameterValue : entry.getValue()) {
                 String paramClass = entry.getKey().getParamClass();
                 query.setParameter(parameterValue.getValueMarker().replaceFirst(":", ""),
