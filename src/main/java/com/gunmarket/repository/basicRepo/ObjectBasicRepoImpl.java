@@ -31,6 +31,7 @@ public class ObjectBasicRepoImpl implements ObjectBasicRepo {
         Map<HttpParameter, List<ParameterValue>> markedparams = addMarkersToParams(params);
 
         Query<BasicEntity> query = currentSession().createQuery(queryBuilder.build(entityName, markedparams));
+
         for (Map.Entry<HttpParameter, List<ParameterValue>> entry : markedparams.entrySet()) {
             for (ParameterValue parameterValue : entry.getValue()) {
                 String paramClass = entry.getKey().getParamClass();
