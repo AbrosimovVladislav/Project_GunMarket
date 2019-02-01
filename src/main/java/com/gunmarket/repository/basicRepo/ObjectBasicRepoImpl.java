@@ -1,5 +1,6 @@
 package com.gunmarket.repository.basicRepo;
 
+import com.gunmarket.model.BasicEntity;
 import com.gunmarket.repository.basicRepo.queryBuilder.QueryBuilder;
 import com.gunmarket.web.HttpParameter;
 import com.gunmarket.web.ParameterValue;
@@ -26,10 +27,10 @@ public class ObjectBasicRepoImpl implements ObjectBasicRepo {
         return sessionFactory.openSession();
     }
 
-    public List getByParamsDueHql(String entityName, Map<HttpParameter, List<String>> params) {
+    public List<BasicEntity> getByParamsDueHql(String entityName, Map<HttpParameter, List<String>> params) {
         Map<HttpParameter, List<ParameterValue>> markedparams = addMarkersToParams(params);
 
-        Query query = currentSession().createQuery(queryBuilder.build(entityName, markedparams));
+        Query<BasicEntity> query = currentSession().createQuery(queryBuilder.build(entityName, markedparams));
         for (Map.Entry<HttpParameter, List<ParameterValue>> entry : markedparams.entrySet()) {
             for (ParameterValue parameterValue : entry.getValue()) {
                 String paramClass = entry.getKey().getParamClass();
