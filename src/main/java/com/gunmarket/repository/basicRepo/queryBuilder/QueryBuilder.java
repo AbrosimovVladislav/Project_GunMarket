@@ -34,7 +34,7 @@ public class QueryBuilder {
     public String build(String entityName, Map<HttpParameter, List<ParameterValue>> params) {
 
         String resultHqlQuery = "";
-        String connectorLine = createConnectorLine(entityName);
+        String subqueriesConnectionLine = createSubqueriesConnectionLine(entityName);
 
         for (Map.Entry<HttpParameter, List<ParameterValue>> paramEntry : params.entrySet()) {
             String paramName = paramEntry.getKey().getParamName();
@@ -42,19 +42,14 @@ public class QueryBuilder {
             List<ParameterValue> paramValues = paramEntry.getValue();
 
             if (paramType.equals(COMPLEX_PARAM_TYPE)) {
-                resultHqlQuery = getComplexParamQueryPart(entityName, paramName, paramValues, resultHqlQuery, connectorLine);
+                resultHqlQuery = getComplexParamQueryPart(entityName, paramName, paramValues, resultHqlQuery, subqueriesConnectionLine);
             } else {
-                resultHqlQuery = getSimpleParamQueryPart(entityName, paramName, paramValues, resultHqlQuery, connectorLine, paramType);
+                resultHqlQuery = getSimpleParamQueryPart(entityName, paramName, paramValues, resultHqlQuery, subqueriesConnectionLine, paramType);
             }
         }
 
-        //ToDo Удалить вывод
-        //System.out.println("Вывод текущей части " + resultHqlQuery);
-
         resultHqlQuery = resultHqlQuery.replaceFirst(CLOSING_BRACKET_REGEX, "");
-        //ToDo Удалить вывод
-        //System.out.println("Вывод результата без закр.скобки " + resultHqlQuery);
-        return resultHqlQuery.substring(0, resultHqlQuery.length() - connectorLine.length() + 1);
+        return resultHqlQuery.substring(0, resultHqlQuery.length() - subqueriesConnectionLine.length() + 1);
 
     }
 
@@ -135,21 +130,38 @@ public class QueryBuilder {
         return currentQPArt.toString();
     }
 
-    //Общие методы для все параметров
+    /**
+     * preparing the current subquery to connect with the following parts
+     * --(common method for all types of parameters)--
+     *
+     *
+     * @param resultQuery - resultQuery
+     * @param currentQPArt - currentQueryPart
+     * @param connectorLine - line for subqueries connection
+     * @return - String
+     */
     private String createCleaningPartOfQuery(String resultQuery, StringBuilder currentQPArt, String connectorLine) {
         return resultQuery +
                 currentQPArt.delete(currentQPArt.length() - 4, currentQPArt.length() - 1).toString() +
                 connectorLine;
     }
 
-    private String createConnectorLine(String entityName) {
-        return new StringBuilder(CLOSING_BRACKET) //)
-                .append(AND_KEYWORD) // AND
-                .append(entityName.toLowerCase())// product
-                .append(ID_UPPER_PARAMETER_ADDITION) // _Id
-                .append(IN_KEYWORD) // IN
-                .append(OPENING_BRACKET)// (
-                .toString();
+
+    /**
+     * line for subqueries connection
+     * --(common method for all types of parameters)--
+     * in result we have : ") AND entity_Id IN ("
+     *
+     * @param entityName - entityName
+     * @return - String
+     */
+    private String createSubqueriesConnectionLine(String entityName) {
+        return CLOSING_BRACKET + //)
+                AND_KEYWORD + // AND
+                entityName.toLowerCase() +// product
+                ID_UPPER_PARAMETER_ADDITION + // _Id
+                IN_KEYWORD + // IN
+                OPENING_BRACKET;
     }
 
 }
