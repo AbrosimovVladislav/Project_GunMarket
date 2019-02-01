@@ -18,7 +18,7 @@ public class ProductService {
     @Autowired
     private ProductRepo productRepo;
 
-    public List<Product> getProductsByParams(Map<HttpParameter, List<String>> params) {
+    public List<? super Product> getProductsByParams(Map<HttpParameter, List<String>> params) {
         return productRepo.getByParamsDueHql(PRODUCT_ENTITY, params);
     }
 

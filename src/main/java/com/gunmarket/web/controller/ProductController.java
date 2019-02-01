@@ -26,7 +26,7 @@ public class ProductController {
     ProductService productService;
 
     @RequestMapping(value = "/products", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<Product> getProductsByParams(@RequestParam(value = PRODUCT_PRICE, required = false) String price,
+    public List<? super Product> getProductsByParams(@RequestParam(value = PRODUCT_PRICE, required = false) String price,
                                              @RequestParam(value = TYPE_ENTITY, required = false) String type,
                                              @RequestParam(value = PRODUCT_SHOPS, required = false) String shops) {
         Map<HttpParameter, List<String>> params = new HashMap<>();

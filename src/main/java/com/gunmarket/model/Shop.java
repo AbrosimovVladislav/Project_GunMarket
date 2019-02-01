@@ -11,7 +11,7 @@ import static com.gunmarket.model.Product.PRODUCT_ID;
 @Entity
 @Table(name = "shop")
 @Component
-public class Shop {
+public class Shop implements BasicEntity {
 
     private static final String SHOP_ID = "shop_Id";
     private static final String SHOP_NAME = "name";

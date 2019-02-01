@@ -18,7 +18,7 @@ public class ShopService {
     @Autowired
     private ShopRepo shopRepo;
 
-    public List<Shop> getShopsByParams(Map<HttpParameter, List<String>> params) {
+    public List<? super Shop> getShopsByParams(Map<HttpParameter, List<String>> params) {
         return shopRepo.getByParamsDueHql(SHOP_NAME, params);
     }
 

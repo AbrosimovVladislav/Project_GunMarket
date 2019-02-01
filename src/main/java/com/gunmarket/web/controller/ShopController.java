@@ -25,7 +25,7 @@ public class ShopController {
     ShopService shopService;
 
     @RequestMapping(value = "/shops", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<Shop> getShopsByParams(@RequestParam(value = SHOP_ADDRESS, required = false) String address
+    public List<? super Shop> getShopsByParams(@RequestParam(value = SHOP_ADDRESS, required = false) String address
             , @RequestParam(value = SHOP_PRODUCTS, required = false) String products) {
         Map<HttpParameter, List<String>> params = new HashMap<>();
         if (address != null) {
