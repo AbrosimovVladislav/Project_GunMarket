@@ -3,12 +3,16 @@ package com.gunmarket.repository.basicRepo.repoUtils;
 import com.gunmarket.web.HttpParameter;
 import com.gunmarket.web.ParameterValue;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class RepoUtils {
 
     public static Map<HttpParameter, List<ParameterValue>> addMarkersToParams(Map<HttpParameter, List<String>> params) {
-        Map<HttpParameter, List<ParameterValue>> markedParamsMap = new HashMap<>();
+        Map<HttpParameter, List<ParameterValue>> markedParamsMap = new TreeMap<>((o1, o2) ->
+                (o2.getParamType()).compareTo(o1.getParamType()));
 
         for (Map.Entry<HttpParameter, List<String>> paramEntry : params.entrySet()) {
             HttpParameter markedMapKey = paramEntry.getKey();
@@ -23,23 +27,6 @@ public class RepoUtils {
         }
 
         return markedParamsMap;
-    }
-
-    public static Map<HttpParameter, List<ParameterValue>> sortParamsMap(Map<HttpParameter, List<ParameterValue>> params) {
-        List<Map.Entry<HttpParameter, List<ParameterValue>>> list = new ArrayList(params.entrySet());
-
-        list.sort(new Comparator<Map.Entry<HttpParameter, List<ParameterValue>>>() {
-            public int compare(Map.Entry<HttpParameter, List<ParameterValue>> o1, Map.Entry<HttpParameter, List<ParameterValue>> o2) {
-                return (o2.getKey().getParamType()).compareTo(o1.getKey().getParamType());
-            }
-        });
-
-        Map<HttpParameter, List<ParameterValue>> sortedMap = new LinkedHashMap();
-        for (Map.Entry<HttpParameter, List<ParameterValue>> entry : list) {
-            sortedMap.put(entry.getKey(), entry.getValue());
-        }
-
-        return sortedMap;
     }
 
     public static String replaceLastChar(String str) {
