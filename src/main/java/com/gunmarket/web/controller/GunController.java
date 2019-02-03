@@ -26,7 +26,7 @@ public class GunController implements BasicController {
     ProductService productService;
 
     @RequestMapping(value = "/guns", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<? super Product> getProductsByParams(
+    public List<? super Product> getGunsByParams(
             @RequestParam(value = PRODUCT_PRICE, required = false) String price,
             @RequestParam(value = PRODUCT_MANUFACTURER, required = false) String manufacturer,
             @RequestParam(value = PRODUCT_CATEGORY, required = false) String category,

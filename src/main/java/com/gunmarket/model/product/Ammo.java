@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 @Component
 public class Ammo extends Product {
 
+    public static final String AMMO_ENTITY = "Ammo";
     public static final String AMMO_CALIBER = "ammo_caliber";
 
     @Column(name = AMMO_CALIBER)

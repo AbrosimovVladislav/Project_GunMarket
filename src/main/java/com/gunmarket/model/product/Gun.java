@@ -4,10 +4,8 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "gun")
 @Component
 public class Gun extends Product {
 
