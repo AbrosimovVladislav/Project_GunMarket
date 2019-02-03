@@ -2,8 +2,8 @@ package com.gunmarket.repository.basicRepo;
 
 import com.gunmarket.model.BasicEntity;
 import com.gunmarket.repository.basicRepo.queryBuilder.QueryBuilder;
-import com.gunmarket.web.HttpParameter;
-import com.gunmarket.web.ParameterValue;
+import com.gunmarket.web.webEntity.HttpParameter;
+import com.gunmarket.web.webEntity.ParameterValue;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

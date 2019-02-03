@@ -1,7 +1,7 @@
 package com.gunmarket.repository.basicRepo.repoUtils;
 
-import com.gunmarket.web.HttpParameter;
-import com.gunmarket.web.ParameterValue;
+import com.gunmarket.web.webEntity.HttpParameter;
+import com.gunmarket.web.webEntity.ParameterValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,14 @@ import java.util.TreeMap;
 public class RepoUtils {
 
     public static Map<HttpParameter, List<ParameterValue>> addMarkersToParams(Map<HttpParameter, List<String>> params) {
-        Map<HttpParameter, List<ParameterValue>> markedParamsMap = new TreeMap<>((o1, o2) ->
-                (o2.getParamType()).compareTo(o1.getParamType()));
+        Map<HttpParameter, List<ParameterValue>> markedParamsMap = new TreeMap<>(
+                (o1, o2) -> {
+                    String o1ParamType = o1.getParamType();
+                    String o2ParamType = o2.getParamType();
+                    return o1ParamType.equals(o2ParamType)
+                            ? o2.getParamName().compareTo(o1.getParamName())
+                            : o2ParamType.compareTo(o1ParamType);
+                });
 
         for (Map.Entry<HttpParameter, List<String>> paramEntry : params.entrySet()) {
             HttpParameter markedMapKey = paramEntry.getKey();
@@ -23,7 +29,6 @@ public class RepoUtils {
             }
 
             markedParamsMap.put(markedMapKey, markedMapValues);
-
         }
 
         return markedParamsMap;

@@ -1,15 +1,16 @@
 package com.gunmarket.temp;
 
 import com.gunmarket.repository.basicRepo.queryBuilder.QueryBuilder;
-import com.gunmarket.web.HttpParameter;
-import com.gunmarket.web.ParameterValue;
+import com.gunmarket.web.webEntity.HttpParameter;
+import com.gunmarket.web.webEntity.ParameterValue;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static com.gunmarket.web.HttpParameter.*;
+import static com.gunmarket.model.product.Gun.GUN_ENTITY;
+import static com.gunmarket.web.webEntity.HttpParameter.*;
 
 
 public class TempTest {
@@ -23,11 +24,11 @@ public class TempTest {
 
         Map<HttpParameter, List<ParameterValue>> params = new HashMap<HttpParameter, List<ParameterValue>>() {
             {
-                put(new HttpParameter("First", COMPLEX_PARAM_TYPE, PARAM_CLASS_STRING),
+                put(new HttpParameter("First", COMPLEX_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY),
                         newArrayList(new ParameterValue("1")));
-                put(new HttpParameter("Second", SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING),
+                put(new HttpParameter("Second", SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY),
                         newArrayList(new ParameterValue("2")));
-                put(new HttpParameter("Third", OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING),
+                put(new HttpParameter("Third", OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY),
                         newArrayList(new ParameterValue("3")));
             }
         };

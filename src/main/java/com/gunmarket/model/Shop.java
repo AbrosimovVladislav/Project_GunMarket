@@ -1,12 +1,13 @@
 package com.gunmarket.model;
 
+import com.gunmarket.model.product.Product;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Set;
 
-import static com.gunmarket.model.Product.PRODUCT_ID;
+import static com.gunmarket.model.product.Product.PRODUCT_ID;
 
 @Entity
 @Table(name = "shop")
