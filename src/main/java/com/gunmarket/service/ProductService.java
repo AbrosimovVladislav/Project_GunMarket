@@ -12,7 +12,6 @@ import java.util.Map;
 @Service
 public class ProductService {
 
-    private static final Class PRODUCT_CLASS = Product.class;
     public static final String PRODUCT_ENTITY = "Product";
 
     @Autowired
