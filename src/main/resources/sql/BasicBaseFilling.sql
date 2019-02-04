@@ -87,8 +87,36 @@ VALUES (8,
         '9',
         'rifle ammo',
         '5.56x45'),
-       (9, 'Ammo', 'CCI Ammunition', 'CCI BLAZER 9mm Full Metal Jacket 115 GR 50Box', '11', 'pistol ammo', '9x19'),
+       (9, 'Ammo', 'CCI Ammunition', 'CCI BLAZER 9mm Full Metal Jacket 115 GR 50Box', '9', 'pistol ammo', '9x19'),
        (10, 'Ammo', 'Remington', 'Remington UMC 45 ACP 230gr Metal Case 50rd/Box', '20', 'pistol ammo', '45 acp');
+
+INSERT INTO product (product_Id,
+                     DTYPE,
+                     product_manufacturer,
+                     product_name,
+                     product_price,
+                     product_category,
+                     part_subcategory,
+                     part_family,
+                     part_inner_or_outer)
+VALUES (11,
+        'Part',
+        'FN America',
+        'FN AR-15 Hammer-Forged Barrel 223/5.56 20" Rifle Length Gas System',
+        '300',
+        'AR15 Parts',
+        'AR15 Barrels',
+        'Ar',
+        'inner'),
+       (12,
+        'Part',
+        'MagPul',
+        'Magpul MOE Vertical Grip, Flat Dark Earth, For MOE / ACR Handguards',
+        '17',
+        'Grips',
+        'Tactical grip',
+        'Universal',
+        'outer');
 
 INSERT INTO shop (shop_Id, address, name, website)
 VALUES (1, '2710 S 1900 W Ogden, UT 84401', 'Impact guns', 'https://www.impactguns.com/'),
@@ -96,22 +124,31 @@ VALUES (1, '2710 S 1900 W Ogden, UT 84401', 'Impact guns', 'https://www.impactgu
        (3, '170 Street Edmonton, Alberta T5T 4M2', 'Wild west', 'https://gun-shop.ca/');
 
 INSERT INTO shop_product (shop_Id, product_Id)
-VALUES
-       (1,1),
-       (1,3),
-       (1,4),
-       (1,6),
-       (1,8),
-       (1,9),
-       (2,10),
-       (2,2),
-       (2,3),
-       (2,4),
-       (2,6),
-       (2,8),
-       (3,9),
-       (3,1),
-       (3,10),
-       (3,2),
-       (3,3),
-       (3,7);
+VALUES (1, 1),
+       (1, 3),
+       (1, 4),
+       (1, 6),
+       (1, 8),
+       (1, 9),
+       (2, 10),
+       (2, 2),
+       (2, 3),
+       (2, 4),
+       (2, 6),
+       (2, 8),
+       (3, 9),
+       (3, 1),
+       (3, 10),
+       (3, 2),
+       (3, 3),
+       (3, 7);
+
+INSERT INTO shop_product (shop_Id, product_Id)
+VALUES (1, 11),
+       (1, 12),
+       (2, 11),
+       (2, 12);
+
+
+
+
