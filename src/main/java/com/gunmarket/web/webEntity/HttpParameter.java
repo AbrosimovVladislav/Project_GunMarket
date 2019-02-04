@@ -1,4 +1,4 @@
-package com.gunmarket.web;
+package com.gunmarket.web.webEntity;
 
 import java.util.Objects;
 
@@ -13,11 +13,13 @@ public class HttpParameter {
     private String paramName;
     private String paramType;
     private String paramClass;
+    private String entityClass;
 
-    public HttpParameter(String paramName, String paramType, String paramClass) {
+    public HttpParameter(String paramName, String paramType, String paramClass, String entityClass) {
         this.paramName = paramName;
         this.paramType = paramType;
         this.paramClass = paramClass;
+        this.entityClass = entityClass;
     }
 
     public String getParamName() {
@@ -44,6 +46,14 @@ public class HttpParameter {
         this.paramClass = paramClass;
     }
 
+    public String getEntityClass() {
+        return entityClass;
+    }
+
+    public void setEntityClass(String entityClass) {
+        this.entityClass = entityClass;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,11 +61,12 @@ public class HttpParameter {
         HttpParameter that = (HttpParameter) o;
         return Objects.equals(paramName, that.paramName) &&
                 Objects.equals(paramType, that.paramType) &&
-                Objects.equals(paramClass, that.paramClass);
+                Objects.equals(paramClass, that.paramClass) &&
+                Objects.equals(entityClass, that.entityClass);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(paramName, paramType, paramClass);
+        return Objects.hash(paramName, paramType, paramClass, entityClass);
     }
 }

@@ -21,15 +21,17 @@
         <property name="dataSource" ref="dbBean"/>
         <property name="annotatedClasses">
             <array>
-                <value>com.gunmarket.model.Product</value>
+                <value>com.gunmarket.model.product.Product</value>
+                <value>com.gunmarket.model.product.Gun</value>
+                <value>com.gunmarket.model.product.Ammo</value>
+                <value>com.gunmarket.model.product.Part</value>
                 <value>com.gunmarket.model.Shop</value>
-                <value>com.gunmarket.model.Type</value>
             </array>
         </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">validate</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>

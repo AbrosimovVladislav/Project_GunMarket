@@ -1,15 +1,16 @@
 package com.gunmarket.repository.basicRepo.queryBuilder;
 
-import com.gunmarket.web.HttpParameter;
-import com.gunmarket.web.ParameterValue;
+import com.gunmarket.web.webEntity.HttpParameter;
+import com.gunmarket.web.webEntity.ParameterValue;
 
 import java.util.List;
 import java.util.Map;
 
 import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.firstUpperCase;
 import static com.gunmarket.repository.basicRepo.repoUtils.RepoUtils.replaceLastChar;
-import static com.gunmarket.web.HttpParameter.COMPLEX_PARAM_TYPE;
-import static com.gunmarket.web.HttpParameter.OBJECTSIMPLE_PARAM_TYPE;
+import static com.gunmarket.service.ProductService.PRODUCT_ENTITY;
+import static com.gunmarket.web.webEntity.HttpParameter.COMPLEX_PARAM_TYPE;
+import static com.gunmarket.web.webEntity.HttpParameter.OBJECTSIMPLE_PARAM_TYPE;
 
 public class QueryBuilder {
 
@@ -33,8 +34,13 @@ public class QueryBuilder {
 
     public String build(String entityName, Map<HttpParameter, List<ParameterValue>> params) {
 
-        String resultHqlQuery = "";
+        //Todo Работает не верно, не учитывает тип контроллера. При вызове у products , отдаст все товары.
+        if (params.isEmpty()) {
+            return FROM_KEYWORD + entityName;
+        }
+
         String subqueriesConnectionLine = createSubqueriesConnectionLine(entityName);
+        String resultHqlQuery = initResultQuery(entityName, params.keySet().iterator().next().getEntityClass(), subqueriesConnectionLine);
 
         for (Map.Entry<HttpParameter, List<ParameterValue>> paramEntry : params.entrySet()) {
             String paramName = paramEntry.getKey().getParamName();
@@ -126,17 +132,22 @@ public class QueryBuilder {
                 .append(EQUALLY_KEYWORD) // =
                 .append(paramValue.getValueMarker())
                 .append(OR_KEYWORD));
-        
+
         return currentQPArt.toString();
+    }
+
+    private String initResultQuery(String entityName, String entityClass, String connectorLine) {
+        return entityName.equals(PRODUCT_ENTITY)
+                ? FROM_KEYWORD + entityName + WHERE_KEYWORD + "DTYPE = " + entityClass + connectorLine
+                : "";
     }
 
     /**
      * preparing the current subquery to connect with the following parts
      * --(common method for all types of parameters)--
      *
-     *
-     * @param resultQuery - resultQuery
-     * @param currentQPArt - currentQueryPart
+     * @param resultQuery   - resultQuery
+     * @param currentQPArt  - currentQueryPart
      * @param connectorLine - line for subqueries connection
      * @return - String
      */

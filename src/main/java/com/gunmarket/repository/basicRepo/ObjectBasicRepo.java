@@ -1,6 +1,6 @@
 package com.gunmarket.repository.basicRepo;
 
-import com.gunmarket.web.HttpParameter;
+import com.gunmarket.web.webEntity.HttpParameter;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.gunmarket.web;
+package com.gunmarket.web.webEntity;
 
 import java.util.Random;
 
