@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.gunmarket.model.product.Gun.*;
+import static com.gunmarket.model.product.Gun.PRODUCT_CALIBER;
 import static com.gunmarket.model.product.Product.PRODUCT_CATEGORY;
 import static com.gunmarket.model.product.Product.PRODUCT_MANUFACTURER;
 import static com.gunmarket.model.product.Product.PRODUCT_PRICE;
@@ -31,20 +32,20 @@ public class GunController implements BasicController {
             @RequestParam(value = PRODUCT_MANUFACTURER, required = false) String manufacturer,
             @RequestParam(value = PRODUCT_CATEGORY, required = false) String category,
             @RequestParam(value = PRODUCT_SHOPS, required = false) String shops,
-            @RequestParam(value = GUN_CALIBER, required = false) String caliber,
-            @RequestParam(value = GUN_FAMILY, required = false) String family,
+            @RequestParam(value = PRODUCT_CALIBER, required = false) String caliber,
+            @RequestParam(value = PRODUCT_WEAPON_PLATFORM, required = false) String family,
             @RequestParam(value = GUN_SUBCATEGORY, required = false) String subcategory
     ) {
         return productService.getProductsByParams(
                 returnParams(new HashMap<HttpParameter, String>() {
                     {
-                        put(new HttpParameter(PRODUCT_PRICE, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY), price);
-                        put(new HttpParameter(PRODUCT_MANUFACTURER, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY), manufacturer);
-                        put(new HttpParameter(PRODUCT_CATEGORY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY), category);
-                        put(new HttpParameter(PRODUCT_SHOPS, COMPLEX_PARAM_TYPE, PARAM_CLASS_LONG,GUN_ENTITY), shops);
-                        put(new HttpParameter(GUN_CALIBER, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY), caliber);
-                        put(new HttpParameter(GUN_FAMILY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY), family);
-                        put(new HttpParameter(GUN_SUBCATEGORY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY), subcategory);
+                        put(new HttpParameter(PRODUCT_PRICE, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), price);
+                        put(new HttpParameter(PRODUCT_MANUFACTURER, OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), manufacturer);
+                        put(new HttpParameter(PRODUCT_CATEGORY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), category);
+                        put(new HttpParameter(PRODUCT_SHOPS, COMPLEX_PARAM_TYPE, PARAM_CLASS_LONG, GUN_ENTITY), shops);
+                        put(new HttpParameter(PRODUCT_CALIBER, OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), caliber);
+                        put(new HttpParameter(PRODUCT_WEAPON_PLATFORM, OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), family);
+                        put(new HttpParameter(GUN_SUBCATEGORY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), subcategory);
                     }
                 }));
     }

@@ -32,18 +32,18 @@ public class PartController implements BasicController {
             @RequestParam(value = PRODUCT_CATEGORY, required = false) String category,
             @RequestParam(value = PRODUCT_SHOPS, required = false) String shops,
             @RequestParam(value = PART_SUBCATEGORY, required = false) String subcategory,
-            @RequestParam(value = PART_FAMILY, required = false) String family,
+            @RequestParam(value = PRODUCT_WEAPON_PLATFORM, required = false) String family,
             @RequestParam(value = PART_INNER_OR_OUTER, required = false) String innerOrOuter
     ) {
         return productService.getProductsByParams(
                 returnParams(new HashMap<HttpParameter, String>() {
                     {
                         put(new HttpParameter(PRODUCT_PRICE, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, PART_ENTITY), price);
-                        put(new HttpParameter(PRODUCT_MANUFACTURER, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, PART_ENTITY), manufacturer);
+                        put(new HttpParameter(PRODUCT_MANUFACTURER, OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, PART_ENTITY), manufacturer);
                         put(new HttpParameter(PRODUCT_CATEGORY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, PART_ENTITY), category);
                         put(new HttpParameter(PRODUCT_SHOPS, COMPLEX_PARAM_TYPE, PARAM_CLASS_LONG, PART_ENTITY), shops);
                         put(new HttpParameter(PART_SUBCATEGORY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, PART_ENTITY), subcategory);
-                        put(new HttpParameter(PART_FAMILY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, PART_ENTITY), family);
+                        put(new HttpParameter(PRODUCT_WEAPON_PLATFORM, OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, PART_ENTITY), family);
                         put(new HttpParameter(PART_INNER_OR_OUTER, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, PART_ENTITY), innerOrOuter);
                     }
                 }));
