@@ -42,17 +42,14 @@ public class Product implements BasicEntity {
     @Column(name = PRODUCT_CATEGORY)
     private String category;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = CALIBER_ID, nullable = false)
     private Caliber caliber;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = MANUFACTURER_ID, nullable = false)
     private Manufacturer manufacturer;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = WEAPON_PLATFORM_ID, nullable = false)
     private WeaponPlatform weaponPlatform;

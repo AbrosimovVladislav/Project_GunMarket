@@ -1,5 +1,6 @@
 package com.gunmarket.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gunmarket.model.product.Product;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,7 @@ public class WeaponPlatform {
     @Column(name = WEAPON_PLATFORM_NAME)
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = PRODUCT_WEAPON_PLATFORM)
     private Set<Product> products;
 
