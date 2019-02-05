@@ -1,5 +1,36 @@
 USE gunmarket;
 
+/*ПОПРАВИТЬ СКРИПТ, ДОБАВИТЬ НОВЫЕ САМОСТОЯТЕЛЬНЫЕ ПОЛЯ*/
+
+INSERT INTO product (product_Id,
+                     DTYPE,
+                     gun_caliber,
+                     gun_family,
+                     product_manufacturer,
+                     product_name,
+                     product_price,
+                     product_category,
+                     gun_subcategory,
+    caliber_Id)
+VALUES (1,
+        'Gun',
+        '7.62x39',
+        'Ak',
+        'Century Arms',
+        'Century Arms Romanian GP WASR AK-47 , 7.62X39, Wood Stock, Flash Hider, 30 Rd Mag',
+        '690',
+        'rifles',
+        'semi-auto rifles',1),
+       (2,
+        'Gun',
+        '7.62x39',
+        'Ak',
+        'Century Arms',
+        'Century C39v2 (Milled) W/Zhukov Magpul Furniture, 1X30rd Magpul Mag 7.62x39',
+        '970',
+        'rifles',
+        'semi-auto rifles',1);
+
 INSERT INTO product (product_Id,
                      DTYPE,
                      gun_caliber,

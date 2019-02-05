@@ -2,6 +2,8 @@ package com.gunmarket.model.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gunmarket.model.BasicEntity;
+import com.gunmarket.model.Caliber;
+import com.gunmarket.model.Manufacturer;
 import com.gunmarket.model.Shop;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.Set;
 
+import static com.gunmarket.model.Caliber.CALIBER_ID;
+import static com.gunmarket.model.Manufacturer.MANUFACTURER_ID;
 import static com.gunmarket.model.Shop.SHOP_PRODUCTS;
 
 @Entity
@@ -19,8 +23,9 @@ public class Product implements BasicEntity {
     public static final String PRODUCT_ID = "product_Id";
     private static final String PRODUCT_NAME = "product_name";
     public static final String PRODUCT_PRICE = "product_price";
-    public static final String PRODUCT_MANUFACTURER = "product_manufacturer";
+    public static final String PRODUCT_MANUFACTURER = "manufacturer";
     public static final String PRODUCT_CATEGORY = "product_category";
+    public static final String PRODUCT_CALIBER = "caliber";
     public static final String PRODUCT_SHOPS = "shops";
 
     @Id
@@ -35,11 +40,18 @@ public class Product implements BasicEntity {
     @Column(name = PRODUCT_PRICE)
     private String price;
 
-    @Column(name = PRODUCT_MANUFACTURER)
-    private String manufacturer;
-
     @Column(name = PRODUCT_CATEGORY)
     private String category;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = CALIBER_ID, nullable = false)
+    private Caliber caliber;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = MANUFACTURER_ID, nullable = false)
+    private Manufacturer manufacturer;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = SHOP_PRODUCTS)
@@ -48,11 +60,12 @@ public class Product implements BasicEntity {
     public Product() {
     }
 
-    public Product(String name, String price, String manufacturer, String category, Set<Shop> shops) {
+    public Product(String name, String price, Manufacturer manufacturer, String category, Caliber caliber, Set<Shop> shops) {
         this.name = name;
         this.price = price;
         this.manufacturer = manufacturer;
         this.category = category;
+        this.caliber = caliber;
         this.shops = shops;
     }
 
@@ -80,11 +93,11 @@ public class Product implements BasicEntity {
         this.price = price;
     }
 
-    public String getManufacturer() {
+    public Manufacturer getManufacturer() {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
+    public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
     }
 
@@ -94,6 +107,14 @@ public class Product implements BasicEntity {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Caliber getCaliber() {
+        return caliber;
+    }
+
+    public void setCaliber(Caliber caliber) {
+        this.caliber = caliber;
     }
 
     public Set<Shop> getShops() {
@@ -112,6 +133,7 @@ public class Product implements BasicEntity {
                 ", price='" + price + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", category='" + category + '\'' +
+                ", caliber='" + caliber + '\'' +
                 ", shops=" + shops +
                 '}';
     }
