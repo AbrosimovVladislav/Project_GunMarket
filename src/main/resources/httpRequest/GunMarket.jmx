@@ -198,7 +198,7 @@
                 </JSONPathAssertion>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_GunWithEqualsTypesParams" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_GunWithEqualsTypesParams" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="_queryFilter" elementType="HTTPArgument">
@@ -214,7 +214,7 @@
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-                <stringProp name="HTTPSampler.path">/guns?gun_caliber=7.62x39&amp;gun_family=Ak&amp;product_manufacturer=Century Arms&amp;product_price=690&amp;gun_subcategory=semi-auto rifles</stringProp>
+                <stringProp name="HTTPSampler.path">/guns?caliber=1,2&amp;manufacturer=1&amp;weaponplatform=1</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -227,7 +227,7 @@
               <hashTree>
                 <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
                   <stringProp name="JSON_PATH">$..product_Id</stringProp>
-                  <stringProp name="EXPECTED_VALUE">[1,2]</stringProp>
+                  <stringProp name="EXPECTED_VALUE">[4,1,2]</stringProp>
                   <boolProp name="JSONVALIDATION">true</boolProp>
                   <boolProp name="EXPECT_NULL">false</boolProp>
                   <boolProp name="INVERT">false</boolProp>
@@ -238,7 +238,7 @@
             </hashTree>
             <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Ammo" enabled="false"/>
             <hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_AmmoWithOneParam" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_AmmoWithOneParam" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="_queryFilter" elementType="HTTPArgument">
@@ -254,7 +254,7 @@
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-                <stringProp name="HTTPSampler.path">/ammo?product_manufacturer=Federal Ammunition</stringProp>
+                <stringProp name="HTTPSampler.path">/ammo?manufacturer=6</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -275,7 +275,7 @@
                 </JSONPathAssertion>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_AmmoWithMixedParams" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_AmmoWithMixedParams" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="_queryFilter" elementType="HTTPArgument">
@@ -291,7 +291,7 @@
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-                <stringProp name="HTTPSampler.path">/ammo?product_price=9&amp;shops=1&amp;ammo_caliber=9x19</stringProp>
+                <stringProp name="HTTPSampler.path">/ammo?caliber=2&amp;shops=1</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -304,44 +304,7 @@
               <hashTree>
                 <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
                   <stringProp name="JSON_PATH">$..product_Id</stringProp>
-                  <stringProp name="EXPECTED_VALUE">[9]</stringProp>
-                  <boolProp name="JSONVALIDATION">true</boolProp>
-                  <boolProp name="EXPECT_NULL">false</boolProp>
-                  <boolProp name="INVERT">false</boolProp>
-                  <boolProp name="ISREGEX">false</boolProp>
-                </JSONPathAssertion>
-                <hashTree/>
-              </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_AmmoWithEqualsTypesParams" enabled="false">
-                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                  <collectionProp name="Arguments.arguments">
-                    <elementProp name="_queryFilter" elementType="HTTPArgument">
-                      <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                      <stringProp name="Argument.value">connectorName eq &quot;${1cConnectorName}&quot;</stringProp>
-                      <stringProp name="Argument.metadata">=</stringProp>
-                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                      <stringProp name="Argument.name">_queryFilter</stringProp>
-                    </elementProp>
-                  </collectionProp>
-                </elementProp>
-                <stringProp name="HTTPSampler.domain"></stringProp>
-                <stringProp name="HTTPSampler.port"></stringProp>
-                <stringProp name="HTTPSampler.protocol"></stringProp>
-                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-                <stringProp name="HTTPSampler.path">/ammo?product_price=9&amp;shops=1</stringProp>
-                <stringProp name="HTTPSampler.method">GET</stringProp>
-                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              </HTTPSamplerProxy>
-              <hashTree>
-                <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-                  <stringProp name="JSON_PATH">$..product_Id</stringProp>
-                  <stringProp name="EXPECTED_VALUE">[8,9]</stringProp>
+                  <stringProp name="EXPECTED_VALUE">[8]</stringProp>
                   <boolProp name="JSONVALIDATION">true</boolProp>
                   <boolProp name="EXPECT_NULL">false</boolProp>
                   <boolProp name="INVERT">false</boolProp>
@@ -352,7 +315,7 @@
             </hashTree>
             <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Part" enabled="false"/>
             <hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_PartWithOneParam" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_PartWithOneParam" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="_queryFilter" elementType="HTTPArgument">
@@ -368,7 +331,7 @@
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-                <stringProp name="HTTPSampler.path">/parts?part_inner_or_outer=inner,outer</stringProp>
+                <stringProp name="HTTPSampler.path">/parts?shops=1</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -381,7 +344,7 @@
               <hashTree>
                 <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
                   <stringProp name="JSON_PATH">$..product_Id</stringProp>
-                  <stringProp name="EXPECTED_VALUE">[11,12]</stringProp>
+                  <stringProp name="EXPECTED_VALUE">[12,11]</stringProp>
                   <boolProp name="JSONVALIDATION">true</boolProp>
                   <boolProp name="EXPECT_NULL">false</boolProp>
                   <boolProp name="INVERT">false</boolProp>
@@ -389,7 +352,7 @@
                 </JSONPathAssertion>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_PartWithMixedParams" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_PartWithMixedParams" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="_queryFilter" elementType="HTTPArgument">
@@ -405,7 +368,7 @@
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-                <stringProp name="HTTPSampler.path">/parts?product_price=17,300&amp;part_family=Ar</stringProp>
+                <stringProp name="HTTPSampler.path">/parts?product_category=Grips&amp;caliber=5&amp;manufacturer=10&amp;part_inner_or_outer=outer</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -418,44 +381,7 @@
               <hashTree>
                 <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
                   <stringProp name="JSON_PATH">$..product_Id</stringProp>
-                  <stringProp name="EXPECTED_VALUE">[11]</stringProp>
-                  <boolProp name="JSONVALIDATION">true</boolProp>
-                  <boolProp name="EXPECT_NULL">false</boolProp>
-                  <boolProp name="INVERT">false</boolProp>
-                  <boolProp name="ISREGEX">false</boolProp>
-                </JSONPathAssertion>
-                <hashTree/>
-              </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_PartWithEqualsTypesParams" enabled="false">
-                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                  <collectionProp name="Arguments.arguments">
-                    <elementProp name="_queryFilter" elementType="HTTPArgument">
-                      <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                      <stringProp name="Argument.value">connectorName eq &quot;${1cConnectorName}&quot;</stringProp>
-                      <stringProp name="Argument.metadata">=</stringProp>
-                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                      <stringProp name="Argument.name">_queryFilter</stringProp>
-                    </elementProp>
-                  </collectionProp>
-                </elementProp>
-                <stringProp name="HTTPSampler.domain"></stringProp>
-                <stringProp name="HTTPSampler.port"></stringProp>
-                <stringProp name="HTTPSampler.protocol"></stringProp>
-                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-                <stringProp name="HTTPSampler.path">/parts?product_price=300&amp;shops=1,2,3</stringProp>
-                <stringProp name="HTTPSampler.method">GET</stringProp>
-                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              </HTTPSamplerProxy>
-              <hashTree>
-                <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-                  <stringProp name="JSON_PATH">$..product_Id</stringProp>
-                  <stringProp name="EXPECTED_VALUE">[11]</stringProp>
+                  <stringProp name="EXPECTED_VALUE">[12]</stringProp>
                   <boolProp name="JSONVALIDATION">true</boolProp>
                   <boolProp name="EXPECT_NULL">false</boolProp>
                   <boolProp name="INVERT">false</boolProp>
