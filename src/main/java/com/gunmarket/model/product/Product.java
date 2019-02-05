@@ -1,10 +1,7 @@
 package com.gunmarket.model.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.gunmarket.model.BasicEntity;
-import com.gunmarket.model.Caliber;
-import com.gunmarket.model.Manufacturer;
-import com.gunmarket.model.Shop;
+import com.gunmarket.model.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +11,7 @@ import java.util.Set;
 import static com.gunmarket.model.Caliber.CALIBER_ID;
 import static com.gunmarket.model.Manufacturer.MANUFACTURER_ID;
 import static com.gunmarket.model.Shop.SHOP_PRODUCTS;
+import static com.gunmarket.model.WeaponPlatform.WEAPON_PLATFORM_ID;
 
 @Entity
 @Table(name = "product")
@@ -26,6 +24,7 @@ public class Product implements BasicEntity {
     public static final String PRODUCT_MANUFACTURER = "manufacturer";
     public static final String PRODUCT_CATEGORY = "product_category";
     public static final String PRODUCT_CALIBER = "caliber";
+    public static final String PRODUCT_WEAPON_PLATFORM = "weaponPlatform";
     public static final String PRODUCT_SHOPS = "shops";
 
     @Id
@@ -54,18 +53,25 @@ public class Product implements BasicEntity {
     private Manufacturer manufacturer;
 
     @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = WEAPON_PLATFORM_ID, nullable = false)
+    private WeaponPlatform weaponPlatform;
+
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = SHOP_PRODUCTS)
     private Set<Shop> shops;
 
     public Product() {
     }
 
-    public Product(String name, String price, Manufacturer manufacturer, String category, Caliber caliber, Set<Shop> shops) {
+    public Product(String name, String price, Manufacturer manufacturer, String category, Caliber caliber,
+                   WeaponPlatform weaponPlatform, Set<Shop> shops) {
         this.name = name;
         this.price = price;
         this.manufacturer = manufacturer;
         this.category = category;
         this.caliber = caliber;
+        this.weaponPlatform = weaponPlatform;
         this.shops = shops;
     }
 
@@ -117,6 +123,14 @@ public class Product implements BasicEntity {
         this.caliber = caliber;
     }
 
+    public WeaponPlatform getWeaponPlatform() {
+        return weaponPlatform;
+    }
+
+    public void setWeaponPlatform(WeaponPlatform weaponPlatform) {
+        this.weaponPlatform = weaponPlatform;
+    }
+
     public Set<Shop> getShops() {
         return shops;
     }
@@ -134,6 +148,7 @@ public class Product implements BasicEntity {
                 ", manufacturer='" + manufacturer + '\'' +
                 ", category='" + category + '\'' +
                 ", caliber='" + caliber + '\'' +
+                ", weaponPlatform='" + weaponPlatform + '\'' +
                 ", shops=" + shops +
                 '}';
     }

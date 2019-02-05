@@ -27,6 +27,7 @@
                 <value>com.gunmarket.model.product.Part</value>
                 <value>com.gunmarket.model.Caliber</value>
                 <value>com.gunmarket.model.Manufacturer</value>
+                <value>com.gunmarket.model.WeaponPlatform</value>
                 <value>com.gunmarket.model.Shop</value>
             </array>
         </property>

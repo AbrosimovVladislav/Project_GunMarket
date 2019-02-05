@@ -10,22 +10,10 @@ import javax.persistence.Entity;
 public class Gun extends Product {
 
     public static final String GUN_ENTITY = "Gun";
-    public static final String GUN_FAMILY = "gun_family";
     public static final String GUN_SUBCATEGORY = "gun_subcategory";
-
-    @Column(name = GUN_FAMILY)
-    private String family;
 
     @Column(name = GUN_SUBCATEGORY)
     private String subcategory;
-
-    public String getFamily() {
-        return family;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
-    }
 
     public String getSubcategory() {
         return subcategory;

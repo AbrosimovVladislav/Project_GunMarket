@@ -33,7 +33,7 @@ public class GunController implements BasicController {
             @RequestParam(value = PRODUCT_CATEGORY, required = false) String category,
             @RequestParam(value = PRODUCT_SHOPS, required = false) String shops,
             @RequestParam(value = PRODUCT_CALIBER, required = false) String caliber,
-            @RequestParam(value = GUN_FAMILY, required = false) String family,
+            @RequestParam(value = PRODUCT_WEAPON_PLATFORM, required = false) String family,
             @RequestParam(value = GUN_SUBCATEGORY, required = false) String subcategory
     ) {
         return productService.getProductsByParams(
@@ -44,7 +44,7 @@ public class GunController implements BasicController {
                         put(new HttpParameter(PRODUCT_CATEGORY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), category);
                         put(new HttpParameter(PRODUCT_SHOPS, COMPLEX_PARAM_TYPE, PARAM_CLASS_LONG, GUN_ENTITY), shops);
                         put(new HttpParameter(PRODUCT_CALIBER, OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), caliber);
-                        put(new HttpParameter(GUN_FAMILY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), family);
+                        put(new HttpParameter(PRODUCT_WEAPON_PLATFORM, OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), family);
                         put(new HttpParameter(GUN_SUBCATEGORY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY), subcategory);
                     }
                 }));
