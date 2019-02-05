@@ -18,6 +18,14 @@ create table manufacturer
 )
   engine = MyISAM;
 
+create table weaponplatform
+(
+  weaponPlatform_Id   bigint       not null
+    primary key,
+  weaponPlatform_name varchar(255) null
+)
+  engine = MyISAM;
+
 create table product
 (
   product_Id          bigint       not null
@@ -65,11 +73,5 @@ create table shop_product
 create index FKhw852msmm9o4wlxskihuveygq
   on shop_product (product_Id);
 
-create table weaponplatform
-(
-  weaponPlatform_Id   bigint       not null
-    primary key,
-  weaponPlatform_name varchar(255) null
-)
-  engine = MyISAM;
+
 
