@@ -14,6 +14,7 @@ import static com.gunmarket.model.product.Product.PRODUCT_ID;
 @Component
 public class Shop implements BasicEntity {
 
+    public static final String SHOP_ENTITY = "Shop";
     private static final String SHOP_ID = "shop_Id";
     private static final String SHOP_NAME = "name";
     public static final String SHOP_ADDRESS = "address";
