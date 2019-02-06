@@ -35,15 +35,15 @@ public class RepoUtils {
     }
 
     public static String replaceLastChar(String str) {
-        if (str != null && str.length() > 0) {
-            str = str.substring(0, str.length() - 1);
-        }
-        return str;
+        return str == null || str.isEmpty()
+                ? str
+                : str.substring(0, str.length() - 1);
     }
 
     public static String firstUpperCase(String word) {
-        if (word == null || word.isEmpty()) return "";//или return word;
-        return word.substring(0, 1).toUpperCase() + word.substring(1);
+        return word == null || word.isEmpty()
+                ? word
+                : word.substring(0, 1).toUpperCase() + word.substring(1);
     }
 
 }
