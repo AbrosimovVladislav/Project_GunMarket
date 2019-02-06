@@ -85,8 +85,7 @@ public class QueryBuilder {
                 .append(paramValue.getValueMarker())
                 .append(OR_KEYWORD));
 
-        currentQPArt.append(CLOSING_BRACKET);
-        return currentQPArt.toString();
+        return currentQPArt.append(CLOSING_BRACKET).toString();
     }
 
     //Построение составной части
