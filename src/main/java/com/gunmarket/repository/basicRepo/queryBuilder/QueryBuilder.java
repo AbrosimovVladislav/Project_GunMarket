@@ -39,23 +39,21 @@ public class QueryBuilder {
             return FROM_KEYWORD + entityName;
         }
 
-        String subqueriesConnectionLine = createSubqueriesConnectionLine(entityName);
-        String resultHqlQuery = initResultQuery(entityName, params.keySet().iterator().next().getEntityClass(), subqueriesConnectionLine);
+        String subQueriesConnectionLine = createSubqueriesConnectionLine(entityName);
+        String resultHqlQuery = initResultQuery(entityName, params.keySet().iterator().next().getEntityClass(), subQueriesConnectionLine);
 
         for (Map.Entry<HttpParameter, List<ParameterValue>> paramEntry : params.entrySet()) {
             String paramName = paramEntry.getKey().getParamName();
             String paramType = paramEntry.getKey().getParamType();
             List<ParameterValue> paramValues = paramEntry.getValue();
 
-            if (paramType.equals(COMPLEX_PARAM_TYPE)) {
-                resultHqlQuery = getComplexParamQueryPart(entityName, paramName, paramValues, resultHqlQuery, subqueriesConnectionLine);
-            } else {
-                resultHqlQuery = getSimpleParamQueryPart(entityName, paramName, paramValues, resultHqlQuery, subqueriesConnectionLine, paramType);
-            }
+            resultHqlQuery = paramType.equals(COMPLEX_PARAM_TYPE)
+                    ? getComplexParamQueryPart(entityName, paramName, paramValues, resultHqlQuery, subQueriesConnectionLine)
+                    : getSimpleParamQueryPart(entityName, paramName, paramValues, resultHqlQuery, subQueriesConnectionLine, paramType);
         }
 
         resultHqlQuery = resultHqlQuery.replaceFirst(CLOSING_BRACKET_REGEX, "");
-        return resultHqlQuery.substring(0, resultHqlQuery.length() - subqueriesConnectionLine.length() + 1);
+        return resultHqlQuery.substring(0, resultHqlQuery.length() - subQueriesConnectionLine.length() + 1);
 
     }
 
