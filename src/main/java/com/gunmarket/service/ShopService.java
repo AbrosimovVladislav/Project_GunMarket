@@ -9,17 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
+import static com.gunmarket.model.Shop.SHOP_ENTITY;
+
 @Service
 public class ShopService {
-
-    private static final Class SHOP_CLASS = Shop.class;
-    private static final String SHOP_NAME = "Shop";
 
     @Autowired
     private ShopRepo shopRepo;
 
     public List<? super Shop> getShopsByParams(Map<HttpParameter, List<String>> params) {
-        return shopRepo.getByParamsDueHql(SHOP_NAME, params);
+        return shopRepo.getByParamsDueHql(SHOP_ENTITY, params);
     }
 
 }
