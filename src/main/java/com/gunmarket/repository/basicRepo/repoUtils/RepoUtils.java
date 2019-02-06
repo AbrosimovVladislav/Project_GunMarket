@@ -3,10 +3,10 @@ package com.gunmarket.repository.basicRepo.repoUtils;
 import com.gunmarket.web.webEntity.HttpParameter;
 import com.gunmarket.web.webEntity.ParameterValue;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class RepoUtils {
 
@@ -20,30 +20,26 @@ public class RepoUtils {
                             : o2ParamType.compareTo(o1ParamType);
                 });
 
-        for (Map.Entry<HttpParameter, List<String>> paramEntry : params.entrySet()) {
-            HttpParameter markedMapKey = paramEntry.getKey();
-            List<ParameterValue> markedMapValues = new ArrayList<>();
-
-            for (String value : paramEntry.getValue()) {
-                markedMapValues.add(new ParameterValue(value));
-            }
-
-            markedParamsMap.put(markedMapKey, markedMapValues);
-        }
+        params.forEach((httpParameter, parameterValueName) -> markedParamsMap.put(
+                httpParameter,
+                parameterValueName.stream()
+                        .map(ParameterValue::new)
+                        .collect(Collectors.toList())
+        ));
 
         return markedParamsMap;
     }
 
     public static String replaceLastChar(String str) {
-        if (str != null && str.length() > 0) {
-            str = str.substring(0, str.length() - 1);
-        }
-        return str;
+        return str == null || str.isEmpty()
+                ? str
+                : str.substring(0, str.length() - 1);
     }
 
     public static String firstUpperCase(String word) {
-        if (word == null || word.isEmpty()) return "";//или return word;
-        return word.substring(0, 1).toUpperCase() + word.substring(1);
+        return word == null || word.isEmpty()
+                ? word
+                : word.substring(0, 1).toUpperCase() + word.substring(1);
     }
 
 }
