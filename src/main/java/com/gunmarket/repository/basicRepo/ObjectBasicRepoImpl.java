@@ -32,13 +32,13 @@ public class ObjectBasicRepoImpl implements ObjectBasicRepo {
 
         Query<BasicEntity> query = currentSession().createQuery(queryBuilder.build(entityName, markedparams));
 
-        for (Map.Entry<HttpParameter, List<ParameterValue>> entry : markedparams.entrySet()) {
-            for (ParameterValue parameterValue : entry.getValue()) {
-                String paramClass = entry.getKey().getParamClass();
-                query.setParameter(parameterValue.getValueMarker().replaceFirst(":", ""),
-                        paramClass.equals("Long") ? Long.valueOf(parameterValue.getValue()) : parameterValue.getValue());
-            }
-        }
+        markedparams.forEach((httpParameter, parameterValues) ->
+                parameterValues.forEach(parameterValue ->
+                        query.setParameter(
+                                parameterValue.getValueMarker().replaceFirst(":", "")
+                                , httpParameter.getParamClass().equals("Long")
+                                        ? Long.valueOf(parameterValue.getValue())
+                                        : parameterValue.getValue())));
 
         //ToDo Удалить вывод
         System.out.println("Вывод итогового запроса " + query.getQueryString());
