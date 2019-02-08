@@ -32,13 +32,13 @@ public class QueryBuilderTest {
     @Test
     public void testWithOneParameter() {
         Map<HttpParameter, List<ParameterValue>> params = new HashMap<HttpParameter, List<ParameterValue>>() {{
-            put(new HttpParameter("First", SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY),
+            put(new HttpParameter("First", SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY),
                     newArrayList(new ParameterValue("1")));
         }};
 
         String buildResult = queryBuilder.build("Product", params);
         String actualValue = buildResult.replaceAll("\\d", "");
-        String expectedValue = "FROM Product WHERE (First = :pv )";
+        String expectedValue = "FROM Product WHERE DTYPE = Gun AND product_Id IN (FROM Product WHERE (First = :pv ))";
 
         assertEquals(actualValue, expectedValue);
     }
@@ -46,20 +46,22 @@ public class QueryBuilderTest {
     @Test
     public void testWithThreeParameters() {
         Map<HttpParameter, List<ParameterValue>> params = new HashMap<HttpParameter, List<ParameterValue>>() {{
-            put(new HttpParameter("Thirds", COMPLEX_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY),
+            put(new HttpParameter("thirds", COMPLEX_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY),
                     newArrayList(new ParameterValue("3")));
-            put(new HttpParameter("Second", OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY),
+            put(new HttpParameter("Second", OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY),
                     newArrayList(new ParameterValue("2")));
-            put(new HttpParameter("First", SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING,GUN_ENTITY),
+            put(new HttpParameter("First", SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, GUN_ENTITY),
                     newArrayList(new ParameterValue("1")));
         }};
 
         String buildResult = queryBuilder.build("Product", params);
         String actualValue = buildResult.replaceAll("\\d", "");
-        String expectedValue = "FROM Product WHERE (First = :pv ) " +
+        String expectedValue = "FROM Product WHERE DTYPE = Gun " +
                 "AND product_Id IN (FROM Product WHERE (Second_id = :pv )) " +
-                "AND product_Id IN (SELECT Products.product_Id FROM  Third " +
-                "AS Third LEFT JOIN Third.products Products WHERE Third.Third_Id = :pv )";
+                "AND product_Id IN (SELECT Product FROM  Product AS Product " +
+                                        "LEFT JOIN Product.thirds Third " +
+                                        "WHERE Third.third_Id = :pv ) " +
+                "AND product_Id IN (FROM Product WHERE (First = :pv ))";
 
         assertEquals(actualValue, expectedValue);
     }
