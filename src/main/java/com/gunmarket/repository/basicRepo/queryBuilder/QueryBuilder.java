@@ -25,7 +25,6 @@ public class QueryBuilder {
     private static final String LEFT_JOIN_KEYWORD = " LEFT JOIN ";
     private static final String ID_LOWER_PARAMETER_ADDITION = "_id";
     private static final String ID_UPPER_PARAMETER_ADDITION = "_Id";
-    private static final String PLURAL_ENDING_S = "s";
     private static final String COMMA = ".";
     private static final String SPACE = " ";
     private static final String CLOSING_BRACKET_REGEX = "\\)";
@@ -97,25 +96,19 @@ public class QueryBuilder {
     private StringBuilder createInitialPartOfComplexParamQuery(String entityName, String paramName) {
         return new StringBuilder(SELECT_KEYWORD)
                 .append(entityName)
-                .append(PLURAL_ENDING_S)
-                .append(COMMA)
-                .append(entityName.toLowerCase())
-                .append(ID_UPPER_PARAMETER_ADDITION)
                 .append(SPACE)
                 .append(FROM_KEYWORD)
                 .append(SPACE)
-                .append(firstUpperCase(replaceLastChar(paramName)))
-                .append(AS_KEYWORD)
-                .append(firstUpperCase(replaceLastChar(paramName)))
-                .append(LEFT_JOIN_KEYWORD)
-                .append(firstUpperCase(replaceLastChar(paramName)))
-                .append(COMMA)
-                .append(entityName.toLowerCase())
-                .append(PLURAL_ENDING_S)
-                .append(SPACE)
                 .append(entityName)
-                .append(PLURAL_ENDING_S)
-                .append(WHERE_KEYWORD); //SELECT Products.product_Id FROM Shop AS Shop LEFT JOIN Shop.products Products WHERE
+                .append(AS_KEYWORD)
+                .append(entityName)
+                .append(LEFT_JOIN_KEYWORD)
+                .append(entityName)
+                .append(COMMA)
+                .append(paramName)
+                .append(SPACE)
+                .append(firstUpperCase(replaceLastChar(paramName)))
+                .append(WHERE_KEYWORD); // SELECT Product FROM Product AS Product LEFT JOIN Product.shops Shop WHERE
     }
 
     private String createParamFillingPartOfComplexParamQuery(String paramName, List<ParameterValue> paramValues) {
