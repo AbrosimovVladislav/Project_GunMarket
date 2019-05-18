@@ -31,15 +31,13 @@ public class AmmoController implements BasicController {
             @RequestParam(value = PRODUCT_CALIBER, required = false) String caliber
     ) {
         return productService.getProductsByParams(
-                returnParams(new HashMap<HttpParameter, String>() {
-                    {
+                returnParams(new HashMap<HttpParameter, String>() {{
                         put(new HttpParameter(PRODUCT_PRICE, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, AMMO_ENTITY), price);
                         put(new HttpParameter(PRODUCT_MANUFACTURER, OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, AMMO_ENTITY), manufacturer);
                         put(new HttpParameter(PRODUCT_CATEGORY, SIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, AMMO_ENTITY), category);
                         put(new HttpParameter(PRODUCT_SHOPS, COMPLEX_PARAM_TYPE, PARAM_CLASS_LONG, AMMO_ENTITY), shops);
                         put(new HttpParameter(PRODUCT_CALIBER, OBJECTSIMPLE_PARAM_TYPE, PARAM_CLASS_STRING, AMMO_ENTITY), caliber);
-                    }
-                }));
+                }}));
     }
 
 }

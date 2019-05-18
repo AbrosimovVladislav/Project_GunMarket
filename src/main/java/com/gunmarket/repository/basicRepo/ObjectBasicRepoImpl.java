@@ -29,7 +29,8 @@ public class ObjectBasicRepoImpl implements ObjectBasicRepo {
 
     public List<BasicEntity> getByParamsDueHql(String entityName, Map<HttpParameter, List<String>> params) {
         Map<HttpParameter, List<ParameterValue>> markedparams = addMarkersToParams(params);
-        Query<BasicEntity> query = currentSession().createQuery(queryBuilder.build(entityName, markedparams));
+        String hqlQuery = queryBuilder.build(entityName, markedparams);
+        Query<BasicEntity> query = currentSession().createQuery(hqlQuery);
 
         markedparams.forEach((httpParameter, parameterValues) ->
                 parameterValues.forEach(parameterValue ->
