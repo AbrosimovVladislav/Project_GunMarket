@@ -1,3 +1,9 @@
 package pro.va.gunmarket.domain.product;
 
-public class Ammo extends Product {}
+import pro.va.gunmarket.domain.Caliber;
+
+
+public class Ammo extends Product {
+	private Caliber caliber;
+	private String weight;
+}

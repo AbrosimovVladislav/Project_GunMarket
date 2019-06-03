@@ -10,21 +10,30 @@ public class ProductInShop {
 	private int sale;
 	private boolean inStock;
 	private String additionalInfo;
+	private String link;
 
-	public ProductInShop(Product product, Shop shop, double price, boolean inStock) {
+	public ProductInShop(Product product, Shop shop, double price, boolean inStock, String link) {
 		this.product = product;
 		this.shop = shop;
 		this.price = price;
 		this.inStock = inStock;
+		this.link = link;
 	}
 
-	public ProductInShop(Product product, Shop shop, double price, int sale, boolean inStock, String additionalInfo) {
+	public ProductInShop(Product product,
+			Shop shop,
+			double price,
+			int sale,
+			boolean inStock,
+			String additionalInfo,
+			String link) {
 		this.product = product;
 		this.shop = shop;
 		this.price = price;
 		this.sale = sale;
 		this.inStock = inStock;
 		this.additionalInfo = additionalInfo;
+		this.link = link;
 	}
 
 	public Product getProduct() {
@@ -73,5 +82,13 @@ public class ProductInShop {
 
 	public void setAdditionalInfo(String additionalInfo) {
 		this.additionalInfo = additionalInfo;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 }

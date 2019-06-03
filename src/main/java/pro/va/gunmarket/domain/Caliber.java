@@ -1,3 +1,5 @@
 package pro.va.gunmarket.domain;
 
-public class Caliber {}
+public class Caliber {
+	private String value;
+}
