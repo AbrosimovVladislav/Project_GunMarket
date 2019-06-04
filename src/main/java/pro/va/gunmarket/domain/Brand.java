@@ -18,12 +18,12 @@ import java.util.Set;
 
 import static pro.va.gunmarket.domain.Brand.BRAND_TABLE;
 
+
 @Entity
 @Table(name = BRAND_TABLE)
 @Component
 @Getter
 @Setter
-@ToString
 public class Brand {
 
 	public static final String BRAND_TABLE = "brand";
@@ -49,5 +49,4 @@ public class Brand {
 		this.name = name;
 		this.products = products;
 	}
-
 }

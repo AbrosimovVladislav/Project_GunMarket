@@ -18,6 +18,7 @@ import java.util.Set;
 
 import static pro.va.gunmarket.domain.Type.TYPE_TABLE;
 
+
 @Entity
 @Table(name = TYPE_TABLE)
 @Component
@@ -25,17 +26,11 @@ import static pro.va.gunmarket.domain.Type.TYPE_TABLE;
 @Setter
 @ToString
 public class Type {
-
 	public static final String TYPE_TABLE = "type";
-
 	public static final String TYPE_ID = "id";
-
 	public static final String TYPE_NAME = "name";
-
 	public static final String TYPE_UPPER = "upper";
-
 	public static final String TYPE_MEDIUM = "medium";
-
 	public static final String TYPE_LOWER = "lower";
 
 	@Id
@@ -63,5 +58,4 @@ public class Type {
 		this.lower = lower;
 		this.products = products;
 	}
-
 }
