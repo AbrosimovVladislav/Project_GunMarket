@@ -27,16 +27,14 @@ import static pro.va.gunmarket.domain.Brand.BRAND_TABLE;
 public class Brand {
 
 	public static final String BRAND_TABLE = "brand";
-
-	public static final String BRAND_ID = "id";
-
+	public static final String BRAND_ID = "brandId";
 	public static final String BRAND_NAME = "name";
 
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	@Column(name = BRAND_ID, length = 8, nullable = false)
-	private Long id;
+	private Long brandId;
 
 	@Column(name = BRAND_NAME)
 	private String name;
@@ -44,6 +42,9 @@ public class Brand {
 	@JsonIgnore
 	@OneToMany(mappedBy = BRAND_TABLE)
 	private Set<Product> products;
+
+	public Brand() {
+	}
 
 	public Brand(String name, Set<Product> products) {
 		this.name = name;

@@ -2,10 +2,13 @@ package pro.va.gunmarket.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
@@ -20,11 +23,17 @@ import static pro.va.gunmarket.domain.Shop.SHOP_TABLE;
 @Setter
 public class Shop {
 	public static final String SHOP_TABLE = "shop";
-	public static final String SHOP_ID = "id";
+	public static final String SHOP_ID = "shopId";
 	public static final String SHOP_NAME = "name";
 	public static final String SHOP_ADDRESS = "address";
 	public static final String SHOP_WEBSITE = "website";
 	public static final String SHOP_DESCRIPTION = "description";
+
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = SHOP_ID, length = 8, nullable = false)
+	private Long shopId;
 
 	@Column(name = SHOP_NAME, nullable = false)
 	private String name;

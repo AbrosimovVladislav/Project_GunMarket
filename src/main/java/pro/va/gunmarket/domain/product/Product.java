@@ -35,13 +35,13 @@ public abstract class Product {
 	public static final String PRODUCT_TABLE = "product";
 	public static final String PRODUCT_AVG_PRICE = "averagePrice";
 	public static final String PRODUCT_MODEL = "model";
-	public static final String PRODUCT_ID = "id";
+	public static final String PRODUCT_ID = "productId";
 
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	@Column(name = PRODUCT_ID, length = 8, nullable = false)
-	private Long id;
+	private Long productId;
 
 	@Column(name = PRODUCT_AVG_PRICE)
 	private double averagePrice;

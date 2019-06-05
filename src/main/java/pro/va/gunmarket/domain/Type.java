@@ -27,7 +27,7 @@ import static pro.va.gunmarket.domain.Type.TYPE_TABLE;
 @ToString
 public class Type {
 	public static final String TYPE_TABLE = "type";
-	public static final String TYPE_ID = "id";
+	public static final String TYPE_ID = "typeId";
 	public static final String TYPE_NAME = "name";
 	public static final String TYPE_UPPER = "upper";
 	public static final String TYPE_MEDIUM = "medium";
@@ -37,7 +37,7 @@ public class Type {
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	@Column(name = TYPE_ID, length = 8, nullable = false)
-	private Long id;
+	private Long typeId;
 
 	@Column(name = TYPE_UPPER)
 	private String upper;
@@ -51,6 +51,9 @@ public class Type {
 	@JsonIgnore
 	@OneToMany(mappedBy = TYPE_TABLE)
 	private Set<Product> products;
+
+	public Type() {
+	}
 
 	public Type(String upper, String medium, String lower, Set<Product> products) {
 		this.upper = upper;

@@ -2,11 +2,14 @@ package pro.va.gunmarket.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 import pro.va.gunmarket.domain.product.Product;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,12 +25,19 @@ import static pro.va.gunmarket.domain.product.Product.PRODUCT_ID;
 @Getter
 @Setter
 public class ProductInShop {
+	public static final String PRODUCT_IN_SHOP_ID = "productInShopId";
 	public static final String PRODUCT_IN_SHOP_TABLE = "productInShop";
 	public static final String PRODUCT_IN_SHOP_PRICE = "price";
 	public static final String PRODUCT_IN_SHOP_SALE = "sale";
 	public static final String PRODUCT_IN_SHOP_IN_STOCK = "inStock";
 	public static final String PRODUCT_IN_SHOP_ADDITIONAL_INFO = "additionalInfo";
 	public static final String PRODUCT_IN_SHOP_LINK = "link";
+
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = PRODUCT_IN_SHOP_ID, length = 8, nullable = false)
+	private Long productInShopId;
 
 	@ManyToOne
 	@JoinColumn(name = PRODUCT_ID, nullable = false)
@@ -51,6 +61,9 @@ public class ProductInShop {
 
 	@Column(name = PRODUCT_IN_SHOP_LINK, nullable = false)
 	private String link;
+
+	public ProductInShop() {
+	}
 
 	public ProductInShop(Product product, Shop shop, double price, boolean inStock, String link) {
 		this.product = product;
