@@ -1,6 +1,7 @@
 package pro.va.gunmarket.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import pro.va.gunmarket.service.MenuService;
 
@@ -13,7 +14,7 @@ public class MenuController {
 		this.menuService = menuService;
 	}
 
-	@RequestMapping("/gunmarket")
+	@RequestMapping(value = "/gunmarket", method = RequestMethod.GET, produces = "application/json")
 	public String menu() {
 		return menuService.getMenu();
 	}
