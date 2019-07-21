@@ -1,5 +1,6 @@
 package io.gunmarket.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gunmarket.demo.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,11 +34,11 @@ public class Caliber {
 	@Column(name = CALIBER_VALUE)
 	private String value;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = CALIBER_TABLE)
-	Set<Product> products;
+	private Set<Product> products;
 
-	public Caliber() {
-	}
+	public Caliber() {}
 
 	public Caliber(String value) {
 		this.value = value;

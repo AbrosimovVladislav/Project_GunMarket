@@ -1,5 +1,6 @@
 package io.gunmarket.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gunmarket.demo.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,6 +34,7 @@ public class WeaponPlatform {
 	@Column(name = WEAPON_PLATFORM_NAME)
 	private String name;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = WEAPON_PLATFORM_TABLE)
 	Set<Product> products;
 

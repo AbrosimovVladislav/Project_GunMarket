@@ -1,5 +1,6 @@
 package io.gunmarket.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gunmarket.demo.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,6 +37,7 @@ public class ProductInShop {
 	@Column(name = PRODUCT_IN_SHOP_ID, length = 8, nullable = false)
 	private Long productInShopId;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = PRODUCT_ID, nullable = false)
 	private Product product;

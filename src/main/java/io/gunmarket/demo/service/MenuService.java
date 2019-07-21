@@ -8,7 +8,7 @@ import java.nio.file.Files;
 
 @Service
 public class MenuService {
-	private static final String menuLocation = "classpath:menu.json";
+	private static final String menuLocation = "classpath:getProductsByParams.json";
 
 	public String getMenu() {
 		try {

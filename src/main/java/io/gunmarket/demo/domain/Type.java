@@ -49,8 +49,7 @@ public class Type {
 	@OneToMany(mappedBy = TYPE_TABLE)
 	private Set<Product> products;
 
-	public Type() {
-	}
+	public Type() {}
 
 	public Type(String upper, String medium, String lower, Set<Product> products) {
 		this.upper = upper;

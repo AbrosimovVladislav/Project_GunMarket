@@ -14,7 +14,6 @@ public class Gun extends Product {
 	public static final String GUN_CAPACITY = "capacity";
 	public static final String GUN_TOTAL_LENGTH = "totalLength";
 	public static final String GUN_BARREL_LENGTH = "barrelLength";
-	public static final String GUN_WEIGHT = "weight";
 
 	@Column(name = GUN_CAPACITY)
 	private String capacity;
@@ -24,7 +23,4 @@ public class Gun extends Product {
 
 	@Column(name = GUN_BARREL_LENGTH)
 	private String barrelLength;
-
-	@Column(name = GUN_WEIGHT)
-	private String weight;
 }

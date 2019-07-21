@@ -1,5 +1,6 @@
 package io.gunmarket.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,6 +45,7 @@ public class Shop {
 	@Column(name = SHOP_DESCRIPTION)
 	private String description;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = SHOP_TABLE)
 	Set<ProductInShop> products;
 }

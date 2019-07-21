@@ -37,6 +37,8 @@ public abstract class Product {
 	public static final String PRODUCT_AVG_PRICE = "averagePrice";
 	public static final String PRODUCT_MODEL = "model";
 	public static final String PRODUCT_ID = "productId";
+	public static final String PRODUCT_WEIGHT = "weight";
+	public static final String PRODUCT_DTYPE = "dtype";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,6 +50,9 @@ public abstract class Product {
 
 	@Column(name = PRODUCT_MODEL)
 	private String model;
+
+	@Column(name = PRODUCT_WEIGHT)
+	private String weight;
 
 	@ManyToOne
 	@JoinColumn(name = BRAND_ID, nullable = false)

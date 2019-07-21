@@ -18,5 +18,4 @@ public class Part extends Product {
 
 	@Column(name = PART_COLOR)
 	private String color;
-
 }
