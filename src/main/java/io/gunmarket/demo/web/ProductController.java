@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static io.gunmarket.demo.domain.Brand.BRAND_TABLE;
 import static io.gunmarket.demo.domain.Caliber.CALIBER_TABLE;
@@ -32,7 +32,6 @@ import static io.gunmarket.demo.domain.product.Product.PRODUCT_WEIGHT;
 @RestController
 public class ProductController {
 	private final ProductService productService;
-	private final Set<RequestParameter> requestParameters = new HashSet<>();
 	private static final Map<String, Boolean> parameterTypes = new HashMap<String, Boolean>() {{
 		put(PRODUCT_DTYPE, false);
 		put(PRODUCT_MODEL, false);
@@ -54,13 +53,16 @@ public class ProductController {
 
 	@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Product> getAllByParams(@RequestParam Map<String, String> params) {
-		params.entrySet()
+		Set<RequestParameter> requestParameters = params.entrySet()
 				.stream()
 				.filter(param -> parameterTypes.containsKey(param.getKey()))
 				.filter(param -> param.getValue() != null)
-				.forEach(param -> requestParameters.add(
-						new RequestParameter(param.getKey(), param.getValue(), parameterTypes.get(param.getKey()))
-				));
+				.map(param -> new RequestParameter(
+						param.getKey(),
+						param.getValue(),
+						parameterTypes.get(param.getKey())
+				))
+				.collect(Collectors.toSet());
 		return productService.getAllByParameters(requestParameters);
 	}
 }
