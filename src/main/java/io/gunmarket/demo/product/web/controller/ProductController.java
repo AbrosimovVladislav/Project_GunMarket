@@ -3,7 +3,6 @@ package io.gunmarket.demo.product.web.controller;
 import io.gunmarket.demo.product.domain.product.Product;
 import io.gunmarket.demo.product.service.impl.ProductServiceImpl;
 import io.gunmarket.demo.product.web.RequestParameter;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +28,6 @@ import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_MODEL;
 import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_WEIGHT;
 
 
-@Slf4j
 @RestController
 public class ProductController {
 	private final ProductServiceImpl productServiceImpl;
@@ -54,7 +52,6 @@ public class ProductController {
 
 	@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Product> getAllByParams(@RequestParam Map<String, String> params) {
-		log.debug("/products input parameters: {}", params);
 		Set<RequestParameter> requestParameters = params.entrySet()
 				.stream()
 				.filter(param -> parameterTypes.containsKey(param.getKey()))
@@ -65,7 +62,6 @@ public class ProductController {
 						parameterTypes.get(param.getKey())
 				))
 				.collect(Collectors.toSet());
-		log.debug("/products output parameters: {}", requestParameters);
 		return productServiceImpl.getAllByParameters(requestParameters);
 	}
 }
