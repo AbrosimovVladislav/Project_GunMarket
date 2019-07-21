@@ -1,33 +1,31 @@
-package pro.va.gunmarket.domain.product;
+package io.gunmarket.demo.domain.product;
 
+import io.gunmarket.demo.domain.Brand;
+import io.gunmarket.demo.domain.Caliber;
+import io.gunmarket.demo.domain.Type;
+import io.gunmarket.demo.domain.WeaponPlatform;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.stereotype.Component;
-import pro.va.gunmarket.domain.Brand;
-import pro.va.gunmarket.domain.Caliber;
-import pro.va.gunmarket.domain.Type;
-import pro.va.gunmarket.domain.WeaponPlatform;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import static pro.va.gunmarket.domain.Brand.BRAND_ID;
-import static pro.va.gunmarket.domain.Caliber.CALIBER_ID;
-import static pro.va.gunmarket.domain.Type.TYPE_ID;
-import static pro.va.gunmarket.domain.WeaponPlatform.WEAPON_PLATFORM_ID;
-import static pro.va.gunmarket.domain.product.Product.PRODUCT_TABLE;
+import static io.gunmarket.demo.domain.Brand.BRAND_ID;
+import static io.gunmarket.demo.domain.Caliber.CALIBER_ID;
+import static io.gunmarket.demo.domain.Type.TYPE_ID;
+import static io.gunmarket.demo.domain.WeaponPlatform.WEAPON_PLATFORM_ID;
+import static io.gunmarket.demo.domain.product.Product.PRODUCT_TABLE;
 
 
 @Entity
 @Table(name = PRODUCT_TABLE)
-@Component
 @Getter
 @Setter
 @ToString
@@ -38,8 +36,7 @@ public abstract class Product {
 	public static final String PRODUCT_ID = "productId";
 
 	@Id
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = PRODUCT_ID, length = 8, nullable = false)
 	private Long productId;
 
