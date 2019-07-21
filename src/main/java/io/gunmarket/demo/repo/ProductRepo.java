@@ -1,6 +1,6 @@
-package pro.va.gunmarket.repo;
+package io.gunmarket.demo.repo;
 
+import io.gunmarket.demo.domain.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-import pro.va.gunmarket.domain.product.Product;
 
 public interface ProductRepo extends JpaRepository<Product, Long> {}

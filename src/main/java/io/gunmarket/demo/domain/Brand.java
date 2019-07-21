@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gunmarket.demo.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -22,14 +22,12 @@ import static io.gunmarket.demo.domain.Brand.BRAND_TABLE;
 @Getter
 @Setter
 public class Brand {
-
 	public static final String BRAND_TABLE = "brand";
 	public static final String BRAND_ID = "brandId";
 	public static final String BRAND_NAME = "name";
 
 	@Id
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = BRAND_ID, length = 8, nullable = false)
 	private Long brandId;
 

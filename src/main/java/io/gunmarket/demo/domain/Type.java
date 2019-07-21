@@ -1,27 +1,25 @@
-package pro.va.gunmarket.domain;
+package io.gunmarket.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.gunmarket.demo.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.stereotype.Component;
-import pro.va.gunmarket.domain.product.Product;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
 
-import static pro.va.gunmarket.domain.Type.TYPE_TABLE;
+import static io.gunmarket.demo.domain.Type.TYPE_TABLE;
 
 
 @Entity
 @Table(name = TYPE_TABLE)
-@Component
 @Getter
 @Setter
 @ToString
@@ -34,8 +32,7 @@ public class Type {
 	public static final String TYPE_LOWER = "lower";
 
 	@Id
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = TYPE_ID, length = 8, nullable = false)
 	private Long typeId;
 

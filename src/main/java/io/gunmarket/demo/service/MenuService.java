@@ -1,4 +1,4 @@
-package pro.va.gunmarket.service;
+package io.gunmarket.demo.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;

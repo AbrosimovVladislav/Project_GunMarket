@@ -1,26 +1,24 @@
-package pro.va.gunmarket.domain;
+package io.gunmarket.demo.domain;
 
+import io.gunmarket.demo.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.stereotype.Component;
-import pro.va.gunmarket.domain.product.Product;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import static pro.va.gunmarket.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
-import static pro.va.gunmarket.domain.Shop.SHOP_ID;
-import static pro.va.gunmarket.domain.product.Product.PRODUCT_ID;
+import static io.gunmarket.demo.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
+import static io.gunmarket.demo.domain.Shop.SHOP_ID;
+import static io.gunmarket.demo.domain.product.Product.PRODUCT_ID;
 
 
 @Entity
-@Component
 @Table(name = PRODUCT_IN_SHOP_TABLE)
 @Getter
 @Setter
@@ -34,8 +32,7 @@ public class ProductInShop {
 	public static final String PRODUCT_IN_SHOP_LINK = "link";
 
 	@Id
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = PRODUCT_IN_SHOP_ID, length = 8, nullable = false)
 	private Long productInShopId;
 

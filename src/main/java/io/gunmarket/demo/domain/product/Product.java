@@ -2,6 +2,7 @@ package io.gunmarket.demo.domain.product;
 
 import io.gunmarket.demo.domain.Brand;
 import io.gunmarket.demo.domain.Caliber;
+import io.gunmarket.demo.domain.ProductInShop;
 import io.gunmarket.demo.domain.Type;
 import io.gunmarket.demo.domain.WeaponPlatform;
 import lombok.Getter;
@@ -15,7 +16,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.Set;
 
 import static io.gunmarket.demo.domain.Brand.BRAND_ID;
 import static io.gunmarket.demo.domain.Caliber.CALIBER_ID;
@@ -55,10 +58,13 @@ public abstract class Product {
 	private Type type;
 
 	@ManyToOne
-	@JoinColumn(name = CALIBER_ID, nullable = false)
+	@JoinColumn(name = CALIBER_ID)
 	private Caliber caliber;
 
 	@ManyToOne
 	@JoinColumn(name = WEAPON_PLATFORM_ID)
 	private WeaponPlatform weaponPlatform;
+
+	@OneToMany(mappedBy = PRODUCT_TABLE)
+	private Set<ProductInShop> productInShops;
 }
