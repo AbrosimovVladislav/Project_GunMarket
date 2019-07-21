@@ -36,7 +36,6 @@ values ('Ammo', 9,  10, '5.45 hp', null,  null,       null,  'weight', null,    
 insert into product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 values ('Ammo', 10, 10, '5.45 hp', null,  null,       null,  'weight', null,    null,     3, 4,    2, null);
 
-
 insert into shop (address, description, name, website) values ('address1', 'desc1', 'shop-name1', 'www.com.1');
 insert into shop (address, description, name, website) values ('address2', 'desc2', 'shop-name2', 'www.com.2');
 

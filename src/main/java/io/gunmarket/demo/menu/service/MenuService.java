@@ -1,10 +1,11 @@
-package io.gunmarket.demo.service;
+package io.gunmarket.demo.menu.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
+
 
 @Service
 public class MenuService {

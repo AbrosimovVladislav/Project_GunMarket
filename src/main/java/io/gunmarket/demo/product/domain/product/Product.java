@@ -1,10 +1,10 @@
-package io.gunmarket.demo.domain.product;
+package io.gunmarket.demo.product.domain.product;
 
-import io.gunmarket.demo.domain.Brand;
-import io.gunmarket.demo.domain.Caliber;
-import io.gunmarket.demo.domain.ProductInShop;
-import io.gunmarket.demo.domain.Type;
-import io.gunmarket.demo.domain.WeaponPlatform;
+import io.gunmarket.demo.product.domain.Brand;
+import io.gunmarket.demo.product.domain.Caliber;
+import io.gunmarket.demo.product.domain.ProductInShop;
+import io.gunmarket.demo.product.domain.Type;
+import io.gunmarket.demo.product.domain.WeaponPlatform;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,11 +19,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
 
-import static io.gunmarket.demo.domain.Brand.BRAND_ID;
-import static io.gunmarket.demo.domain.Caliber.CALIBER_ID;
-import static io.gunmarket.demo.domain.Type.TYPE_ID;
-import static io.gunmarket.demo.domain.WeaponPlatform.WEAPON_PLATFORM_ID;
-import static io.gunmarket.demo.domain.product.Product.PRODUCT_TABLE;
+import static io.gunmarket.demo.product.domain.Brand.BRAND_ID;
+import static io.gunmarket.demo.product.domain.Caliber.CALIBER_ID;
+import static io.gunmarket.demo.product.domain.Type.TYPE_ID;
+import static io.gunmarket.demo.product.domain.WeaponPlatform.WEAPON_PLATFORM_ID;
+import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_TABLE;
 
 
 @Entity

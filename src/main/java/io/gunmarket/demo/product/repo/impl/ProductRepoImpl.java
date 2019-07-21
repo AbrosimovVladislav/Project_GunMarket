@@ -1,7 +1,8 @@
-package io.gunmarket.demo.repo;
+package io.gunmarket.demo.product.repo.impl;
 
-import io.gunmarket.demo.domain.product.Product;
-import io.gunmarket.demo.web.RequestParameter;
+import io.gunmarket.demo.product.domain.product.Product;
+import io.gunmarket.demo.product.repo.ProductRepo;
+import io.gunmarket.demo.product.web.RequestParameter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
