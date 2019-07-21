@@ -1,7 +1,7 @@
-package io.gunmarket.demo.domain;
+package io.gunmarket.demo.product.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.gunmarket.demo.domain.product.Product;
+import io.gunmarket.demo.product.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,9 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import static io.gunmarket.demo.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
-import static io.gunmarket.demo.domain.Shop.SHOP_ID;
-import static io.gunmarket.demo.domain.product.Product.PRODUCT_ID;
+import static io.gunmarket.demo.product.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
+import static io.gunmarket.demo.product.domain.Shop.SHOP_ID;
+import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_ID;
 
 
 @Entity

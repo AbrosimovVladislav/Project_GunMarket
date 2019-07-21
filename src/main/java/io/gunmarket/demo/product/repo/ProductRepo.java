@@ -1,7 +1,7 @@
-package io.gunmarket.demo.repo;
+package io.gunmarket.demo.product.repo;
 
-import io.gunmarket.demo.domain.product.Product;
-import io.gunmarket.demo.web.RequestParameter;
+import io.gunmarket.demo.product.domain.product.Product;
+import io.gunmarket.demo.product.web.RequestParameter;
 
 import java.util.List;
 import java.util.Set;

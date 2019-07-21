@@ -1,4 +1,4 @@
-package io.gunmarket.demo.domain.product;
+package io.gunmarket.demo.product.domain.product;
 
 import lombok.Getter;
 import lombok.Setter;

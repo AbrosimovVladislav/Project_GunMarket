@@ -1,6 +1,6 @@
-package io.gunmarket.demo.web;
+package io.gunmarket.demo.menu.web.controller;
 
-import io.gunmarket.demo.service.MenuService;
+import io.gunmarket.demo.menu.service.MenuService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
