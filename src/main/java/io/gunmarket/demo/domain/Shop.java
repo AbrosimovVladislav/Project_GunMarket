@@ -22,7 +22,7 @@ import static io.gunmarket.demo.domain.Shop.SHOP_TABLE;
 @Setter
 public class Shop {
 	public static final String SHOP_TABLE = "shop";
-	public static final String SHOP_ID = "shopId";
+	public static final String SHOP_ID = "shop_id";
 	public static final String SHOP_NAME = "name";
 	public static final String SHOP_ADDRESS = "address";
 	public static final String SHOP_WEBSITE = "website";

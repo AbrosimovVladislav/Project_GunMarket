@@ -2,7 +2,6 @@ package io.gunmarket.demo.web;
 
 import io.gunmarket.demo.domain.product.Product;
 import io.gunmarket.demo.service.ProductService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +27,6 @@ import static io.gunmarket.demo.domain.product.Product.PRODUCT_MODEL;
 import static io.gunmarket.demo.domain.product.Product.PRODUCT_WEIGHT;
 
 
-@Slf4j
 @RestController
 public class ProductController {
 	private final ProductService productService;

@@ -23,7 +23,7 @@ import static io.gunmarket.demo.domain.WeaponPlatform.WEAPON_PLATFORM_TABLE;
 @Setter
 public class WeaponPlatform {
 	public static final String WEAPON_PLATFORM_TABLE = "weaponPlatform";
-	public static final String WEAPON_PLATFORM_ID = "weaponPlatformId";
+	public static final String WEAPON_PLATFORM_ID = "weaponPlatform_id";
 	public static final String WEAPON_PLATFORM_NAME = "name";
 
 	@Id

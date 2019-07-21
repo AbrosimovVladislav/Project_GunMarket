@@ -23,7 +23,7 @@ import static io.gunmarket.demo.domain.Brand.BRAND_TABLE;
 @Setter
 public class Brand {
 	public static final String BRAND_TABLE = "brand";
-	public static final String BRAND_ID = "brandId";
+	public static final String BRAND_ID = "brand_id";
 	public static final String BRAND_NAME = "name";
 
 	@Id
@@ -37,12 +37,4 @@ public class Brand {
 	@JsonIgnore
 	@OneToMany(mappedBy = BRAND_TABLE)
 	private Set<Product> products;
-
-	public Brand() {
-	}
-
-	public Brand(String name, Set<Product> products) {
-		this.name = name;
-		this.products = products;
-	}
 }

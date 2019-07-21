@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gunmarket.demo.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,10 +21,9 @@ import static io.gunmarket.demo.domain.Type.TYPE_TABLE;
 @Table(name = TYPE_TABLE)
 @Getter
 @Setter
-@ToString
 public class Type {
 	public static final String TYPE_TABLE = "type";
-	public static final String TYPE_ID = "typeId";
+	public static final String TYPE_ID = "type_id";
 	public static final String TYPE_NAME = "name";
 	public static final String TYPE_UPPER = "upper";
 	public static final String TYPE_MEDIUM = "medium";
@@ -48,13 +46,4 @@ public class Type {
 	@JsonIgnore
 	@OneToMany(mappedBy = TYPE_TABLE)
 	private Set<Product> products;
-
-	public Type() {}
-
-	public Type(String upper, String medium, String lower, Set<Product> products) {
-		this.upper = upper;
-		this.medium = medium;
-		this.lower = lower;
-		this.products = products;
-	}
 }

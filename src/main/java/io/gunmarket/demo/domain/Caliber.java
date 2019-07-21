@@ -23,7 +23,7 @@ import static io.gunmarket.demo.domain.Caliber.CALIBER_TABLE;
 @Setter
 public class Caliber {
 	public static final String CALIBER_TABLE = "caliber";
-	public static final String CALIBER_ID = "caliberId";
+	public static final String CALIBER_ID = "caliber_id";
 	public static final String CALIBER_VALUE = "value";
 
 	@Id
@@ -37,10 +37,4 @@ public class Caliber {
 	@JsonIgnore
 	@OneToMany(mappedBy = CALIBER_TABLE)
 	private Set<Product> products;
-
-	public Caliber() {}
-
-	public Caliber(String value) {
-		this.value = value;
-	}
 }

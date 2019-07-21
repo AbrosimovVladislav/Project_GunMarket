@@ -60,32 +60,4 @@ public class ProductInShop {
 
 	@Column(name = PRODUCT_IN_SHOP_LINK, nullable = false)
 	private String link;
-
-	public ProductInShop() {
-	}
-
-	public ProductInShop(Product product, Shop shop, double price, boolean inStock, String link) {
-		this.product = product;
-		this.shop = shop;
-		this.price = price;
-		this.inStock = inStock;
-		this.link = link;
-	}
-
-	public ProductInShop(
-			Product product,
-			Shop shop,
-			double price,
-			int sale,
-			boolean inStock,
-			String additionalInfo,
-			String link) {
-		this.product = product;
-		this.shop = shop;
-		this.price = price;
-		this.sale = sale;
-		this.inStock = inStock;
-		this.additionalInfo = additionalInfo;
-		this.link = link;
-	}
 }
