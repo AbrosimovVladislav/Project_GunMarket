@@ -1,9 +1,11 @@
 package io.gunmarket.demo.product.web;
 
 import lombok.Getter;
+import lombok.ToString;
 
 
 @Getter
+@ToString
 public class RequestParameter {
 	private static final String idPostfix = "_id";
 	private final String name;

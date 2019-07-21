@@ -7,6 +7,7 @@ import io.gunmarket.demo.product.domain.Type;
 import io.gunmarket.demo.product.domain.WeaponPlatform;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,6 +31,7 @@ import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_TABLE;
 @Table(name = PRODUCT_TABLE)
 @Getter
 @Setter
+@ToString
 public abstract class Product {
 	public static final String PRODUCT_TABLE = "product";
 	public static final String PRODUCT_AVG_PRICE = "averagePrice";

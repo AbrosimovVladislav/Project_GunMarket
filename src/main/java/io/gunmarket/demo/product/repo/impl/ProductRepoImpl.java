@@ -22,7 +22,10 @@ public class ProductRepoImpl implements ProductRepo {
 	@Override
 	public List<Product> findAllByParameters(Set<RequestParameter> requestParams) {
 		String nativeQuery = buildNativeQueryByParams(requestParams);
-		return entityManager.createQuery(nativeQuery).getResultList();
+		log.debug("Native query: {}", nativeQuery);
+		List resultList = entityManager.createQuery(nativeQuery).getResultList();
+		log.debug("Result product list: {}", resultList);
+		return resultList;
 	}
 
 	private String buildNativeQueryByParams(Set<RequestParameter> parameters) {

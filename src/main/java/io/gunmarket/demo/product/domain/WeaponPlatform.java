@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gunmarket.demo.product.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ import static io.gunmarket.demo.product.domain.WeaponPlatform.WEAPON_PLATFORM_TA
 @Table(name = WEAPON_PLATFORM_TABLE)
 @Getter
 @Setter
+@ToString(exclude = {"products"})
 public class WeaponPlatform {
 	public static final String WEAPON_PLATFORM_TABLE = "weaponPlatform";
 	public static final String WEAPON_PLATFORM_ID = "weaponPlatform_id";

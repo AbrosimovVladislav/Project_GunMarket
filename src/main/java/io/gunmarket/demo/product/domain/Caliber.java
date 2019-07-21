@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gunmarket.demo.product.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ import static io.gunmarket.demo.product.domain.Caliber.CALIBER_TABLE;
 @Table(name = CALIBER_TABLE)
 @Getter
 @Setter
+@ToString(exclude = {"products"})
 public class Caliber {
 	public static final String CALIBER_TABLE = "caliber";
 	public static final String CALIBER_ID = "caliber_id";

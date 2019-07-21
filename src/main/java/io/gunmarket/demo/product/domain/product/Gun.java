@@ -2,6 +2,7 @@ package io.gunmarket.demo.product.domain.product;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Entity;
 @Entity
 @Getter
 @Setter
+@ToString(callSuper = true)
 public class Gun extends Product {
 	public static final String GUN_CAPACITY = "capacity";
 	public static final String GUN_TOTAL_LENGTH = "totalLength";
