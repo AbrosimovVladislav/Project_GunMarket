@@ -7,7 +7,9 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -43,23 +45,35 @@ public class FirstParser {
 
 	private static final String item0 = prefix + "/s/1249/aksessuary_dlya_oruzhiya.html";
 
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		FirstParser firstParser = new FirstParser();
-		Set<ArmsLineProduct> collect = Set.of(item1, item2, item3, item4, item5, item6, item7, item8, item9, item0)
+		Map<String, String> categories = new HashMap<>();
+		categories.put(item1, "cat1");
+		categories.put(item2, "cat1");
+		categories.put(item3, "cat1");
+		categories.put(item4, "cat1");
+		categories.put(item5, "cat1");
+		categories.put(item6, "cat1");
+		categories.put(item7, "cat1");
+		categories.put(item8, "cat1");
+		categories.put(item9, "cat1");
+		categories.put(item0, "cat1");
+
+		Set<ArmsLineProduct> collect = categories.entrySet()
 				.stream()
-				.map(firstParser::getProductsFromCategory)
+				.map(e -> firstParser.getProductsFromCategory(e.getKey(), e.getValue()))
 				.flatMap(Collection::stream)
 				.collect(Collectors.toSet());
 
 		System.out.println(collect.size());
 	}
 
-	public List<ArmsLineProduct> getProductsFromCategory(String categoryUrl) {
+	public List<ArmsLineProduct> getProductsFromCategory(String categoryUrl, String categoryName) {
 		int totalQuantityProducts = getQuantityOfCategory(categoryUrl);
 		return Stream.iterate(0, current -> current + pageSize)
 				.limit(totalQuantityProducts / pageSize)
 				.map(offset -> categoryUrl + postfix + offset)
-				.map(this::parseArmsLinePage)
+				.map(resultCategoryUrl -> parseArmsLinePage(resultCategoryUrl, categoryName))
 				.flatMap(Collection::stream)
 				.collect(Collectors.toList());
 	}
@@ -77,7 +91,7 @@ public class FirstParser {
 		return Integer.valueOf(hrefVal.substring(hrefVal.indexOf('=') + 1));
 	}
 
-	public List<ArmsLineProduct> parseArmsLinePage(String pageUrl) {
+	public List<ArmsLineProduct> parseArmsLinePage(String pageUrl, String categoryName) {
 		Document doc;
 		try {
 			doc = Jsoup.connect(pageUrl).get();
@@ -89,7 +103,7 @@ public class FirstParser {
 			String link = element.select("a").attr("href");
 			String price = element.select("strong").text();
 			String inStock = element.select("span").text();
-			return new ArmsLineProduct(name, link, price, inStock);
+			return new ArmsLineProduct(name, link, price, inStock, categoryName);
 		}).peek(System.out::println).collect(Collectors.toList());
 	}
 
