@@ -1,7 +1,7 @@
 package io.gunmarket.demo.product.repo.impl;
 
 import io.gunmarket.demo.product.domain.product.Product;
-import io.gunmarket.demo.product.repo.ProductRepo;
+import io.gunmarket.demo.product.repo.CustomProductRepo;
 import io.gunmarket.demo.product.web.RequestParameter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -15,7 +15,7 @@ import java.util.StringJoiner;
 
 @Slf4j
 @Repository
-public class ProductRepoImpl implements ProductRepo {
+public class CustomProductRepoImpl implements CustomProductRepo {
 	@PersistenceContext private EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")

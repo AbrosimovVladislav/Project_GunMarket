@@ -1,8 +1,12 @@
-package io.gunmarket.demo.dbUpdater.parser;
+package io.gunmarket.demo.dbUpdater.shop.armsline;
 
+import io.gunmarket.demo.dbUpdater.mapper.ProductInShopMapper;
+import io.gunmarket.demo.dbUpdater.repo.ProductInShopRepo;
+import io.gunmarket.demo.product.domain.ProductInShop;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -14,10 +18,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * http://armsline.ru/ http://armsline.ru/s/43/oruzhie_samooborony.html
- */
-public class FirstParser {
+@Component
+public class ArmsLineParser {
 
 	private static final String prefix = "http://armsline.ru";
 
@@ -45,8 +47,15 @@ public class FirstParser {
 
 	private static final String item0 = prefix + "/s/1249/aksessuary_dlya_oruzhiya.html";
 
-	public static void main(String[] args) {
-		FirstParser firstParser = new FirstParser();
+	private final ProductInShopRepo productInShopRepo;
+	private final ProductInShopMapper productInShopMapper;
+
+	public ArmsLineParser(ProductInShopRepo productInShopRepo, ProductInShopMapper productInShopMapper) {
+		this.productInShopRepo = productInShopRepo;
+		this.productInShopMapper = productInShopMapper;
+	}
+
+	public List<ProductInShop> updateArmsLineContent() {
 		Map<String, String> categories = new HashMap<>();
 		categories.put(item1, "cat1");
 		categories.put(item2, "cat1");
@@ -61,14 +70,16 @@ public class FirstParser {
 
 		Set<ArmsLineProduct> collect = categories.entrySet()
 				.stream()
-				.map(e -> firstParser.getProductsFromCategory(e.getKey(), e.getValue()))
+				.map(e -> getProductsFromCategory(e.getKey(), e.getValue()))
 				.flatMap(Collection::stream)
 				.collect(Collectors.toSet());
 
-		System.out.println(collect.size());
+		List<ProductInShop> productInShops = productInShopMapper.fromArmsLine(collect);
+
+		return productInShopRepo.saveAll(productInShops);
 	}
 
-	public List<ArmsLineProduct> getProductsFromCategory(String categoryUrl, String categoryName) {
+	private List<ArmsLineProduct> getProductsFromCategory(String categoryUrl, String categoryName) {
 		int totalQuantityProducts = getQuantityOfCategory(categoryUrl);
 		return Stream.iterate(0, current -> current + pageSize)
 				.limit(totalQuantityProducts / pageSize)
@@ -78,7 +89,7 @@ public class FirstParser {
 				.collect(Collectors.toList());
 	}
 
-	public int getQuantityOfCategory(String categoryUrl) {
+	private int getQuantityOfCategory(String categoryUrl) {
 		Document doc;
 		try {
 			doc = Jsoup.connect(categoryUrl).get();
@@ -91,7 +102,7 @@ public class FirstParser {
 		return Integer.valueOf(hrefVal.substring(hrefVal.indexOf('=') + 1));
 	}
 
-	public List<ArmsLineProduct> parseArmsLinePage(String pageUrl, String categoryName) {
+	private List<ArmsLineProduct> parseArmsLinePage(String pageUrl, String categoryName) {
 		Document doc;
 		try {
 			doc = Jsoup.connect(pageUrl).get();

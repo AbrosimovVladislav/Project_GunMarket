@@ -1,8 +1,10 @@
 package io.gunmarket.demo.product.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.gunmarket.demo.product.domain.product.Product;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -19,19 +21,27 @@ import static io.gunmarket.demo.product.domain.ProductInShop.PRODUCT_IN_SHOP_TAB
 import static io.gunmarket.demo.product.domain.Shop.SHOP_ID;
 import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_ID;
 
-
 @Entity
 @Table(name = PRODUCT_IN_SHOP_TABLE)
+@NoArgsConstructor
 @Getter
 @Setter
 @ToString(exclude = {"product"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProductInShop {
+
 	public static final String PRODUCT_IN_SHOP_ID = "productInShopId";
+
 	public static final String PRODUCT_IN_SHOP_TABLE = "productInShop";
+
 	public static final String PRODUCT_IN_SHOP_PRICE = "price";
+
 	public static final String PRODUCT_IN_SHOP_SALE = "sale";
+
 	public static final String PRODUCT_IN_SHOP_IN_STOCK = "inStock";
+
 	public static final String PRODUCT_IN_SHOP_ADDITIONAL_INFO = "additionalInfo";
+
 	public static final String PRODUCT_IN_SHOP_LINK = "link";
 
 	@Id
@@ -62,4 +72,14 @@ public class ProductInShop {
 
 	@Column(name = PRODUCT_IN_SHOP_LINK, nullable = false)
 	private String link;
+
+	public ProductInShop(Product product, Shop shop, double price, boolean inStock, String link, int sale) {
+		this.product = product;
+		this.shop = shop;
+		this.price = price;
+		this.inStock = inStock;
+		this.link = link;
+		this.sale = sale;
+	}
+
 }
