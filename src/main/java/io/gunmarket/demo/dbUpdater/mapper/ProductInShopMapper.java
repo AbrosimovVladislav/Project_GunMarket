@@ -25,16 +25,18 @@ public class ProductInShopMapper {
 	}
 
 	public List<ProductInShop> fromArmsLine(Collection<ArmsLineProduct> armsLineProducts) {
-		return armsLineProducts.stream().map(e -> {
-			Product product = getProductByMatch(e);
-			Shop shop = getShopById(e);
-			double price = e.getPrice();
-			double salePrice = e.getSalePrice();
-			boolean inStock = e.isInStock();
-			String link = e.getLink();
-			int sale = (int) ((1.0 - salePrice / price) * 100.0);
-			return new ProductInShop(product, shop, price, inStock, link, sale);
-		}).collect(Collectors.toList());
+		return armsLineProducts.stream()
+				.map(e -> {
+					Product product = getProductByMatch(e);
+					Shop shop = getShopById(e);
+					double price = e.getPrice();
+					double salePrice = e.getSalePrice();
+					boolean inStock = e.isInStock();
+					String link = e.getLink();
+					int sale = (int) ((1.0 - salePrice / price) * 100.0);
+					return new ProductInShop(product, shop, price, inStock, link, sale);
+				})
+				.collect(Collectors.toList());
 	}
 
 	private Product getProductByMatch(ArmsLineProduct armsLineProduct) {
@@ -44,5 +46,4 @@ public class ProductInShopMapper {
 	private Shop getShopById(ArmsLineProduct armsLineProduct) {
 		return shopRepo.getOne(1L);
 	}
-
 }

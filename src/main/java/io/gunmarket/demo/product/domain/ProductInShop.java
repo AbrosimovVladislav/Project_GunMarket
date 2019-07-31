@@ -29,19 +29,12 @@ import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_ID;
 @ToString(exclude = {"product"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProductInShop {
-
 	public static final String PRODUCT_IN_SHOP_ID = "productInShopId";
-
 	public static final String PRODUCT_IN_SHOP_TABLE = "productInShop";
-
 	public static final String PRODUCT_IN_SHOP_PRICE = "price";
-
 	public static final String PRODUCT_IN_SHOP_SALE = "sale";
-
 	public static final String PRODUCT_IN_SHOP_IN_STOCK = "inStock";
-
 	public static final String PRODUCT_IN_SHOP_ADDITIONAL_INFO = "additionalInfo";
-
 	public static final String PRODUCT_IN_SHOP_LINK = "link";
 
 	@Id
@@ -81,5 +74,4 @@ public class ProductInShop {
 		this.link = link;
 		this.sale = sale;
 	}
-
 }
