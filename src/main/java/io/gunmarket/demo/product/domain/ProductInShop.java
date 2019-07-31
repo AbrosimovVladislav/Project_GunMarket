@@ -10,8 +10,6 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -38,9 +36,8 @@ public class ProductInShop {
 	public static final String PRODUCT_IN_SHOP_LINK = "link";
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = PRODUCT_IN_SHOP_ID, length = 8, nullable = false)
-	private Long productInShopId;
+	@Column(name = PRODUCT_IN_SHOP_ID, nullable = false)
+	private String productInShopId;
 
 	@JsonIgnore
 	@ManyToOne
@@ -67,6 +64,7 @@ public class ProductInShop {
 	private String link;
 
 	public ProductInShop(Product product, Shop shop, double price, boolean inStock, String link, int sale) {
+		this.productInShopId = product.getProductId() + ":" + shop.getShopId();
 		this.product = product;
 		this.shop = shop;
 		this.price = price;
