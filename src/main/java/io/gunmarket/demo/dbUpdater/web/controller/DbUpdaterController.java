@@ -1,6 +1,6 @@
 package io.gunmarket.demo.dbUpdater.web.controller;
 
-import io.gunmarket.demo.dbUpdater.shop.armsline.ArmsLineParser;
+import io.gunmarket.demo.dbUpdater.shop.armsline.ArmsLineUpdater;
 import io.gunmarket.demo.product.domain.ProductInShop;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,14 +11,14 @@ import java.util.List;
 
 @RestController
 public class DbUpdaterController {
-	private final ArmsLineParser armsLineParser;
+	private final ArmsLineUpdater armsLineUpdater;
 
-	public DbUpdaterController(ArmsLineParser armsLineParser) {
-		this.armsLineParser = armsLineParser;
+	public DbUpdaterController(ArmsLineUpdater armsLineUpdater) {
+		this.armsLineUpdater = armsLineUpdater;
 	}
 
 	@GetMapping(value = "/updateProductInShop/{parserName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<ProductInShop> updateByParserName(@PathVariable String parserName) {
-		return armsLineParser.updateArmsLineContent();
+		return armsLineUpdater.updateArmsLineContent();
 	}
 }

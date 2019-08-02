@@ -1,4 +1,4 @@
-package io.gunmarket.demo.dbUpdater;
+package io.gunmarket.demo.dbUpdater.mapper;
 
 import io.gunmarket.demo.dbUpdater.shop.armsline.ArmsLineProduct;
 import io.gunmarket.demo.product.domain.ProductInShop;
@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class ProductInShopMapper {
 
 	private final ProductRepo productRepo;
-
 	private final ShopRepo shopRepo;
 
 	public ProductInShopMapper(ProductRepo productRepo, ShopRepo shopRepo) {
@@ -42,7 +41,6 @@ public class ProductInShopMapper {
 	//ToDO Реализовать метод по полнотекстовому матчу
 	private Product getProductByMatch(ArmsLineProduct armsLineProduct) {
 		Product product = productRepo.getOne(1L);
-		product.setProductId((long) (Math.random()*Math.random()*100));
 		return product;
 	}
 

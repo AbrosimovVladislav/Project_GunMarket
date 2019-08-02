@@ -18,6 +18,7 @@ public class ArmsLineParser {
 	private static final String postfix = "?&from=";
 	private static final int pageSize = 20;
 
+	//ToDo Сделать патроны для допарсинга
 	List<ArmsLineProduct> getProductsFromCategory(String categoryUrl, String categoryName) {
 		int totalQuantityProducts = getQuantityOfCategory(categoryUrl);
 		return Stream.iterate(0, current -> current + pageSize)

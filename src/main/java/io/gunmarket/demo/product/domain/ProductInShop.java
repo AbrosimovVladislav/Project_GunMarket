@@ -51,6 +51,7 @@ public class ProductInShop {
 	@Column(name = PRODUCT_IN_SHOP_PRICE, nullable = false)
 	private double price;
 
+	//ToDO выставить ограничение по скидке
 	@Column(name = PRODUCT_IN_SHOP_SALE)
 	private int sale;
 
