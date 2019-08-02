@@ -5,17 +5,23 @@ import lombok.Getter;
 import lombok.ToString;
 import org.springframework.util.StringUtils;
 
-
 @Getter
 @ToString
 @EqualsAndHashCode
 public class ArmsLineProduct {
+
 	public final static String shopName = "ArmsLine";
+
 	private final String category;
+
 	private final String name;
+
 	private final String link;
+
 	private final double price;
+
 	private final double salePrice;
+
 	private final boolean inStock;
 
 	// TODO: extract logic from constructor
@@ -28,8 +34,8 @@ public class ArmsLineProduct {
 			this.price = 0;
 			this.salePrice = this.price;
 		} else if (StringUtils.countOccurrencesOf(preparedPriceString, ".") == 2) {
-			int dotIndexPlusTwo = preparedPriceString.indexOf('.')+2;
-			this.price = Double.valueOf(preparedPriceString.substring(0,dotIndexPlusTwo));
+			int dotIndexPlusTwo = preparedPriceString.indexOf('.') + 2;
+			this.price = Double.valueOf(preparedPriceString.substring(0, dotIndexPlusTwo));
 			this.salePrice = Double.valueOf(preparedPriceString.substring(dotIndexPlusTwo));
 		} else {
 			this.price = Double.valueOf(preparedPriceString);
@@ -37,4 +43,5 @@ public class ArmsLineProduct {
 		}
 		this.inStock = "есть".equalsIgnoreCase(inStock);
 	}
+
 }

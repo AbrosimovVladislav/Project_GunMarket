@@ -1,11 +1,11 @@
-package io.gunmarket.demo.dbUpdater.mapper;
+package io.gunmarket.demo.dbUpdater;
 
-import io.gunmarket.demo.dbUpdater.repo.ShopRepo;
 import io.gunmarket.demo.dbUpdater.shop.armsline.ArmsLineProduct;
 import io.gunmarket.demo.product.domain.ProductInShop;
 import io.gunmarket.demo.product.domain.Shop;
 import io.gunmarket.demo.product.domain.product.Product;
 import io.gunmarket.demo.product.repo.ProductRepo;
+import io.gunmarket.demo.product.repo.ShopRepo;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -39,8 +39,11 @@ public class ProductInShopMapper {
 				.collect(Collectors.toList());
 	}
 
+	//ToDO Реализовать метод по полнотекстовому матчу
 	private Product getProductByMatch(ArmsLineProduct armsLineProduct) {
-		return productRepo.getOne(1L);
+		Product product = productRepo.getOne(1L);
+		product.setProductId((long) (Math.random()*Math.random()*100));
+		return product;
 	}
 
 	private Shop getShopById(ArmsLineProduct armsLineProduct) {

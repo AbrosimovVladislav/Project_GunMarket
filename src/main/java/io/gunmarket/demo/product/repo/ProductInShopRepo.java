@@ -1,4 +1,4 @@
-package io.gunmarket.demo.dbUpdater.repo;
+package io.gunmarket.demo.product.repo;
 
 import io.gunmarket.demo.product.domain.ProductInShop;
 import org.springframework.data.jpa.repository.JpaRepository;
