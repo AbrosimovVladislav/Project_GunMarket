@@ -1,15 +1,15 @@
 package io.gunmarket.demo.product.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.gunmarket.demo.product.domain.product.Product;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,12 +19,13 @@ import static io.gunmarket.demo.product.domain.ProductInShop.PRODUCT_IN_SHOP_TAB
 import static io.gunmarket.demo.product.domain.Shop.SHOP_ID;
 import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_ID;
 
-
 @Entity
 @Table(name = PRODUCT_IN_SHOP_TABLE)
+@NoArgsConstructor
 @Getter
 @Setter
 @ToString(exclude = {"product"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProductInShop {
 	public static final String PRODUCT_IN_SHOP_ID = "productInShopId";
 	public static final String PRODUCT_IN_SHOP_TABLE = "productInShop";
@@ -35,9 +36,8 @@ public class ProductInShop {
 	public static final String PRODUCT_IN_SHOP_LINK = "link";
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = PRODUCT_IN_SHOP_ID, length = 8, nullable = false)
-	private Long productInShopId;
+	@Column(name = PRODUCT_IN_SHOP_ID, nullable = false)
+	private String productInShopId;
 
 	@JsonIgnore
 	@ManyToOne
@@ -51,6 +51,7 @@ public class ProductInShop {
 	@Column(name = PRODUCT_IN_SHOP_PRICE, nullable = false)
 	private double price;
 
+	//ToDO выставить ограничение по скидке
 	@Column(name = PRODUCT_IN_SHOP_SALE)
 	private int sale;
 
@@ -62,4 +63,14 @@ public class ProductInShop {
 
 	@Column(name = PRODUCT_IN_SHOP_LINK, nullable = false)
 	private String link;
+
+	public ProductInShop(Product product, Shop shop, double price, boolean inStock, String link, int sale) {
+		this.productInShopId = product.getProductId() + ":" + shop.getShopId();
+		this.product = product;
+		this.shop = shop;
+		this.price = price;
+		this.inStock = inStock;
+		this.link = link;
+		this.sale = sale;
+	}
 }

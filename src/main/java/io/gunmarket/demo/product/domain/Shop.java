@@ -1,6 +1,7 @@
 package io.gunmarket.demo.product.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,7 @@ import static io.gunmarket.demo.product.domain.Shop.SHOP_TABLE;
 @Table(name = SHOP_TABLE)
 @Getter
 @Setter
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Shop {
 	public static final String SHOP_TABLE = "shop";
 	public static final String SHOP_ID = "shop_id";

@@ -36,14 +36,26 @@ public abstract class Product {
 	public static final String PRODUCT_TABLE = "product";
 	public static final String PRODUCT_AVG_PRICE = "averagePrice";
 	public static final String PRODUCT_MODEL = "model";
-	public static final String PRODUCT_ID = "product_id";
+	public static final String PRODUCT_ID = "productId";
 	public static final String PRODUCT_WEIGHT = "weight";
 	public static final String PRODUCT_DTYPE = "dtype";
+	public static final String PRODUCT_INFO = "info";
+	public static final String PRODUCT_LINK = "link";
+	public static final String PRODUCT_IMAGE_LINK = "imageLink";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = PRODUCT_ID, length = 8, nullable = false)
 	private Long productId;
+
+	@Column(name = PRODUCT_INFO)
+	private String info;
+
+	@Column(name = PRODUCT_LINK)
+	private String link;
+
+	@Column(name = PRODUCT_IMAGE_LINK)
+	private String imageLink;
 
 	@Column(name = PRODUCT_AVG_PRICE)
 	private double averagePrice;

@@ -1,12 +1,9 @@
 package io.gunmarket.demo.product.repo;
 
 import io.gunmarket.demo.product.domain.product.Product;
-import io.gunmarket.demo.product.web.RequestParameter;
-
-import java.util.List;
-import java.util.Set;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface ProductRepo {
-	List<Product> findAllByParameters(Set<RequestParameter> requestParams);
+public interface ProductRepo extends JpaRepository<Product, Long>, CustomProductRepo {
+
 }

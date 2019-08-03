@@ -20,6 +20,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<postgres.version>42.2.6</postgres.version>
+		<jsoup.version>1.12.1</jsoup.version>
 	</properties>
 
 	<dependencies>
@@ -47,11 +48,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>${postgres.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>${jsoup.version}</version>
 		</dependency>
 	</dependencies>
 
