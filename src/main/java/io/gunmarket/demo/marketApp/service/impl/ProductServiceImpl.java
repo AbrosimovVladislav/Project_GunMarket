@@ -1,9 +1,9 @@
-package io.gunmarket.demo.product.service.impl;
+package io.gunmarket.demo.marketApp.service.impl;
 
-import io.gunmarket.demo.product.domain.product.Product;
-import io.gunmarket.demo.product.repo.ProductRepo;
-import io.gunmarket.demo.product.service.ProductService;
-import io.gunmarket.demo.product.web.RequestParameter;
+import io.gunmarket.demo.marketApp.domain.product.Product;
+import io.gunmarket.demo.marketApp.repo.product.ProductRepo;
+import io.gunmarket.demo.marketApp.service.ProductService;
+import io.gunmarket.demo.marketApp.web.RequestParameter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

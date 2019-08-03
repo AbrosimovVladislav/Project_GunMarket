@@ -1,4 +1,4 @@
-package io.gunmarket.demo.product.domain;
+package io.gunmarket.demo.marketApp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
 
-import static io.gunmarket.demo.product.domain.Shop.SHOP_TABLE;
+import static io.gunmarket.demo.marketApp.domain.Shop.SHOP_TABLE;
 
 
 @Entity

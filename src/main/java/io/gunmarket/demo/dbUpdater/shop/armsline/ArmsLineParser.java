@@ -49,7 +49,7 @@ public class ArmsLineParser {
 		} catch (IOException e) {
 			throw new UncheckedIOException(e);
 		}
-		return doc.body().getElementsByClass("product").stream().map(element -> {
+		return doc.body().getElementsByClass("marketApp").stream().map(element -> {
 			String name = element.select("a").text();
 			String link = element.select("a").attr("href");
 			String price = element.select("strong").text();

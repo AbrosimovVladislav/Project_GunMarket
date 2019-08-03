@@ -1,11 +1,11 @@
 package io.gunmarket.demo.dbUpdater.mapper;
 
 import io.gunmarket.demo.dbUpdater.shop.armsline.ArmsLineProduct;
-import io.gunmarket.demo.product.domain.ProductInShop;
-import io.gunmarket.demo.product.domain.Shop;
-import io.gunmarket.demo.product.domain.product.Product;
-import io.gunmarket.demo.product.repo.ProductRepo;
-import io.gunmarket.demo.product.repo.ShopRepo;
+import io.gunmarket.demo.marketApp.domain.ProductInShop;
+import io.gunmarket.demo.marketApp.domain.Shop;
+import io.gunmarket.demo.marketApp.domain.product.Product;
+import io.gunmarket.demo.marketApp.repo.ShopRepo;
+import io.gunmarket.demo.marketApp.repo.product.ProductRepo;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;

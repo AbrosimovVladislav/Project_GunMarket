@@ -1,7 +1,7 @@
 package io.gunmarket.demo.dbUpdater.web.controller;
 
 import io.gunmarket.demo.dbUpdater.shop.armsline.ArmsLineUpdater;
-import io.gunmarket.demo.product.domain.ProductInShop;
+import io.gunmarket.demo.marketApp.domain.ProductInShop;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

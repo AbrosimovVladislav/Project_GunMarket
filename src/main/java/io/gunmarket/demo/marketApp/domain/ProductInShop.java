@@ -1,8 +1,8 @@
-package io.gunmarket.demo.product.domain;
+package io.gunmarket.demo.marketApp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.gunmarket.demo.product.domain.product.Product;
+import io.gunmarket.demo.marketApp.domain.product.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,16 +15,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import static io.gunmarket.demo.product.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
-import static io.gunmarket.demo.product.domain.Shop.SHOP_ID;
-import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_ID;
+import static io.gunmarket.demo.marketApp.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
+import static io.gunmarket.demo.marketApp.domain.Shop.SHOP_ID;
+import static io.gunmarket.demo.marketApp.domain.product.Product.PRODUCT_ID;
 
 @Entity
 @Table(name = PRODUCT_IN_SHOP_TABLE)
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = {"product"})
+@ToString(exclude = {"marketApp"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProductInShop {
 	public static final String PRODUCT_IN_SHOP_ID = "productInShopId";

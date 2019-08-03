@@ -1,10 +1,10 @@
-package io.gunmarket.demo.product.domain.product;
+package io.gunmarket.demo.marketApp.domain.product;
 
-import io.gunmarket.demo.product.domain.Brand;
-import io.gunmarket.demo.product.domain.Caliber;
-import io.gunmarket.demo.product.domain.ProductInShop;
-import io.gunmarket.demo.product.domain.Type;
-import io.gunmarket.demo.product.domain.WeaponPlatform;
+import io.gunmarket.demo.marketApp.domain.Brand;
+import io.gunmarket.demo.marketApp.domain.Caliber;
+import io.gunmarket.demo.marketApp.domain.ProductInShop;
+import io.gunmarket.demo.marketApp.domain.Type;
+import io.gunmarket.demo.marketApp.domain.WeaponPlatform;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -20,11 +20,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
 
-import static io.gunmarket.demo.product.domain.Brand.BRAND_ID;
-import static io.gunmarket.demo.product.domain.Caliber.CALIBER_ID;
-import static io.gunmarket.demo.product.domain.Type.TYPE_ID;
-import static io.gunmarket.demo.product.domain.WeaponPlatform.WEAPON_PLATFORM_ID;
-import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_TABLE;
+import static io.gunmarket.demo.marketApp.domain.Brand.BRAND_ID;
+import static io.gunmarket.demo.marketApp.domain.Caliber.CALIBER_ID;
+import static io.gunmarket.demo.marketApp.domain.Type.TYPE_ID;
+import static io.gunmarket.demo.marketApp.domain.WeaponPlatform.WEAPON_PLATFORM_ID;
+import static io.gunmarket.demo.marketApp.domain.product.Product.PRODUCT_TABLE;
 
 
 @Entity
@@ -33,7 +33,7 @@ import static io.gunmarket.demo.product.domain.product.Product.PRODUCT_TABLE;
 @Setter
 @ToString
 public abstract class Product {
-	public static final String PRODUCT_TABLE = "product";
+	public static final String PRODUCT_TABLE = "marketApp";
 	public static final String PRODUCT_AVG_PRICE = "averagePrice";
 	public static final String PRODUCT_MODEL = "model";
 	public static final String PRODUCT_ID = "productId";

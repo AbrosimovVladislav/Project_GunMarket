@@ -1,6 +1,6 @@
-package io.gunmarket.demo.product.repo;
+package io.gunmarket.demo.marketApp.repo;
 
-import io.gunmarket.demo.product.domain.ProductInShop;
+import io.gunmarket.demo.marketApp.domain.ProductInShop;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

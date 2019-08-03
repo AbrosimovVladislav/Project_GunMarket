@@ -1,7 +1,7 @@
-package io.gunmarket.demo.product.domain;
+package io.gunmarket.demo.marketApp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.gunmarket.demo.product.domain.product.Product;
+import io.gunmarket.demo.marketApp.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
 
-import static io.gunmarket.demo.product.domain.Brand.BRAND_TABLE;
+import static io.gunmarket.demo.marketApp.domain.Brand.BRAND_TABLE;
 
 
 @Entity

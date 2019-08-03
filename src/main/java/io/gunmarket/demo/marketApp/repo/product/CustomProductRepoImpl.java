@@ -1,8 +1,7 @@
-package io.gunmarket.demo.product.repo.impl;
+package io.gunmarket.demo.marketApp.repo.product;
 
-import io.gunmarket.demo.product.domain.product.Product;
-import io.gunmarket.demo.product.repo.ProductRepo;
-import io.gunmarket.demo.product.web.RequestParameter;
+import io.gunmarket.demo.marketApp.domain.product.Product;
+import io.gunmarket.demo.marketApp.web.RequestParameter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -12,11 +11,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
 
-
 @Slf4j
 @Repository
 public class CustomProductRepoImpl implements CustomProductRepo {
-	@PersistenceContext private EntityManager entityManager;
+
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -24,7 +24,7 @@ public class CustomProductRepoImpl implements CustomProductRepo {
 		String nativeQuery = buildNativeQueryByParams(requestParams);
 		log.debug("Native query: {}", nativeQuery);
 		List resultList = entityManager.createQuery(nativeQuery).getResultList();
-		log.debug("Result product list: {}", resultList);
+		log.debug("Result marketApp list: {}", resultList);
 		return resultList;
 	}
 
@@ -33,4 +33,5 @@ public class CustomProductRepoImpl implements CustomProductRepo {
 		parameters.forEach(parameter -> result.add(parameter.getName() + " IN " + "(" + parameter.getValue() + ")"));
 		return "FROM Product WHERE " + result;
 	}
+
 }

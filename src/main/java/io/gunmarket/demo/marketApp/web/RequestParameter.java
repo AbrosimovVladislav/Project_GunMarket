@@ -1,4 +1,4 @@
-package io.gunmarket.demo.product.web;
+package io.gunmarket.demo.marketApp.web;
 
 import lombok.Getter;
 import lombok.ToString;
