@@ -12,11 +12,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
 
-
 @Slf4j
 @Repository
 public class ProductRepoImpl implements ProductRepo {
-	@PersistenceContext private EntityManager entityManager;
+
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -33,4 +34,5 @@ public class ProductRepoImpl implements ProductRepo {
 		parameters.forEach(parameter -> result.add(parameter.getName() + " IN " + "(" + parameter.getValue() + ")"));
 		return "FROM Product WHERE " + result;
 	}
+
 }
