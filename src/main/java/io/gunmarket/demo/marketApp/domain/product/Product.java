@@ -33,7 +33,7 @@ import static io.gunmarket.demo.marketApp.domain.product.Product.PRODUCT_TABLE;
 @Setter
 @ToString
 public abstract class Product {
-	public static final String PRODUCT_TABLE = "marketApp";
+	public static final String PRODUCT_TABLE = "product";
 	public static final String PRODUCT_AVG_PRICE = "averagePrice";
 	public static final String PRODUCT_MODEL = "model";
 	public static final String PRODUCT_ID = "productId";

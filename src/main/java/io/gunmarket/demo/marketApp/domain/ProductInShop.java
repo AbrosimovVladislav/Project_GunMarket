@@ -24,7 +24,7 @@ import static io.gunmarket.demo.marketApp.domain.product.Product.PRODUCT_ID;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = {"marketApp"})
+@ToString(exclude = {"product"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProductInShop {
 	public static final String PRODUCT_IN_SHOP_ID = "productInShopId";

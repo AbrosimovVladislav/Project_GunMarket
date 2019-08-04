@@ -24,7 +24,7 @@ public class CustomProductRepoImpl implements CustomProductRepo {
 		String nativeQuery = buildNativeQueryByParams(requestParams);
 		log.debug("Native query: {}", nativeQuery);
 		List resultList = entityManager.createQuery(nativeQuery).getResultList();
-		log.debug("Result marketApp list: {}", resultList);
+		log.debug("Result product list: {}", resultList);
 		return resultList;
 	}
 

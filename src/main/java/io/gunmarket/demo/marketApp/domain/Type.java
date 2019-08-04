@@ -30,6 +30,8 @@ public class Type {
 	public static final String TYPE_UPPER = "upper";
 	public static final String TYPE_MEDIUM = "medium";
 	public static final String TYPE_LOWER = "lower";
+	public static final String TYPE_DTYPE = "dType";
+	public static final String TYPE_CATEGORY_IDENTIFIERS = "categoryIdentifiers";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +46,12 @@ public class Type {
 
 	@Column(name = TYPE_LOWER)
 	private String lower;
+
+	@Column(name = TYPE_DTYPE)
+	private String dType;
+
+	@Column(name = TYPE_CATEGORY_IDENTIFIERS)
+	private String categoryIdentifiers;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = TYPE_TABLE)
