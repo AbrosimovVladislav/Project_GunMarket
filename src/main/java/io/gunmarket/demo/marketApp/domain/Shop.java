@@ -28,7 +28,7 @@ public class Shop {
 	public static final String SHOP_NAME = "name";
 	public static final String SHOP_ADDRESS = "address";
 	public static final String SHOP_WEBSITE = "website";
-	public static final String SHOP_DESCRIPTION = "description";
+	public static final String SHOP_INFO = "shopInfo";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,8 +44,8 @@ public class Shop {
 	@Column(name = SHOP_WEBSITE, nullable = false)
 	private String website;
 
-	@Column(name = SHOP_DESCRIPTION)
-	private String description;
+	@Column(name = SHOP_INFO, length = 2000)
+	private String shopInfo;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = SHOP_TABLE)
