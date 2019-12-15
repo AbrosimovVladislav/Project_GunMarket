@@ -48,15 +48,32 @@ public class QueryBuilder {
 
 	private Predicate createSinglePredicate(CriteriaBuilder criteriaBuilder, Root root, QBParam qbParam) {
 		List<String> entities = qbParam.entities;
+		Path path;
+		//ToDo не работает при связи OneToMany(Когда коллекция ожидается), надо применить join
 		if (entities.isEmpty()) {
-			return criteriaBuilder.equal(root.get(qbParam.paramName), qbParam.paramValue);
+			path = root.get(qbParam.paramName);
 		} else {
-			Path path = root.get(entities.get(0));
+			path = root.get(entities.get(0));
 			for (int i = 1; i < entities.size(); i++) {
 				path = path.get(entities.get(i));
 			}
 			path = path.get(qbParam.paramName);
-			return criteriaBuilder.equal(path, qbParam.paramValue);
+		}
+
+		switch (qbParam.operation) {
+			case IN:
+				CriteriaBuilder.In inClause = criteriaBuilder.in(path);
+				for (String value : qbParam.paramValue.split(",")) {
+					inClause.value(value);
+				}
+				return inClause;
+			case EQUALS:
+				return criteriaBuilder.equal(path, qbParam.paramValue);
+			case BETWEEN:
+				String[] interval = qbParam.paramValue.split("interval");
+				return criteriaBuilder.between(path, Double.valueOf(interval[0]),Double.valueOf(interval[1]));
+			default:
+				throw new UnsupportedOperationException("Operation "+ qbParam.operation + " is INVALID");
 		}
 	}
 

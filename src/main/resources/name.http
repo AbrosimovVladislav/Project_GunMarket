@@ -1,4 +1,16 @@
+First Case (just eq)
 http://localhost:8080/products?dsl=averagePrice=100@brand.shortName=brand-name1
+
+Second Case (Eq and between)
+http://localhost:8080/products?dsl=averagePrice=70interval90@brand.shortName=brand-name1
+
+Second Case (Eq and between and in)
+http://localhost:8080/products?dsl=averagePrice=70interval90@brand.shortName=brand-name1@brand.fullName=brand-name1,brand-name3
+
+
+Forth Case (BIG DADDY)
+http://localhost:8080/products?dsl=productInShop.shop.address=address1
+
 
 ###
 

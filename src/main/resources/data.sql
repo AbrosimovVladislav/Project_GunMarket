@@ -18,13 +18,13 @@ INSERT INTO weapon_platform (name) VALUES ('weapon_platform-name-4');
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Gun',  1,  100, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     1, 1,    1, 1);
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('Gun',  2,  10, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     2, 2,    1, 2);
+VALUES ('Gun',  2,  90, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     2, 2,    1, 2);
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('Gun',  3,  10, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     3, 2,    2, 3);
+VALUES ('Gun',  3,  80, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     3, 2,    2, 3);
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('Gun',  4,  10, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     1, 3,    2, 4);
+VALUES ('Gun',  4,  70, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     1, 3,    2, 4);
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('Part', 5,  10, 'model',   null,  null,       null,  null,     'color', 'params', 2, null, 1, 1);
+VALUES ('Part', 5,  60, 'model',   null,  null,       null,  null,     'color', 'params', 2, null, 1, 1);
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Part', 6,  10, 'model',   null,  null,       null,  null,     'color', 'params', 2, null, 1, 2);
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
