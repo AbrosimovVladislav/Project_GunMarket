@@ -1,41 +1,45 @@
 package io.gunmarket.demo.marketApp.repo.product;
 
 import io.gunmarket.demo.marketApp.domain.product.Product;
+import io.gunmarket.demo.marketApp.repo.dslbuilder.DslBuilder;
 import io.gunmarket.demo.marketApp.repo.querybuilder.QueryBuilder;
-import io.gunmarket.demo.marketApp.web.RequestParameter;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
-import java.util.Set;
-import java.util.StringJoiner;
+import java.util.Map;
 
 @Slf4j
 @Repository
+@RequiredArgsConstructor
 public class CustomProductRepoImpl implements CustomProductRepo {
+
+	@PersistenceContext
+	private final EntityManager entityManager;
 
 	private final QueryBuilder queryBuilder;
 
-	@PersistenceContext
-	private EntityManager entityManager;
+	private final DslBuilder dslBuilder;
 
-	public CustomProductRepoImpl(QueryBuilder queryBuilder) {
-		this.queryBuilder = queryBuilder;
-	}
-
-	@SuppressWarnings("unchecked")
+	//Actual flow with dsl from controller
 	@Override
-	public List<Product> findAllByParameters(Set<RequestParameter> requestParams) {
-		String nativeQuery = queryBuilder.buildNativeQueryByParams(requestParams);
-		log.debug("Native query: {}", nativeQuery);
-		List<Product> resultList = entityManager.createQuery(nativeQuery, Product.class).getResultList();
-		log.debug("Result product list: {}", resultList);
-		return resultList;
+	public List<Product> findAllByParameters(String dsl) {
+		CriteriaQuery<Product> criteriaQuery =
+				queryBuilder.createCriteriaQueryFromDsl(entityManager.getCriteriaBuilder(), dsl);
+		return entityManager.createQuery(criteriaQuery).getResultList();
 	}
 
-
+	//Secondary flow with paramMap from controller
+	@Override
+	public List<Product> findAllByParameters(Map<String, String> params) {
+		//String dsl = dslBuilder.build(params, Product.class);
+		CriteriaQuery<Product> criteriaQuery =
+				queryBuilder.createCriteriaQueryFromParamMap(entityManager.getCriteriaBuilder(), params);
+		return entityManager.createQuery(criteriaQuery).getResultList();
+	}
 
 }

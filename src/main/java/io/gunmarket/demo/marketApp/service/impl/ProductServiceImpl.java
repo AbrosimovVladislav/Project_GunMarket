@@ -3,11 +3,10 @@ package io.gunmarket.demo.marketApp.service.impl;
 import io.gunmarket.demo.marketApp.domain.product.Product;
 import io.gunmarket.demo.marketApp.repo.product.ProductRepo;
 import io.gunmarket.demo.marketApp.service.ProductService;
-import io.gunmarket.demo.marketApp.web.RequestParameter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 
 @Service
@@ -18,7 +17,15 @@ public class ProductServiceImpl implements ProductService {
 		this.productRepo = productRepo;
 	}
 
-	public List<Product> getAllByParameters(Set<RequestParameter> requestParams) {
-		return productRepo.findAllByParameters(requestParams);
+	//Actual flow with dsl from controller
+	public List<Product> getAllByParameters(String dsl) {
+		return productRepo.findAllByParameters(dsl);
 	}
+
+	//Secondary flow with paramMap from controller
+	public List<Product> getAllByParameters(Map<String, String> params) {
+		return productRepo.findAllByParameters(params);
+	}
+
+
 }

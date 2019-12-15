@@ -1,14 +1,16 @@
 package io.gunmarket.demo.marketApp.repo.querybuilder;
 
 import lombok.Builder;
+import lombok.ToString;
 
 import java.util.List;
 
 
+@ToString
 @Builder
-public class QBParam {
-    String paramName;
-    String paramValue;
-    Operation operation;
-    List<String> entities;
+class QBParam {
+	String paramName;
+	String paramValue;
+	Operation operation;
+	List<String> entities;
 }
