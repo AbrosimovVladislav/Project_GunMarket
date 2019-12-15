@@ -1,8 +1,11 @@
 package io.gunmarket.demo.marketApp.web.controller;
 
+import io.gunmarket.demo.marketApp.domain.ProductInShop;
 import io.gunmarket.demo.marketApp.domain.product.Product;
+import io.gunmarket.demo.marketApp.service.impl.ProductInShopServiceImpl;
 import io.gunmarket.demo.marketApp.service.impl.ProductServiceImpl;
 import io.gunmarket.demo.marketApp.web.RequestParameter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +18,7 @@ import java.util.Set;
 
 import static io.gunmarket.demo.marketApp.domain.Brand.BRAND_TABLE;
 import static io.gunmarket.demo.marketApp.domain.Caliber.CALIBER_TABLE;
+import static io.gunmarket.demo.marketApp.domain.ProductInShop.*;
 import static io.gunmarket.demo.marketApp.domain.Type.TYPE_TABLE;
 import static io.gunmarket.demo.marketApp.domain.WeaponPlatform.WEAPON_PLATFORM_TABLE;
 import static io.gunmarket.demo.marketApp.domain.product.Gun.*;
@@ -24,30 +28,20 @@ import static io.gunmarket.demo.marketApp.web.InputParamsMapper.mapEntryParamsTo
 
 
 @RestController
-public class ProductController {
-	private final ProductServiceImpl productServiceImpl;
-	public static final Map<String, Boolean> parameterTypes = new HashMap<>() {{
-		put(PRODUCT_DTYPE, false);
-		put(PRODUCT_MODEL, false);
-		put(GUN_BARREL_LENGTH, false);
-		put(GUN_TOTAL_LENGTH, false);
-		put(GUN_CAPACITY, false);
-		put(PRODUCT_WEIGHT, false);
-		put(PART_COLOR, false);
-		put(PART_PARAMS, false);
-		put(BRAND_TABLE, true);
-		put(CALIBER_TABLE, true);
-		put(TYPE_TABLE, true);
-		put(WEAPON_PLATFORM_TABLE, true);
+@RequiredArgsConstructor
+public class ProductInShopController {
+
+	private final ProductInShopServiceImpl productInShopServiceImpl;
+	public static final Map<String, Boolean> parameterTypes = new HashMap<String, Boolean>() {{
+		put(PRODUCT_IN_SHOP_PRICE, false);
+		put(PRODUCT_IN_SHOP_SALE, false);
+		put(PRODUCT_IN_SHOP_IN_STOCK, false);
 	}};
 
-	public ProductController(ProductServiceImpl productServiceImpl) {
-		this.productServiceImpl = productServiceImpl;
+	@GetMapping(value = "/productsInShops", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<ProductInShop> getAllByParams(@RequestParam Map<String, String> params) {
+		Set<RequestParameter> requestParameters = mapEntryParamsToRequestParams(params,parameterTypes);
+		return productInShopServiceImpl.getAllByParameters(requestParameters);
 	}
 
-	@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Product> getAllByParams(@RequestParam Map<String, String> params) {
-		Set<RequestParameter> requestParameters = mapEntryParamsToRequestParams(params, parameterTypes);
-		return productServiceImpl.getAllByParameters(requestParameters);
-	}
 }

@@ -85,3 +85,5 @@ public abstract class Product {
 	@OneToMany(mappedBy = PRODUCT_TABLE)
 	private Set<ProductInShop> productInShops;
 }
+
+//get product.productInShop.Shop.Address

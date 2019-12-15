@@ -8,12 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import static io.gunmarket.demo.marketApp.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
 import static io.gunmarket.demo.marketApp.domain.Shop.SHOP_ID;
@@ -36,6 +31,7 @@ public class ProductInShop {
 	public static final String PRODUCT_IN_SHOP_LINK = "link";
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = PRODUCT_IN_SHOP_ID, nullable = false)
 	private String productInShopId;
 
