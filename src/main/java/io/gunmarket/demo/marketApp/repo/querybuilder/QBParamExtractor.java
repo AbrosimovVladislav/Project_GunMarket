@@ -10,6 +10,7 @@ class QBParamExtractor {
 
 	QBParam extractQbParam(String paramKey, String paramValue) {
 		List<String> entitiesAndLastIsParam = Arrays.asList(paramKey.split("\\."));
+
 		return QBParam.builder()
 				.paramName(entitiesAndLastIsParam.get(entitiesAndLastIsParam.size() - 1))
 				.paramValue(paramValue)

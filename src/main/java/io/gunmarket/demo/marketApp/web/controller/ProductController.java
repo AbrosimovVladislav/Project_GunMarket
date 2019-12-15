@@ -26,7 +26,7 @@ public class ProductController {
 	}
 
 	//Secondary flow with paramMap from controller
-	@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value = "/productsByMap", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Product> getAllByParams(@RequestParam Map<String, String> params) {
 		return productServiceImpl.getAllByParameters(params);
 	}

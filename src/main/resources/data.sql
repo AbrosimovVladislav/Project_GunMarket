@@ -16,7 +16,7 @@ INSERT INTO weapon_platform (name) VALUES ('weapon_platform-name-3');
 INSERT INTO weapon_platform (name) VALUES ('weapon_platform-name-4');
 
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('Gun',  1,  10, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     1, 1,    1, 1);
+VALUES ('Gun',  1,  100, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     1, 1,    1, 1);
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Gun',  2,  10, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     2, 2,    1, 2);
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)

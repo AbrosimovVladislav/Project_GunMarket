@@ -1,0 +1,10 @@
+http://localhost:8080/products?dsl=averagePrice=100@brand.shortName=brand-name1
+
+###
+
+
+#"dtype=gun&" +
+#			"price=5000interval10000&" +
+#			"shop.address=address1&" +
+#			"brand.shortName=brand-name1,brand-name2&" +
+#			"caliber.caliberValue=caliber-value1"

@@ -36,7 +36,6 @@ public class CustomProductRepoImpl implements CustomProductRepo {
 	//Secondary flow with paramMap from controller
 	@Override
 	public List<Product> findAllByParameters(Map<String, String> params) {
-		//String dsl = dslBuilder.build(params, Product.class);
 		CriteriaQuery<Product> criteriaQuery =
 				queryBuilder.createCriteriaQueryFromParamMap(entityManager.getCriteriaBuilder(), params);
 		return entityManager.createQuery(criteriaQuery).getResultList();
