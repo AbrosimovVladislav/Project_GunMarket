@@ -22,7 +22,6 @@ import static io.gunmarket.demo.marketApp.domain.Type.TYPE_TABLE;
 @Table(name = TYPE_TABLE)
 @Getter
 @Setter
-@ToString(exclude = {"products"})
 public class Type {
 	public static final String TYPE_TABLE = "type";
 	public static final String TYPE_ID = "type_id";
@@ -55,5 +54,5 @@ public class Type {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = TYPE_TABLE)
-	private Set<Product> products;
+	private Set<Product> product;
 }

@@ -22,7 +22,6 @@ import static io.gunmarket.demo.marketApp.domain.Caliber.CALIBER_TABLE;
 @Table(name = CALIBER_TABLE)
 @Getter
 @Setter
-@ToString(exclude = {"products"})
 public class Caliber {
 	public static final String CALIBER_TABLE = "caliber";
 	public static final String CALIBER_ID = "caliber_id";
@@ -38,5 +37,5 @@ public class Caliber {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = CALIBER_TABLE)
-	private Set<Product> products;
+	private Set<Product> product;
 }

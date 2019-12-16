@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 @Entity
 @Getter
 @Setter
-@ToString(callSuper = true)
 public class Gun extends Product {
 	public static final String GUN_CAPACITY = "capacity";
 	public static final String GUN_TOTAL_LENGTH = "totalLength";

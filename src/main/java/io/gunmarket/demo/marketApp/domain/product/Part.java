@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 @Entity
 @Getter
 @Setter
-@ToString(callSuper = true)
 public class Part extends Product {
 	public static final String PART_COLOR = "color";
 	public static final String PART_PARAMS = "params";

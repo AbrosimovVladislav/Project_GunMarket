@@ -22,7 +22,6 @@ import static io.gunmarket.demo.marketApp.domain.WeaponPlatform.WEAPON_PLATFORM_
 @Table(name = WEAPON_PLATFORM_TABLE)
 @Getter
 @Setter
-@ToString(exclude = {"products"})
 public class WeaponPlatform {
 	public static final String WEAPON_PLATFORM_TABLE = "weaponPlatform";
 	public static final String WEAPON_PLATFORM_ID = "weaponPlatform_id";
@@ -38,6 +37,6 @@ public class WeaponPlatform {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = WEAPON_PLATFORM_TABLE)
-	Set<Product> products;
+	Set<Product> product;
 
 }

@@ -23,7 +23,6 @@ import static io.gunmarket.demo.marketApp.domain.Brand.BRAND_TABLE;
 @Table(name = BRAND_TABLE)
 @Getter
 @Setter
-@ToString(exclude = {"products"})
 @EqualsAndHashCode
 public class Brand {
 	public static final String BRAND_TABLE = "brand";
@@ -44,5 +43,5 @@ public class Brand {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = BRAND_TABLE)
-	private Set<Product> products;
+	private Set<Product> product;
 }

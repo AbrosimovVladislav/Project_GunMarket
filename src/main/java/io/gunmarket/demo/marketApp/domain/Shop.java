@@ -32,12 +32,9 @@ public class Shop implements BasicEntity {
     @Column(name = SHOP_NAME, nullable = false)
     private String name;
 
-/*	@Column(name = SHOP_ADDRESS, nullable = false)
-	private String address;*/
-
     @JsonIgnore
     @OneToMany(mappedBy = SHOP_TABLE)
-    Set<Address> addresses;
+    Set<Address> address;
 
     @Column(name = SHOP_WEBSITE, nullable = false)
     private String website;
@@ -47,5 +44,5 @@ public class Shop implements BasicEntity {
 
     @JsonIgnore
     @OneToMany(mappedBy = SHOP_TABLE)
-    Set<ProductInShop> products;
+    Set<ProductInShop> product;
 }

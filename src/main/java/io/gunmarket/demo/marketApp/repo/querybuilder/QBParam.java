@@ -6,7 +6,7 @@ import lombok.ToString;
 import java.util.List;
 
 
-@ToString
+
 @Builder
 class QBParam {
 	String paramName;
