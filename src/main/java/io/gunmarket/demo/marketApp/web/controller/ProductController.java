@@ -24,4 +24,9 @@ public class ProductController {
 		return productServiceImpl.getAllByParameters(requestParams);
 	}
 
+	@GetMapping(value = "/hello", produces = MediaType.TEXT_PLAIN_VALUE)
+	public String hello() {
+		return "hello";
+	}
+
 }
