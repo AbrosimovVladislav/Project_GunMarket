@@ -17,15 +17,8 @@ public class ProductServiceImpl implements ProductService {
 		this.productRepo = productRepo;
 	}
 
-	//Actual flow with dsl from controller
-	public List<Product> getAllByParameters(String dsl) {
-		return productRepo.findAllByParameters(dsl);
+	public List<Product> getAllByParameters(Map<String, String> requestParams) {
+		return productRepo.findAllByParameters(requestParams);
 	}
-
-	//Secondary flow with paramMap from controller
-	public List<Product> getAllByParameters(Map<String, String> params) {
-		return productRepo.findAllByParameters(params);
-	}
-
 
 }

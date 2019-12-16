@@ -6,7 +6,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.criteria.*;
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
@@ -15,9 +18,9 @@ public class QueryBuilder {
 
     private final QBParamExtractor qbParamExtractor;
 
-    //Actual flow with dsl from controller
-    public <BE extends BasicEntity> CriteriaQuery<BE> createCriteriaQueryFromDsl(CriteriaBuilder criteriaBuilder, String dsl, Class<BE> entityClass) {
-        List<QBParam> dslParams = parseDsl(dsl);
+    public <BE extends BasicEntity> CriteriaQuery<BE> createCriteriaQueryFromParamMap(CriteriaBuilder criteriaBuilder,
+                                                                  Map<String, String> requestParams, Class<BE> entityClass) {
+        List<QBParam> dslParams = parseRequestParamMap(requestParams);
 
         CriteriaQuery<BE> criteriaQuery = criteriaBuilder.createQuery(entityClass);
         Root<BE> root = criteriaQuery.from(entityClass);
@@ -45,27 +48,10 @@ public class QueryBuilder {
         return qbParam.operation.getPredicate(qbParam.paramValue, criteriaBuilder, path);
     }
 
-    private List<QBParam> parseDsl(String dsl) {
-        return Arrays.stream(dsl.split("@"))
-                .map(paramKV -> paramKV.split("="))
-                .map(ar -> new AbstractMap.SimpleEntry<>(ar[0], ar[1]))
+    private List<QBParam> parseRequestParamMap(Map<String, String> requestParams) {
+        return requestParams.entrySet().stream()
                 .map(e -> qbParamExtractor.extractQbParam(e.getKey(), e.getValue()))
                 .collect(Collectors.toList());
-    }
-
-    //Secondary flow with paramMap from controller
-    public CriteriaQuery<Product> createCriteriaQueryFromParamMap(CriteriaBuilder criteriaBuilder,
-                                                                  Map<String, String> params) {
-        List<QBParam> dslParams = parseParamMap(params);
-        dslParams.forEach(System.out::println);
-
-        CriteriaQuery<Product> cq = criteriaBuilder.createQuery(Product.class);
-        Root<Product> root = cq.from(Product.class);
-        return null;
-    }
-
-    private List<QBParam> parseParamMap(Map<String, String> params) {
-        return new ArrayList<>();
     }
 
 }

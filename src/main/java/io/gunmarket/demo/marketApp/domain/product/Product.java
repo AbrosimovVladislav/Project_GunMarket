@@ -71,5 +71,3 @@ public abstract class Product implements BasicEntity {
     @OneToMany(mappedBy = PRODUCT_TABLE)
     private Set<ProductInShop> productInShop;
 }
-
-//get product.productInShop.Shop.Address

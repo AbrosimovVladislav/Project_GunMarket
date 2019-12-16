@@ -19,17 +19,9 @@ public class ProductController {
 		this.productServiceImpl = productServiceImpl;
 	}
 
-	//Actual flow with dsl from controller
 	@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Product> getAllByParams(@RequestParam String dsl) {
-		return productServiceImpl.getAllByParameters(dsl);
+	public List<Product> getAllByParams(@RequestParam Map<String, String> requestParams) {
+		return productServiceImpl.getAllByParameters(requestParams);
 	}
-
-	//Secondary flow with paramMap from controller
-	@GetMapping(value = "/productsByMap", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Product> getAllByParams(@RequestParam Map<String, String> params) {
-		return productServiceImpl.getAllByParameters(params);
-	}
-
 
 }

@@ -22,19 +22,10 @@ public class CustomProductRepoImpl implements CustomProductRepo {
 
     private final QueryBuilder queryBuilder;
 
-    //Actual flow with dsl from controller
     @Override
-    public List<Product> findAllByParameters(String dsl) {
+    public List<Product> findAllByParameters(Map<String, String> requestParams) {
         CriteriaQuery<Product> criteriaQuery =
-                queryBuilder.createCriteriaQueryFromDsl(entityManager.getCriteriaBuilder(), dsl, Product.class);
-        return entityManager.createQuery(criteriaQuery).getResultList();
-    }
-
-    //Secondary flow with paramMap from controller
-    @Override
-    public List<Product> findAllByParameters(Map<String, String> params) {
-        CriteriaQuery<Product> criteriaQuery =
-                queryBuilder.createCriteriaQueryFromParamMap(entityManager.getCriteriaBuilder(), params);
+                queryBuilder.createCriteriaQueryFromParamMap(entityManager.getCriteriaBuilder(), requestParams, Product.class);
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
