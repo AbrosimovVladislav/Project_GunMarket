@@ -1,10 +1,6 @@
 package io.gunmarket.demo.marketApp.domain.product;
 
-import io.gunmarket.demo.marketApp.domain.Brand;
-import io.gunmarket.demo.marketApp.domain.Caliber;
-import io.gunmarket.demo.marketApp.domain.ProductInShop;
-import io.gunmarket.demo.marketApp.domain.Type;
-import io.gunmarket.demo.marketApp.domain.WeaponPlatform;
+import io.gunmarket.demo.marketApp.domain.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -32,7 +28,7 @@ import static io.gunmarket.demo.marketApp.domain.product.Product.PRODUCT_TABLE;
 @Getter
 @Setter
 @ToString
-public abstract class Product {
+public abstract class Product implements BasicEntity {
 	public static final String PRODUCT_TABLE = "product";
 	public static final String PRODUCT_AVG_PRICE = "averagePrice";
 	public static final String PRODUCT_MODEL = "model";

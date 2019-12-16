@@ -29,7 +29,7 @@ public class CustomProductRepoImpl implements CustomProductRepo {
 	@Override
 	public List<Product> findAllByParameters(String dsl) {
 		CriteriaQuery<Product> criteriaQuery =
-				queryBuilder.createCriteriaQueryFromDsl(entityManager.getCriteriaBuilder(), dsl);
+				queryBuilder.createCriteriaQueryFromDsl(entityManager.getCriteriaBuilder(), dsl,Product.class);
 		return entityManager.createQuery(criteriaQuery).getResultList();
 	}
 
