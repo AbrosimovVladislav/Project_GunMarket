@@ -36,8 +36,13 @@ VALUES ('Ammo', 9,  10, '5.45 hp', null,  null,       null,  'weight', null,    
 INSERT INTO product (dtype, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Ammo', 10, 10, '5.45 hp', null,  null,       null,  'weight', null,    null,     3, 4,    2, null);
 
-INSERT INTO shop (address, name, website) VALUES ('address1', 'shop-name1', 'www.com.1');
-INSERT INTO shop (address, name, website) VALUES ('address2', 'shop-name2', 'www.com.2');
+INSERT INTO shop (name, website) VALUES ('shop-name1', 'www.com.1');
+INSERT INTO shop (name, website) VALUES ('shop-name2', 'www.com.2');
+
+INSERT INTO address (name,shop_id) VALUES ('address1',1);
+INSERT INTO address (name,shop_id) VALUES ('address2',1);
+INSERT INTO address (name,shop_id) VALUES ('address3',2);
+INSERT INTO address (name,shop_id) VALUES ('address4',2);
 
 INSERT INTO product_in_shop (additional_info, in_stock, link, price, sale, product_id, shop_id) VALUES ('info', false, 'link', 10, 5, 1,  1);
 INSERT INTO product_in_shop (additional_info, in_stock, link, price, sale, product_id, shop_id) VALUES ('info', true,  'link', 10, 0, 2,  1);
@@ -49,3 +54,4 @@ INSERT INTO product_in_shop (additional_info, in_stock, link, price, sale, produ
 INSERT INTO product_in_shop (additional_info, in_stock, link, price, sale, product_id, shop_id) VALUES ('info', true,  'link', 10, 0, 8,  2);
 INSERT INTO product_in_shop (additional_info, in_stock, link, price, sale, product_id, shop_id) VALUES ('info', true,  'link', 10, 0, 9,  2);
 INSERT INTO product_in_shop (additional_info, in_stock, link, price, sale, product_id, shop_id) VALUES ('info', false, 'link', 10, 5, 10, 2);
+

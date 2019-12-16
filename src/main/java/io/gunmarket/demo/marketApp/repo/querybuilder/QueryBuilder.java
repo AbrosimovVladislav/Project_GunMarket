@@ -31,14 +31,6 @@ public class QueryBuilder {
 		Root<Product> root = productCriteriaQuery.from(Product.class);
 		productCriteriaQuery.select(root);
 
-		/*Join<Product, ProductInShop> productInShopJoin = root.join("productInShops");
-		productCriteriaQuery.where(criteriaBuilder.equal(productInShopJoin.get("shop").get("address"),"address1"));*/
-
-		productCriteriaQuery.where(
-				criteriaBuilder.equal(root.get(BRAND_TABLE).get(BRAND_SHORT_NAME), "brand-name1"),
-				criteriaBuilder.equal(root.get(PRODUCT_AVG_PRICE), 100)
-		);
-
 		Predicate[] predicates = dslParams.stream()
 				.map(qbparam -> createSinglePredicate(criteriaBuilder, root, qbparam))
 				.toArray(Predicate[]::new);
@@ -53,9 +45,9 @@ public class QueryBuilder {
 		if (entities.isEmpty()) {
 			path = root.get(qbParam.paramName);
 		} else {
-			path = root.get(entities.get(0));
+			path = root.join(entities.get(0));
 			for (int i = 1; i < entities.size(); i++) {
-				path = path.get(entities.get(i));
+				path = ((Join)path).join(entities.get(i));
 			}
 			path = path.get(qbParam.paramName);
 		}
