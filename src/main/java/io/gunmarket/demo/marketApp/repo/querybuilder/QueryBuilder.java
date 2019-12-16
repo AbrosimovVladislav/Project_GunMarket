@@ -1,14 +1,11 @@
 package io.gunmarket.demo.marketApp.repo.querybuilder;
 
+import io.gunmarket.demo.marketApp.domain.ProductInShop;
 import io.gunmarket.demo.marketApp.domain.product.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,6 +31,9 @@ public class QueryBuilder {
 		Root<Product> root = productCriteriaQuery.from(Product.class);
 		productCriteriaQuery.select(root);
 
+		/*Join<Product, ProductInShop> productInShopJoin = root.join("productInShops");
+		productCriteriaQuery.where(criteriaBuilder.equal(productInShopJoin.get("shop").get("address"),"address1"));*/
+
 		productCriteriaQuery.where(
 				criteriaBuilder.equal(root.get(BRAND_TABLE).get(BRAND_SHORT_NAME), "brand-name1"),
 				criteriaBuilder.equal(root.get(PRODUCT_AVG_PRICE), 100)
@@ -49,7 +49,7 @@ public class QueryBuilder {
 	private Predicate createSinglePredicate(CriteriaBuilder criteriaBuilder, Root root, QBParam qbParam) {
 		List<String> entities = qbParam.entities;
 		Path path;
-		//ToDo не работает при связи OneToMany(Когда коллекция ожидается), надо применить join
+
 		if (entities.isEmpty()) {
 			path = root.get(qbParam.paramName);
 		} else {
