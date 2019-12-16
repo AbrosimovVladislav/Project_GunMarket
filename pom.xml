@@ -18,6 +18,7 @@
 	</parent>
 
 	<properties>
+		<project.source.buildEncoding>UTF-8</project.source.buildEncoding>
 		<java.version>11</java.version>
 		<postgres.version>42.2.6</postgres.version>
 		<jsoup.version>1.12.1</jsoup.version>
@@ -72,6 +73,7 @@
     </dependencies>
 
 	<build>
+		<finalName>GunMarket</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
