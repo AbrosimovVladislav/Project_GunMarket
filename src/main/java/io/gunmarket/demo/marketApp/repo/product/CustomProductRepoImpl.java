@@ -19,8 +19,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class CustomProductRepoImpl implements CustomProductRepo {
 
-	@PersistenceContext
-	private final EntityManager entityManager;
+	@PersistenceContext private final EntityManager entityManager;
 
 	private final QueryBuilder queryBuilder;
 
