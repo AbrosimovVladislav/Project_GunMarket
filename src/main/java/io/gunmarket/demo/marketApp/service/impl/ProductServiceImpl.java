@@ -21,4 +21,8 @@ public class ProductServiceImpl implements ProductService {
 		return productRepo.findAllByParameters(requestParams);
 	}
 
+	public List<Product> hetProdWithSort (Map<String, String> requestParams){
+		return productRepo.findWithSorting(requestParams);
+	}
+
 }

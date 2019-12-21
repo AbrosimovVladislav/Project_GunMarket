@@ -55,3 +55,15 @@ INSERT INTO product_in_shop (additional_info, in_stock, link, price, sale, produ
 INSERT INTO product_in_shop (additional_info, in_stock, link, price, sale, product_id, shop_id) VALUES ('info', true,  'link', 10, 0, 9,  2);
 INSERT INTO product_in_shop (additional_info, in_stock, link, price, sale, product_id, shop_id) VALUES ('info', false, 'link', 10, 5, 10, 2);
 
+INSERT INTO rating (value, product_id) VALUES ('J',1);
+INSERT INTO rating (value, product_id) VALUES ('I',2);
+INSERT INTO rating (value, product_id) VALUES ('H',3);
+INSERT INTO rating (value, product_id) VALUES ('G',4);
+INSERT INTO rating (value, product_id) VALUES ('F',5);
+INSERT INTO rating (value, product_id) VALUES ('E',6);
+INSERT INTO rating (value, product_id) VALUES ('D',7);
+INSERT INTO rating (value, product_id) VALUES ('C',8);
+INSERT INTO rating (value, product_id) VALUES ('B',9);
+INSERT INTO rating (value, product_id) VALUES ('A',10);
+
+

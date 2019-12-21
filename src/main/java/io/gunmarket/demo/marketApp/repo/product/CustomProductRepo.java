@@ -7,4 +7,5 @@ import java.util.Map;
 
 public interface CustomProductRepo {
 	List<Product> findAllByParameters(Map<String, String> requestParams);
+	List<Product> findWithSorting(Map<String, String> requestParams);
 }

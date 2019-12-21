@@ -13,20 +13,19 @@ import java.util.Map;
 
 @RestController
 public class ProductController {
-	private final ProductServiceImpl productServiceImpl;
+    private final ProductServiceImpl productServiceImpl;
 
-	public ProductController(ProductServiceImpl productServiceImpl) {
-		this.productServiceImpl = productServiceImpl;
-	}
+    public ProductController(ProductServiceImpl productServiceImpl) {
+        this.productServiceImpl = productServiceImpl;
+    }
 
-	@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Product> getAllByParams(@RequestParam Map<String, String> requestParams) {
-		return productServiceImpl.getAllByParameters(requestParams);
-	}
+    @GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<Product> getAllByParams(@RequestParam Map<String, String> requestParams) {
+        return productServiceImpl.getAllByParameters(requestParams);
+    }
 
-	@GetMapping(value = "/hello", produces = MediaType.TEXT_PLAIN_VALUE)
-	public String hello() {
-		return "hello";
-	}
-
+    @GetMapping(value = "/productsSorting", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<Product> getAllWithSort(@RequestParam Map<String, String> requestParams) {
+        return productServiceImpl.hetProdWithSort(requestParams);
+    }
 }
