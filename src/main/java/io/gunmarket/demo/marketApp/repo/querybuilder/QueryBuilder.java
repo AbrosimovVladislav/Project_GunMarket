@@ -89,16 +89,3 @@ public class QueryBuilder {
 	}
 
 }
-
-		/*String propertyName = sortingPropertyKey.replace(
-				sortingPropertyKey.substring(
-						0,sortingPropertyKey.lastIndexOf(".")
-				),
-				""
-		);
-		String entitiesLine = sortingPropertyKey.replace(
-				sortingPropertyKey.substring(
-						sortingPropertyKey.lastIndexOf(".")
-				),
-				""
-		);*/
