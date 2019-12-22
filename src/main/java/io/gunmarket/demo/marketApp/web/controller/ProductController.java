@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.web.controller;
 
-import io.gunmarket.demo.marketApp.domain.product.Product;
+import io.gunmarket.demo.marketApp.domain.Product;
 import io.gunmarket.demo.marketApp.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;

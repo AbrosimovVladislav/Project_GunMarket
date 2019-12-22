@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.repo.product;
 
-import io.gunmarket.demo.marketApp.domain.product.Product;
+import io.gunmarket.demo.marketApp.domain.Product;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;

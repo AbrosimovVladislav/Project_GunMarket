@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.service;
 
-import io.gunmarket.demo.marketApp.domain.product.Product;
+import io.gunmarket.demo.marketApp.domain.Product;
 import io.gunmarket.demo.marketApp.repo.product.ProductRepo;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

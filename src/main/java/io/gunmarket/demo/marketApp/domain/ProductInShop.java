@@ -2,17 +2,22 @@ package io.gunmarket.demo.marketApp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.gunmarket.demo.marketApp.domain.product.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import static io.gunmarket.demo.marketApp.domain.Product.PRODUCT_ID;
 import static io.gunmarket.demo.marketApp.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
 import static io.gunmarket.demo.marketApp.domain.Shop.SHOP_ID;
-import static io.gunmarket.demo.marketApp.domain.product.Product.PRODUCT_ID;
 
 @Entity
 @Table(name = PRODUCT_IN_SHOP_TABLE)

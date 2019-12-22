@@ -1,10 +1,8 @@
 package io.gunmarket.demo.marketApp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.gunmarket.demo.marketApp.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +27,6 @@ public class Type {
 	public static final String TYPE_UPPER = "upper";
 	public static final String TYPE_MEDIUM = "medium";
 	public static final String TYPE_LOWER = "lower";
-	public static final String TYPE_DTYPE = "dType";
 	public static final String TYPE_CATEGORY_IDENTIFIERS = "categoryIdentifiers";
 
 	@Id
@@ -45,9 +42,6 @@ public class Type {
 
 	@Column(name = TYPE_LOWER)
 	private String lower;
-
-	@Column(name = TYPE_DTYPE)
-	private String dType;
 
 	@Column(name = TYPE_CATEGORY_IDENTIFIERS)
 	private String categoryIdentifiers;

@@ -1,7 +1,6 @@
 package io.gunmarket.demo.marketApp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.gunmarket.demo.marketApp.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,8 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import static io.gunmarket.demo.marketApp.domain.Product.PRODUCT_ID;
 import static io.gunmarket.demo.marketApp.domain.Rating.RATING_TABLE;
-import static io.gunmarket.demo.marketApp.domain.product.Product.PRODUCT_ID;
 
 @Entity
 @Table(name = RATING_TABLE)

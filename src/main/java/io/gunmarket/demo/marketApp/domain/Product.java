@@ -1,6 +1,5 @@
-package io.gunmarket.demo.marketApp.domain.product;
+package io.gunmarket.demo.marketApp.domain;
 
-import io.gunmarket.demo.marketApp.domain.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,17 +8,17 @@ import java.util.Set;
 
 import static io.gunmarket.demo.marketApp.domain.Brand.BRAND_ID;
 import static io.gunmarket.demo.marketApp.domain.Caliber.CALIBER_ID;
+import static io.gunmarket.demo.marketApp.domain.Product.PRODUCT_TABLE;
 import static io.gunmarket.demo.marketApp.domain.Rating.RATING_PRODUCT;
 import static io.gunmarket.demo.marketApp.domain.Type.TYPE_ID;
 import static io.gunmarket.demo.marketApp.domain.WeaponPlatform.WEAPON_PLATFORM_ID;
-import static io.gunmarket.demo.marketApp.domain.product.Product.PRODUCT_TABLE;
 
 
 @Entity
 @Table(name = PRODUCT_TABLE)
 @Getter
 @Setter
-public abstract class Product implements BasicEntity {
+public class Product implements BasicEntity {
     public static final String PRODUCT_TABLE = "product";
     public static final String PRODUCT_AVG_PRICE = "averagePrice";
     public static final String PRODUCT_MODEL = "model";
@@ -29,11 +28,20 @@ public abstract class Product implements BasicEntity {
     public static final String PRODUCT_INFO = "info";
     public static final String PRODUCT_LINK = "link";
     public static final String PRODUCT_IMAGE_LINK = "imageLink";
+    public static final String GUN_CAPACITY = "capacity";
+    public static final String GUN_TOTAL_LENGTH = "totalLength";
+    public static final String GUN_BARREL_LENGTH = "barrelLength";
+    public static final String PART_COLOR = "color";
+    public static final String PART_PARAMS = "params";
+    public static final String PRODUCT_TYPE = "product_type";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = PRODUCT_ID, length = 8, nullable = false)
     private Long productId;
+
+    @Column(name = PRODUCT_TYPE, nullable = false, updatable = false)
+    private String productType; // allow: GUN, PART, AMMO
 
     @Column(name = PRODUCT_INFO)
     private String info;
@@ -52,6 +60,21 @@ public abstract class Product implements BasicEntity {
 
     @Column(name = PRODUCT_WEIGHT)
     private String weight;
+
+    @Column(name = GUN_CAPACITY)
+    private String capacity;
+
+    @Column(name = GUN_TOTAL_LENGTH)
+    private String totalLength;
+
+    @Column(name = GUN_BARREL_LENGTH)
+    private String barrelLength;
+
+    @Column(name = PART_PARAMS)
+    private String params;
+
+    @Column(name = PART_COLOR)
+    private String color;
 
     @ManyToOne
     @JoinColumn(name = BRAND_ID, nullable = false)
