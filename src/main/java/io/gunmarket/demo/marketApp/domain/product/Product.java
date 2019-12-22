@@ -9,6 +9,7 @@ import java.util.Set;
 
 import static io.gunmarket.demo.marketApp.domain.Brand.BRAND_ID;
 import static io.gunmarket.demo.marketApp.domain.Caliber.CALIBER_ID;
+import static io.gunmarket.demo.marketApp.domain.Rating.RATING_PRODUCT;
 import static io.gunmarket.demo.marketApp.domain.Type.TYPE_ID;
 import static io.gunmarket.demo.marketApp.domain.WeaponPlatform.WEAPON_PLATFORM_ID;
 import static io.gunmarket.demo.marketApp.domain.product.Product.PRODUCT_TABLE;
@@ -67,6 +68,9 @@ public abstract class Product implements BasicEntity {
     @ManyToOne
     @JoinColumn(name = WEAPON_PLATFORM_ID)
     private WeaponPlatform weaponPlatform;
+
+    @OneToOne(mappedBy = RATING_PRODUCT)
+    private Rating rating;
 
     @OneToMany(mappedBy = PRODUCT_TABLE)
     private Set<ProductInShop> productInShop;
