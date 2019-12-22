@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.repo.product;
 
-import io.gunmarket.demo.marketApp.domain.product.Product;
+import io.gunmarket.demo.marketApp.domain.Product;
 import io.gunmarket.demo.marketApp.repo.querybuilder.QueryBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
