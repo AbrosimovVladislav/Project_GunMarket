@@ -38,12 +38,17 @@ public class IntegrationTest {
 	private Resource productsByAddressJson;
 	private static final String PRODUCTS_BY_ADDRESS = "?productInShop.shop.address.name=address1";
 
+	@Value("classpath:productsSortingByRating.json")
+	private Resource productsSortingByRating;
+	private static final String PRODUCTS_SORTING_BY_RATING = "?sort=rating.value,asc";
+
 	@Test
 	public void testProductByFilter(){
 
 		Map<String, Resource> filterRestLineAndExpectedJson = new HashMap<>(){{
 			put(EMPTY_PARAM_LINE,allProductsJson);
 			put(PRODUCTS_BY_ADDRESS,productsByAddressJson);
+			put(PRODUCTS_SORTING_BY_RATING,productsSortingByRating);
 		}};
 
 		testDataMap(filterRestLineAndExpectedJson);
