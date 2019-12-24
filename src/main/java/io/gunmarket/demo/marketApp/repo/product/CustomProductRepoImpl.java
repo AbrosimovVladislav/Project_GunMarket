@@ -26,7 +26,8 @@ public class CustomProductRepoImpl implements CustomProductRepo {
     @Override
     public List<Product> findAllByParameters(Map<String, String> requestParams, Pageable pageable) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Product> criteriaQuery = queryBuilder.createCriteriaQueryFromParamMap(criteriaBuilder, requestParams, Product.class);
+        CriteriaQuery<Product> criteriaQuery =
+                queryBuilder.createCriteriaQueryFromParamMap(criteriaBuilder, requestParams, Product.class);
         queryBuilder.addSort(criteriaBuilder, criteriaQuery, pageable);
         TypedQuery<Product> productQuery = entityManager.createQuery(criteriaQuery);
         productQuery = addPagination(productQuery, pageable);
