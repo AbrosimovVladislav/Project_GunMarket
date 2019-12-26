@@ -21,4 +21,8 @@ public class ProductService {
 		return productRepo.findAllByParameters(requestParams, pageable);
 	}
 
+	public Product getById(String id){
+		return productRepo.findAllByProductId(Long.valueOf(id));
+	}
+
 }
