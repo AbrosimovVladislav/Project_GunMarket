@@ -8,12 +8,12 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import static io.gunmarket.demo.marketApp.domain.Product.PRODUCT_ID;
 import static io.gunmarket.demo.marketApp.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
@@ -33,9 +33,9 @@ public class ProductInShop implements BasicEntity {
 	public static final String PRODUCT_IN_SHOP_IN_STOCK = "inStock";
 	public static final String PRODUCT_IN_SHOP_ADDITIONAL_INFO = "additionalInfo";
 	public static final String PRODUCT_IN_SHOP_LINK = "link";
+	public static final String PRODUCT_IN_SHOP_POPULARITY = "popularity";
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = PRODUCT_IN_SHOP_ID, nullable = false)
 	private String productInShopId;
 
@@ -64,7 +64,12 @@ public class ProductInShop implements BasicEntity {
 	@Column(name = PRODUCT_IN_SHOP_LINK, nullable = false)
 	private String link;
 
-	public ProductInShop(Product product, Shop shop, double price, boolean inStock, String link, int sale) {
+	@Min(0)
+	@Max(1)
+	@Column(name = PRODUCT_IN_SHOP_POPULARITY, nullable = false)
+	private double popularity;
+
+	public ProductInShop(Product product, Shop shop, double price, boolean inStock, String link, int sale, double popularity) {
 		this.productInShopId = product.getProductId() + ":" + shop.getShopId();
 		this.product = product;
 		this.shop = shop;
@@ -72,5 +77,6 @@ public class ProductInShop implements BasicEntity {
 		this.inStock = inStock;
 		this.link = link;
 		this.sale = sale;
+		this.popularity = popularity;
 	}
 }
