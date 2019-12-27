@@ -1,5 +1,9 @@
 package io.gunmarket.demo.marketApp.web.controller;
 
+import io.gunmarket.demo.marketApp.domain.BasicEntity;
+import io.gunmarket.demo.marketApp.domain.Product;
+import io.gunmarket.demo.marketApp.domain.ProductInShop;
+import io.gunmarket.demo.marketApp.domain.Rating;
 import org.jsoup.internal.StringUtil;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -8,29 +12,29 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-import static io.gunmarket.demo.marketApp.domain.Rating.RATING_VALUE_SORT;
-
 @Component
 public class RequestParamsValidator {
 
-	FilterAndPageable validate(Map<String, String> requestParams, Pageable pageable) {
+	FilterAndPageable validate(Map<String, String> requestParams,
+	                           Pageable pageable,
+	                           Class<? extends BasicEntity> entityClass) {
 		FilterAndPageable filterAndPageable = new FilterAndPageable(requestParams, pageable);
-		sortingValidation(filterAndPageable);
+		sortingValidation(filterAndPageable, entityClass);
 		paginationValidation(filterAndPageable);
 		return filterAndPageable;
 	}
 
-	private void sortingValidation(FilterAndPageable filterAndPageable) {
+	private void sortingValidation(FilterAndPageable filterAndPageable, Class<? extends BasicEntity> entityClass) {
 		Pageable pageable = filterAndPageable.getPageable();
 		String sortParam = filterAndPageable.getFilter().remove("sort");
 		if (sortParam == null) {
-			filterAndPageable.setPageable(getDefaultSortingProperty(pageable));
-		} else {
-			String sortProp = sortParam.substring(0, sortParam.indexOf(","));
-			Sort sort = Sort.by(pageable.getSort().getOrderFor(sortProp));
-			filterAndPageable.setPageable(PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort));
+			filterAndPageable.setPageable(getDefaultSortingProperty(pageable, entityClass));
+} else {
+		String sortProp = sortParam.substring(0, sortParam.indexOf(","));
+		Sort sort = Sort.by(pageable.getSort().getOrderFor(sortProp));
+		filterAndPageable.setPageable(PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort));
 		}
-	}
+		}
 
 	private void paginationValidation(FilterAndPageable filterAndPageable) {
 		Pageable pageable = filterAndPageable.getPageable();
@@ -51,8 +55,14 @@ public class RequestParamsValidator {
 		}
 	}
 
-	private static PageRequest getDefaultSortingProperty(Pageable pageable) {
-		return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(RATING_VALUE_SORT));
-	}
-
-}
+	private static PageRequest getDefaultSortingProperty(Pageable pageable, Class<? extends BasicEntity> entityClass) {
+		String sortingProperty = "";
+		Sort.Direction dir = Sort.Direction.ASC;
+		if(entityClass.isAssignableFrom(Product.class)){
+			sortingProperty = Rating.RATING_VALUE_SORT;
+		} else if(entityClass.isAssignableFrom(ProductInShop.class)){
+			sortingProperty = ProductInShop.PRODUCT_IN_SHOP_POPULARITY;
+			dir = Sort.Direction.DESC;
+		}
+		return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(dir, sortingProperty));
+	}}

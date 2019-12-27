@@ -28,7 +28,7 @@ public class ProductController {
 	public List<Product> getAllByParams(@RequestParam Map<String, String> requestParams,
 	                                    @PageableDefault(size = DEFAULT_PAGE_SIZE, page = DEFAULT_PAGE_NUMBER)
 			                                    Pageable pageable) {
-		FilterAndPageable pairOfParamsAndPageable = validator.validate(requestParams, pageable);
+		FilterAndPageable pairOfParamsAndPageable = validator.validate(requestParams, pageable, Product.class);
 		return productService.getAllByParameters(
 				pairOfParamsAndPageable.getFilter(),
 				pairOfParamsAndPageable.getPageable()
