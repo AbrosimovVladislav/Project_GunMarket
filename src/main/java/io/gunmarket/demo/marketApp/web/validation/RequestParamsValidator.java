@@ -1,9 +1,10 @@
-package io.gunmarket.demo.marketApp.web.controller;
+package io.gunmarket.demo.marketApp.web.validation;
 
 import io.gunmarket.demo.marketApp.domain.BasicEntity;
 import io.gunmarket.demo.marketApp.domain.Product;
 import io.gunmarket.demo.marketApp.domain.ProductInShop;
 import io.gunmarket.demo.marketApp.domain.Rating;
+import io.gunmarket.demo.marketApp.web.webentities.FilterAndPageable;
 import org.jsoup.internal.StringUtil;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +16,7 @@ import java.util.Map;
 @Component
 public class RequestParamsValidator {
 
-	FilterAndPageable validate(Map<String, String> requestParams,
+	public FilterAndPageable validate(Map<String, String> requestParams,
 	                           Pageable pageable,
 	                           Class<? extends BasicEntity> entityClass) {
 		FilterAndPageable filterAndPageable = new FilterAndPageable(requestParams, pageable);

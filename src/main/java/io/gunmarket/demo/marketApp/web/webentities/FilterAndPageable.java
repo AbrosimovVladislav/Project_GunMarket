@@ -1,4 +1,4 @@
-package io.gunmarket.demo.marketApp.web.controller;
+package io.gunmarket.demo.marketApp.web.webentities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import java.util.Map;
 @AllArgsConstructor
 @Getter
 @Setter
-class FilterAndPageable {
+public class FilterAndPageable {
 	private Map<String, String> filter;
 	private Pageable pageable;
 }
