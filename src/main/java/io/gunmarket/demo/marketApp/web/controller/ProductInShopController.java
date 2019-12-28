@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,6 @@ import java.util.Map;
 public class ProductInShopController {
 
 	private final ProductInShopService productInShopService;
-
 	private final RequestParamsValidator validator;
 
 	private static final int DEFAULT_PAGE_NUMBER = 0;
@@ -30,16 +30,22 @@ public class ProductInShopController {
 	                                          @PageableDefault(size = DEFAULT_PAGE_SIZE, page = DEFAULT_PAGE_NUMBER)
 			                                          Pageable pageable) {
 		FilterAndPageable pairOfParamsAndPageable = validator.validate(requestParams, pageable, ProductInShop.class);
-		return productInShopService.getAllByParameters(
-				pairOfParamsAndPageable.getFilter(),
+		return productInShopService.getAllByParameters(pairOfParamsAndPageable.getFilter(),
 				pairOfParamsAndPageable.getPageable()
 		);
 	}
 
-	@Deprecated(since = "For debug only. Delete on product")
-	@GetMapping(value = "/productsInShops/{productInShopId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ProductInShop getById(@PathVariable String productInShopId) {
-		return productInShopService.getById(productInShopId);
+	@GetMapping(value = "/productsInShops/{productId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<ProductInShop> getByProductId(@PathVariable String productId,
+	                                          @PageableDefault(size = DEFAULT_PAGE_SIZE, page = DEFAULT_PAGE_NUMBER)
+			                                          Pageable pageable) {
+		Map<String, String> productIdMap = new HashMap<>() {{
+			put("product.productId", productId);
+		}};
+		FilterAndPageable pairOfParamsAndPageable = validator.validate(productIdMap, pageable, ProductInShop.class);
+		return productInShopService.getAllByParameters(pairOfParamsAndPageable.getFilter(),
+				pairOfParamsAndPageable.getPageable()
+		);
 	}
 
 }
