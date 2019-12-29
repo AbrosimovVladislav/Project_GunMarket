@@ -5,7 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.Set;
 
 import static io.gunmarket.demo.marketApp.domain.Shop.SHOP_TABLE;
@@ -34,7 +40,7 @@ public class Shop implements BasicEntity {
 
     @JsonIgnore
     @OneToMany(mappedBy = SHOP_TABLE)
-    Set<Address> address;
+    private Set<Address> address;
 
     @Column(name = SHOP_WEBSITE, nullable = false)
     private String website;
@@ -44,5 +50,9 @@ public class Shop implements BasicEntity {
 
     @JsonIgnore
     @OneToMany(mappedBy = SHOP_TABLE)
-    Set<ProductInShop> product;
+    private Set<ProductInShop> product;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = SHOP_TABLE)
+    private Set<Review> review;
 }

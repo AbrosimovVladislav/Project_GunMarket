@@ -1,5 +1,6 @@
 package io.gunmarket.demo.marketApp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -97,4 +98,8 @@ public class Product implements BasicEntity {
 
     @OneToMany(mappedBy = PRODUCT_TABLE)
     private Set<ProductInShop> productInShop;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = PRODUCT_TABLE)
+    private Set<Review> review;
 }

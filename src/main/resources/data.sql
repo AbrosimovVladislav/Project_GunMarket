@@ -67,4 +67,11 @@ INSERT INTO rating (value, product_id) VALUES ('C',8);
 INSERT INTO rating (value, product_id) VALUES ('B',9);
 INSERT INTO rating (value, product_id) VALUES ('A',10);
 
+INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment1',2,1,null);
+INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment2',8,1,null);
+INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment3',5,2,null);
+INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment4',5,null,1);
+INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment5',5,null,1);
+INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment6',5,null,2);
+
 
