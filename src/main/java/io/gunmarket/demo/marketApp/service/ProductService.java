@@ -1,7 +1,7 @@
 package io.gunmarket.demo.marketApp.service;
 
 import io.gunmarket.demo.marketApp.domain.Product;
-import io.gunmarket.demo.marketApp.repo.product.ProductRepo;
+import io.gunmarket.demo.marketApp.repo.ProductRepo;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class ProductService {
 	}
 
 	public List<Product> getAllByParameters(Map<String, String> requestParams, Pageable pageable) {
-		return productRepo.findAllByParameters(requestParams, pageable);
+		return productRepo.findAllByParameters(requestParams, pageable, Product.class);
 	}
 
 	public Product getById(String id){
