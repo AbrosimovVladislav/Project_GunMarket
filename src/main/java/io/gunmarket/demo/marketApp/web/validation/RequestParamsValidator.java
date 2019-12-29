@@ -4,6 +4,7 @@ import io.gunmarket.demo.marketApp.domain.BasicEntity;
 import io.gunmarket.demo.marketApp.domain.Product;
 import io.gunmarket.demo.marketApp.domain.ProductInShop;
 import io.gunmarket.demo.marketApp.domain.Rating;
+import io.gunmarket.demo.marketApp.domain.Review;
 import io.gunmarket.demo.marketApp.web.webentities.FilterAndPageable;
 import org.jsoup.internal.StringUtil;
 import org.springframework.data.domain.PageRequest;
@@ -63,6 +64,9 @@ public class RequestParamsValidator {
 			sortingProperty = Rating.RATING_VALUE_SORT;
 		} else if(entityClass.isAssignableFrom(ProductInShop.class)){
 			sortingProperty = ProductInShop.PRODUCT_IN_SHOP_POPULARITY;
+			dir = Sort.Direction.DESC;
+		} else if(entityClass.isAssignableFrom(Review.class)){
+			sortingProperty = Review.REVIEW_MARK;
 			dir = Sort.Direction.DESC;
 		}
 		return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(dir, sortingProperty));

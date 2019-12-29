@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -41,10 +41,7 @@ public class ProductInShopController {
 	public List<ProductInShop> getByProductId(@PathVariable String productId,
 	                                          @PageableDefault(size = DEFAULT_PAGE_SIZE, page = DEFAULT_PAGE_NUMBER)
 			                                          Pageable pageable) {
-		Map<String, String> productIdMap = new HashMap<>() {{
-			put("product.productId", productId);
-		}};
-		FilterAndPageable pairOfParamsAndPageable = validator.validate(productIdMap, pageable, ProductInShop.class);
+		FilterAndPageable pairOfParamsAndPageable = validator.validate(Collections.singletonMap("product.productId", productId), pageable, ProductInShop.class);
 		return productInShopService.getAllByParameters(pairOfParamsAndPageable.getFilter(),
 				pairOfParamsAndPageable.getPageable()
 		);
