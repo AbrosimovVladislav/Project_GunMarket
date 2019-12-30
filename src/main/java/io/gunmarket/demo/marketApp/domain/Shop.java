@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.Set;
 
@@ -29,6 +30,7 @@ public class Shop implements BasicEntity {
     public static final String SHOP_ADDRESS = "address";
     public static final String SHOP_WEBSITE = "website";
     public static final String SHOP_INFO = "shopInfo";
+    public static final String SHOP_RATING = "shop_rating";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,5 +56,9 @@ public class Shop implements BasicEntity {
 
     @JsonIgnore
     @OneToMany(mappedBy = SHOP_TABLE)
-    private Set<Review> review;
+    private Set<Review> reviews;
+
+    @Column(name = SHOP_RATING)
+    @OneToOne(mappedBy = SHOP_TABLE)
+    private Rating rating;
 }

@@ -69,6 +69,7 @@ public class ProductInShop implements BasicEntity {
 	@Column(name = PRODUCT_IN_SHOP_POPULARITY, nullable = false)
 	private double popularity;
 
+	@SuppressWarnings("unused")
 	public ProductInShop(Product product, Shop shop, double price, boolean inStock, String link, int sale, double popularity) {
 		this.productInShopId = product.getProductId() + ":" + shop.getShopId();
 		this.product = product;
