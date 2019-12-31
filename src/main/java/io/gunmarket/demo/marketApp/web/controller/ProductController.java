@@ -38,7 +38,7 @@ public class ProductController {
 	}
 
 	@GetMapping(value = "/products/{productId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Product getById(@PathVariable String productId) {
+	public Product getById(@PathVariable long productId) {
 		return productService.getById(productId);
 	}
 

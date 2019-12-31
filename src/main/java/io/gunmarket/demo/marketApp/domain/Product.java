@@ -10,7 +10,6 @@ import java.util.Set;
 import static io.gunmarket.demo.marketApp.domain.Brand.BRAND_ID;
 import static io.gunmarket.demo.marketApp.domain.Caliber.CALIBER_ID;
 import static io.gunmarket.demo.marketApp.domain.Product.PRODUCT_TABLE;
-import static io.gunmarket.demo.marketApp.domain.Rating.RATING_PRODUCT;
 import static io.gunmarket.demo.marketApp.domain.Type.TYPE_ID;
 import static io.gunmarket.demo.marketApp.domain.WeaponPlatform.WEAPON_PLATFORM_ID;
 
@@ -34,7 +33,8 @@ public class Product implements BasicEntity {
     public static final String GUN_BARREL_LENGTH = "barrelLength";
     public static final String PART_COLOR = "color";
     public static final String PART_PARAMS = "params";
-    public static final String PRODUCT_TYPE = "product_type";
+    public static final String PRODUCT_TYPE = "productType";
+    public static final String PRODUCT_RATING_ID = "ratingId";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -93,7 +93,9 @@ public class Product implements BasicEntity {
     @JoinColumn(name = WEAPON_PLATFORM_ID)
     private WeaponPlatform weaponPlatform;
 
-    @OneToOne(mappedBy = RATING_PRODUCT)
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = PRODUCT_RATING_ID, referencedColumnName = PRODUCT_RATING_ID)
     private Rating rating;
 
     @OneToMany(mappedBy = PRODUCT_TABLE)

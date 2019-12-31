@@ -3,6 +3,7 @@ package io.gunmarket.demo.marketApp.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import static io.gunmarket.demo.marketApp.domain.Product.PRODUCT_ID;
 import static io.gunmarket.demo.marketApp.domain.Review.REVIEW_TABLE;
@@ -21,6 +24,7 @@ import static io.gunmarket.demo.marketApp.domain.Shop.SHOP_ID;
 @Table(name = REVIEW_TABLE)
 @Getter
 @Setter
+@Accessors(chain = true)
 public class Review implements BasicEntity {
 
 	public static final String REVIEW_TABLE = "review";
@@ -35,6 +39,8 @@ public class Review implements BasicEntity {
 	@Column(name = REVIEW_ID, length = 8, nullable = false)
 	private Long reviewId;
 
+	@Min(1)
+	@Max(5)
 	@Column(name = REVIEW_MARK, nullable = false)
 	private int mark;
 

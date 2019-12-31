@@ -5,6 +5,4 @@ import io.gunmarket.demo.marketApp.repo.filterandsorting.FilterAndSortingReposit
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface ProductRepo extends JpaRepository<Product, Long>, FilterAndSortingRepository<Product> {
-	Product findAllByProductId(Long productId);
-}
+public interface ProductRepo extends JpaRepository<Product, Long>, FilterAndSortingRepository<Product> {}
