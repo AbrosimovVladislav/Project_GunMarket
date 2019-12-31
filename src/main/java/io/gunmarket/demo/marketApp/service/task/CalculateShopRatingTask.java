@@ -1,13 +1,12 @@
 package io.gunmarket.demo.marketApp.service.task;
 
+import io.gunmarket.demo.marketApp.domain.Rating;
 import io.gunmarket.demo.marketApp.domain.Review;
 import io.gunmarket.demo.marketApp.domain.Shop;
 import io.gunmarket.demo.marketApp.service.ShopService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 
-@Component
 @RequiredArgsConstructor
 public class CalculateShopRatingTask implements Runnable {
 	private final ShopService shopService;
@@ -18,6 +17,7 @@ public class CalculateShopRatingTask implements Runnable {
 	@Override
 	public void run() {
 		int userMark = review.getMark();
+		if(shop.getRating() == null) shop.setRating(new Rating().setValue(0));
 		double currentRatingBeforeUpdate = shop.getRating().getValue();
 		double currentRating = (currentRatingBeforeUpdate * reviewsCountBeforeUpdate + userMark) / (reviewsCountBeforeUpdate + 1);
 		shop.getRating().setValue(currentRating);

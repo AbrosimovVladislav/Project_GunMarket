@@ -55,23 +55,3 @@ INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link
 INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('9:2','info', true,  'link', 10, 0, 9,  2, 0.9);
 INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('10:2','info', false, 'link', 10, 5, 10, 2, 0.99);
 INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('1:2','info', false, 'link', 10, 5, 1, 2, 0.99);
-
-INSERT INTO rating (value, product_id) VALUES ('J',1);
-INSERT INTO rating (value, product_id) VALUES ('I',2);
-INSERT INTO rating (value, product_id) VALUES ('H',3);
-INSERT INTO rating (value, product_id) VALUES ('G',4);
-INSERT INTO rating (value, product_id) VALUES ('F',5);
-INSERT INTO rating (value, product_id) VALUES ('E',6);
-INSERT INTO rating (value, product_id) VALUES ('D',7);
-INSERT INTO rating (value, product_id) VALUES ('C',8);
-INSERT INTO rating (value, product_id) VALUES ('B',9);
-INSERT INTO rating (value, product_id) VALUES ('A',10);
-
-INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment1',2,1,null);
-INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment2',8,1,null);
-INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment3',5,2,null);
-INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment4',5,null,1);
-INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment5',5,null,1);
-INSERT INTO review (pros, cons, comment, mark, product_id, shop_id) VALUES ('+','-','comment6',5,null,2);
-
-

@@ -24,10 +24,10 @@ public class ReviewService {
 
 	@Transactional
 	public boolean addReviewAndUpdateShopRating(Review review) {
-		reviewRepo.save(review);
 		Shop shop = review.getShop();
-		long reviewsCountBeforeUpdate = reviewRepo.countReviewByShopId(shop.getShopId());
+		long reviewsCountBeforeUpdate = reviewRepo.countReviewByShop(shop);
 		new CalculateShopRatingTask(shopService, shop, review, reviewsCountBeforeUpdate).run();
+		reviewRepo.save(review);
 		return true;
 	}
 }

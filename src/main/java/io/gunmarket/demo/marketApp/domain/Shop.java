@@ -5,14 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 import static io.gunmarket.demo.marketApp.domain.Shop.SHOP_TABLE;
@@ -25,12 +18,13 @@ import static io.gunmarket.demo.marketApp.domain.Shop.SHOP_TABLE;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Shop implements BasicEntity {
     public static final String SHOP_TABLE = "shop";
-    public static final String SHOP_ID = "shop_id";
+    public static final String SHOP_ID = "shopId";
     public static final String SHOP_NAME = "name";
     public static final String SHOP_ADDRESS = "address";
     public static final String SHOP_WEBSITE = "website";
     public static final String SHOP_INFO = "shopInfo";
-    public static final String SHOP_RATING = "shop_rating";
+    public static final String SHOP_RATING = "shopRating";
+    public static final String SHOP_RATING_ID = "ratingId";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,9 +50,10 @@ public class Shop implements BasicEntity {
 
     @JsonIgnore
     @OneToMany(mappedBy = SHOP_TABLE)
-    private Set<Review> reviews;
+    private Set<Review> review;
 
-    @Column(name = SHOP_RATING)
-    @OneToOne(mappedBy = SHOP_TABLE)
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = SHOP_RATING_ID, referencedColumnName = SHOP_RATING_ID)
     private Rating rating;
 }

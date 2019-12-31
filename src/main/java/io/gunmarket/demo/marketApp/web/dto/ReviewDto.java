@@ -15,5 +15,5 @@ public class ReviewDto {
 	@NonNull private final String comment;
 	@Nullable private final Long shopId;
 	@Nullable private final Long productId;
-	@NonNull private final long userId;
+	@Nullable private final Long userId;
 }
