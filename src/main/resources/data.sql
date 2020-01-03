@@ -15,26 +15,26 @@ INSERT INTO weapon_platform (name) VALUES ('weapon_platform-name-2');
 INSERT INTO weapon_platform (name) VALUES ('weapon_platform-name-3');
 INSERT INTO weapon_platform (name) VALUES ('weapon_platform-name-4');
 
-INSERT INTO product (product_type, product_id, average_price, model, weight, color, params, barrel_length, capacity, total_length, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('GUN',  1,  100, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     1, 1,    1, 1);
-INSERT INTO product (product_type, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('GUN',  2,  90, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     2, 2,    1, 2);
-INSERT INTO product (product_type, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('GUN',  3,  80, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     3, 2,    2, 3);
-INSERT INTO product (product_type, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('GUN',  4,  70, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     1, 3,    2, 4);
-INSERT INTO product (product_type, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('PART', 5,  60, 'model',   null,  null,       null,  null,     'color', 'params', 2, null, 1, 1);
-INSERT INTO product (product_type, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('PART', 6,  10, 'model',   null,  null,       null,  null,     'color', 'params', 2, null, 1, 2);
-INSERT INTO product (product_type, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('PART', 7,  10, 'model',   null,  null,       null,  null,     'color', 'params', 2, null, 1, 3);
-INSERT INTO product (product_type, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('AMMO', 8,  10, '5.45 hp', null,  null,       null,  'weight', null,    null,     2, 2,    2, null);
-INSERT INTO product (product_type, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('AMMO', 9,  10, '5.45 hp', null,  null,       null,  'weight', null,    null,     3, 3,    2, null);
-INSERT INTO product (product_type, product_id, average_price, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('AMMO', 10, 10, '5.45 hp', null,  null,       null,  'weight', null,    null,     3, 4,    2, null);
+INSERT INTO product (product_type, product_id,   model, weight, color, params, barrel_length, capacity, total_length, brand_id, caliber_id, type_id, weapon_platform_id)
+VALUES ('GUN',  1, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     1, 1,    1, 1);
+INSERT INTO product (product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+VALUES ('GUN',  2, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     2, 2,    1, 2);
+INSERT INTO product (product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+VALUES ('GUN',  3, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     3, 2,    2, 3);
+INSERT INTO product (product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+VALUES ('GUN',  4, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', null,    null,     1, 3,    2, 4);
+INSERT INTO product (product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+VALUES ('PART', 5, 'model',   null,  null,     null,  null,     'color', 'params', 2, null, 1, 1);
+INSERT INTO product (product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+VALUES ('PART', 6,  'model',   null,  null,     null,  null,     'color', 'params', 2, null, 1, 2);
+INSERT INTO product (product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+VALUES ('PART', 7,  'model',   null,  null,     null,  null,     'color', 'params', 2, null, 1, 3);
+INSERT INTO product (product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+VALUES ('AMMO', 8,  '5.45 hp', null,  null,     null,  'weight', null,    null,     2, 2,    2, null);
+INSERT INTO product (product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+VALUES ('AMMO', 9,  '5.45 hp', null,  null,     null,  'weight', null,    null,     3, 3,    2, null);
+INSERT INTO product (product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+VALUES ('AMMO', 10, '5.45 hp', null,  null,     null,  'weight', null,    null,     3, 4,    2, null);
 
 INSERT INTO shop (name, website) VALUES ('shop-name1', 'www.com.1');
 INSERT INTO shop (name, website) VALUES ('shop-name2', 'www.com.2');
@@ -55,3 +55,20 @@ INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link
 INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('9:2','info', true,  'link', 10, 0, 9,  2, 0.9);
 INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('10:2','info', false, 'link', 10, 5, 10, 2, 0.99);
 INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('1:2','info', false, 'link', 10, 5, 1, 2, 0.99);
+
+CREATE FUNCTION productTrigger() RETURNS TRIGGER AS $productTrigger$
+  DECLARE
+  i DOUBLE PRECISION;
+BEGIN
+IF NEW.rating_id IS NULL THEN
+INSERT INTO rating (value) VALUES (0);
+SELECT rating_id FROM rating WHERE value = 0 INTO i;
+NEW.rating_id := i;
+END IF;
+RETURN NEW;
+END;
+
+$productTrigger$ LANGUAGE plpgsql;
+
+CREATE TRIGGER productTrigger BEFORE INSERT OR UPDATE ON product
+FOR EACH ROW EXECUTE FUNCTION productTrigger();

@@ -20,7 +20,6 @@ import static io.gunmarket.demo.marketApp.domain.WeaponPlatform.WEAPON_PLATFORM_
 @Setter
 public class Product implements BasicEntity {
     public static final String PRODUCT_TABLE = "product";
-    public static final String PRODUCT_AVG_PRICE = "averagePrice";
     public static final String PRODUCT_MODEL = "model";
     public static final String PRODUCT_ID = "productId";
     public static final String PRODUCT_WEIGHT = "weight";
@@ -52,9 +51,6 @@ public class Product implements BasicEntity {
 
     @Column(name = PRODUCT_IMAGE_LINK)
     private String imageLink;
-
-    @Column(name = PRODUCT_AVG_PRICE)
-    private double averagePrice;
 
     @Column(name = PRODUCT_MODEL)
     private String model;
