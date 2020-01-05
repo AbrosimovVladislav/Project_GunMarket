@@ -1,0 +1,14 @@
+POST http://localhost:8080/reviews/shop
+Content-Type: application/json
+
+{
+  "mark": "3",
+  "pros": "+",
+  "cons": "-",
+  "comment": "not so good",
+  "shopId": 2,
+  "productId": null,
+  "userId": null
+}
+
+###
