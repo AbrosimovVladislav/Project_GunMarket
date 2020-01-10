@@ -1,3 +1,19 @@
+CREATE OR REPLACE FUNCTION insertNewRatingOnNewProduct() RETURNS TRIGGER AS $productTrigger$
+    DECLARE
+        i BIGINT;
+    BEGIN
+        IF NEW.rating_id IS NULL THEN
+            INSERT INTO rating (value) VALUES (0) RETURNING rating_id into i;
+            NEW.rating_id := i;
+        END IF;
+        RETURN NEW;
+    END;
+$productTrigger$ LANGUAGE plpgsql;;
+
+CREATE TRIGGER productTrigger BEFORE INSERT ON product
+FOR EACH ROW
+EXECUTE FUNCTION insertNewRatingOnNewProduct();;
+
 INSERT INTO brand (full_name, short_name) VALUES ('brand-name1','brand-name1');;
 INSERT INTO brand (full_name, short_name) VALUES ('brand-name2','brand-name2');;
 INSERT INTO brand (full_name, short_name) VALUES ('brand-name3','brand-name3');;
@@ -55,21 +71,3 @@ INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link
 INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('9:2','info', true,  'link', 10, 0, 9,  2, 0.9);;
 INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('10:2','info', false, 'link', 10, 5, 10, 2, 0.99);;
 INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('1:2','info', false, 'link', 10, 5, 1, 2, 0.99);;
-
-CREATE OR REPLACE FUNCTION insetNewRatingOnNewProduct() RETURNS TRIGGER AS $productTrigger$
-    DECLARE
-        i DOUBLE PRECISION;
-    BEGIN
-        IF NEW.rating_id IS NULL THEN
-            INSERT INTO rating (value) VALUES (0);
-            SELECT rating_id FROM rating WHERE value = 0 INTO i;
-            NEW.rating_id := i;
-        END IF;
-        RETURN NEW;
-    END;
-$productTrigger$ LANGUAGE plpgsql;;
-
-CREATE TRIGGER productTrigger BEFORE INSERT ON product
-FOR EACH ROW
-WHEN (rating_id)
-EXECUTE FUNCTION insetNewRatingOnNewProduct();;

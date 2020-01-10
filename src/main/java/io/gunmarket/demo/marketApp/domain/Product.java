@@ -91,7 +91,7 @@ public class Product implements BasicEntity {
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = PRODUCT_RATING_ID, referencedColumnName = PRODUCT_RATING_ID)
+    @JoinColumn(name = PRODUCT_RATING_ID, referencedColumnName = PRODUCT_RATING_ID, unique = true)
     private Rating rating;
 
     @OneToMany(mappedBy = PRODUCT_TABLE)
