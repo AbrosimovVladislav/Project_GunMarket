@@ -20,4 +20,8 @@ public class ProductInShopService {
 	public List<ProductInShop> getAllByParameters(Map<String, String> requestParams, Pageable pageable) {
 		return productInShopRepo.findAllByParameters(requestParams, pageable, ProductInShop.class);
 	}
+
+	public Double calculateMinPriceByProduct(Long productId){
+		return productInShopRepo.calculateMinPriceByProduct(productId);
+	}
 }

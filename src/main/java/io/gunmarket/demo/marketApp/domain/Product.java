@@ -20,7 +20,6 @@ import static io.gunmarket.demo.marketApp.domain.WeaponPlatform.WEAPON_PLATFORM_
 @Setter
 public class Product implements BasicEntity {
     public static final String PRODUCT_TABLE = "product";
-    public static final String PRODUCT_AVG_PRICE = "averagePrice";
     public static final String PRODUCT_MODEL = "model";
     public static final String PRODUCT_ID = "productId";
     public static final String PRODUCT_WEIGHT = "weight";
@@ -52,9 +51,6 @@ public class Product implements BasicEntity {
 
     @Column(name = PRODUCT_IMAGE_LINK)
     private String imageLink;
-
-    @Column(name = PRODUCT_AVG_PRICE)
-    private double averagePrice;
 
     @Column(name = PRODUCT_MODEL)
     private String model;
@@ -95,7 +91,7 @@ public class Product implements BasicEntity {
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = PRODUCT_RATING_ID, referencedColumnName = PRODUCT_RATING_ID)
+    @JoinColumn(name = PRODUCT_RATING_ID, referencedColumnName = PRODUCT_RATING_ID, unique = true)
     private Rating rating;
 
     @OneToMany(mappedBy = PRODUCT_TABLE)
