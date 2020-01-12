@@ -1,14 +1,17 @@
-package io.gunmarket.demo.marketApp.domain;
+package io.gunmarket.demo.marketApp.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Address;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Rating;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Review;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
-import static io.gunmarket.demo.marketApp.domain.Shop.SHOP_TABLE;
+import static io.gunmarket.demo.marketApp.model.domain.Shop.SHOP_TABLE;
 
 
 @Entity

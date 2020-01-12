@@ -1,4 +1,4 @@
-package io.gunmarket.demo.marketApp.domain;
+package io.gunmarket.demo.marketApp.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,9 +15,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import static io.gunmarket.demo.marketApp.domain.Product.PRODUCT_ID;
-import static io.gunmarket.demo.marketApp.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
-import static io.gunmarket.demo.marketApp.domain.Shop.SHOP_ID;
+import static io.gunmarket.demo.marketApp.model.domain.Product.PRODUCT_ID;
+import static io.gunmarket.demo.marketApp.model.domain.ProductInShop.PRODUCT_IN_SHOP_TABLE;
+import static io.gunmarket.demo.marketApp.model.domain.Shop.SHOP_ID;
 
 @Entity
 @Table(name = PRODUCT_IN_SHOP_TABLE)

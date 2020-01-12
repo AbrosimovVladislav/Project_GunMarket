@@ -1,10 +1,10 @@
 package io.gunmarket.demo.marketApp.web.validation;
 
-import io.gunmarket.demo.marketApp.domain.BasicEntity;
-import io.gunmarket.demo.marketApp.domain.Product;
-import io.gunmarket.demo.marketApp.domain.ProductInShop;
-import io.gunmarket.demo.marketApp.domain.Rating;
-import io.gunmarket.demo.marketApp.domain.Review;
+import io.gunmarket.demo.marketApp.model.domain.BasicEntity;
+import io.gunmarket.demo.marketApp.model.domain.Product;
+import io.gunmarket.demo.marketApp.model.domain.ProductInShop;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Rating;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Review;
 import io.gunmarket.demo.marketApp.web.webentities.FilterAndPageable;
 import org.jsoup.internal.StringUtil;
 import org.springframework.data.domain.PageRequest;

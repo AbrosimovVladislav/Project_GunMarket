@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.web.controller;
 
-import io.gunmarket.demo.marketApp.domain.ProductInShop;
+import io.gunmarket.demo.marketApp.model.domain.ProductInShop;
 import io.gunmarket.demo.marketApp.service.ProductInShopService;
 import io.gunmarket.demo.marketApp.web.validation.RequestParamsValidator;
 import io.gunmarket.demo.marketApp.web.webentities.FilterAndPageable;
