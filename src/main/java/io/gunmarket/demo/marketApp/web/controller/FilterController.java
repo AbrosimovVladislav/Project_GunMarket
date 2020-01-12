@@ -16,6 +16,7 @@ public class FilterController {
 
     private final FilterItemService filterItemService;
 
+    /*ToDo Выбрать колонку в которой лежат не строки и проверить работоспособность всей цепочки */
     @GetMapping(value = "/product/filters/{menuItem}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<FilterItem> getFilterItemsByMenuItem(@PathVariable String menuItem) {
         return filterItemService.getFiltersByMenuItem(menuItem);
