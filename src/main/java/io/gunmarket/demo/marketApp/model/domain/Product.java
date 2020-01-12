@@ -1,17 +1,18 @@
-package io.gunmarket.demo.marketApp.domain;
+package io.gunmarket.demo.marketApp.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.gunmarket.demo.marketApp.model.domain.attributes.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
-import static io.gunmarket.demo.marketApp.domain.Brand.BRAND_ID;
-import static io.gunmarket.demo.marketApp.domain.Caliber.CALIBER_ID;
-import static io.gunmarket.demo.marketApp.domain.Product.PRODUCT_TABLE;
-import static io.gunmarket.demo.marketApp.domain.Type.TYPE_ID;
-import static io.gunmarket.demo.marketApp.domain.WeaponPlatform.WEAPON_PLATFORM_ID;
+import static io.gunmarket.demo.marketApp.model.domain.attributes.Brand.BRAND_ID;
+import static io.gunmarket.demo.marketApp.model.domain.attributes.Caliber.CALIBER_ID;
+import static io.gunmarket.demo.marketApp.model.domain.Product.PRODUCT_TABLE;
+import static io.gunmarket.demo.marketApp.model.domain.attributes.Type.TYPE_ID;
+import static io.gunmarket.demo.marketApp.model.domain.attributes.WeaponPlatform.WEAPON_PLATFORM_ID;
 
 
 @Entity

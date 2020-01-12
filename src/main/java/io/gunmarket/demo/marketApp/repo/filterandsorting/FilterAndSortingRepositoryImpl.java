@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.repo.filterandsorting;
 
-import io.gunmarket.demo.marketApp.domain.BasicEntity;
+import io.gunmarket.demo.marketApp.model.domain.BasicEntity;
 import io.gunmarket.demo.marketApp.repo.querybuilder.QueryBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

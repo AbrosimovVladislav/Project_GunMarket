@@ -1,7 +1,7 @@
 package io.gunmarket.demo.marketApp.service;
 
-import io.gunmarket.demo.marketApp.domain.Review;
-import io.gunmarket.demo.marketApp.domain.Shop;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Review;
+import io.gunmarket.demo.marketApp.model.domain.Shop;
 import io.gunmarket.demo.marketApp.repo.ReviewRepo;
 import io.gunmarket.demo.marketApp.service.task.CalculateShopRatingTask;
 import lombok.RequiredArgsConstructor;

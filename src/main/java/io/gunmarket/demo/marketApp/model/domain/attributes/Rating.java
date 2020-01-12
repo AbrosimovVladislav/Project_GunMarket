@@ -1,5 +1,8 @@
-package io.gunmarket.demo.marketApp.domain;
+package io.gunmarket.demo.marketApp.model.domain.attributes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.gunmarket.demo.marketApp.model.domain.Product;
+import io.gunmarket.demo.marketApp.model.domain.Shop;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -14,7 +17,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import static io.gunmarket.demo.marketApp.domain.Rating.RATING_TABLE;
+import static io.gunmarket.demo.marketApp.model.domain.attributes.Rating.RATING_TABLE;
 
 
 @Entity
@@ -41,9 +44,11 @@ public class Rating {
     @Column(name = RATING_VALUE)
     private double value;
 
+    @JsonIgnore
     @OneToOne(mappedBy = RATING_TABLE)
     private Product product;
 
+    @JsonIgnore
     @OneToOne(mappedBy = RATING_TABLE)
     private Shop shop;
 }

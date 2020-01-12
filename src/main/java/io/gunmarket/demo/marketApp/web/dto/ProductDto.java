@@ -1,10 +1,10 @@
 package io.gunmarket.demo.marketApp.web.dto;
 
-import io.gunmarket.demo.marketApp.domain.Brand;
-import io.gunmarket.demo.marketApp.domain.Caliber;
-import io.gunmarket.demo.marketApp.domain.Rating;
-import io.gunmarket.demo.marketApp.domain.Type;
-import io.gunmarket.demo.marketApp.domain.WeaponPlatform;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Brand;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Caliber;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Rating;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Type;
+import io.gunmarket.demo.marketApp.model.domain.attributes.WeaponPlatform;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

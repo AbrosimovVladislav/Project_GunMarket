@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.repo.filterandsorting;
 
-import io.gunmarket.demo.marketApp.domain.BasicEntity;
+import io.gunmarket.demo.marketApp.model.domain.BasicEntity;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;

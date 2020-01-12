@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.web.controller;
 
-import io.gunmarket.demo.marketApp.domain.Review;
+import io.gunmarket.demo.marketApp.model.domain.attributes.Review;
 import io.gunmarket.demo.marketApp.service.ReviewService;
 import io.gunmarket.demo.marketApp.web.dto.ReviewDto;
 import io.gunmarket.demo.marketApp.web.mapper.ReviewMapper;
