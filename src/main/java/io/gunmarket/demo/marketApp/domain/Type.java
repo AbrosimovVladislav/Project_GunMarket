@@ -27,7 +27,7 @@ public class Type {
 	public static final String TYPE_UPPER = "upper";
 	public static final String TYPE_MEDIUM = "medium";
 	public static final String TYPE_LOWER = "lower";
-	public static final String TYPE_CATEGORY_IDENTIFIERS = "categoryIdentifiers";
+	public static final String TYPE_MENU_ITEM = "menuItem";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,8 +43,9 @@ public class Type {
 	@Column(name = TYPE_LOWER)
 	private String lower;
 
-	@Column(name = TYPE_CATEGORY_IDENTIFIERS)
-	private String categoryIdentifiers;
+	/**Привязка к меню сучки*/
+	@Column(name = TYPE_MENU_ITEM)
+	private String menuItem;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = TYPE_TABLE)

@@ -1,5 +1,6 @@
 package io.gunmarket.demo.marketApp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -41,9 +42,11 @@ public class Rating {
     @Column(name = RATING_VALUE)
     private double value;
 
+    @JsonIgnore
     @OneToOne(mappedBy = RATING_TABLE)
     private Product product;
 
+    @JsonIgnore
     @OneToOne(mappedBy = RATING_TABLE)
     private Shop shop;
 }

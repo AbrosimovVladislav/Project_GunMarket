@@ -1,0 +1,55 @@
+#MAIN PAGE
+#MENU REQUESTS
+
+#Menu item 'Гладкоствольное оружие'
+http://localhost:12345/products?type.menuItem=Gladkostvol
+###
+
+#Menu item 'Нарезное оружие'
+http://localhost:12345/products?type.menuItem=Nareznoe
+###
+
+#Menu item 'Оооп'
+http://localhost:12345/products?type.menuItem=Ooop
+###
+
+#Menu item 'Схп'
+http://localhost:12345/products?type.menuItem=Shp
+###
+
+#Menu item 'Патроны'
+http://localhost:12345/products?type.menuItem=Ammo
+###
+
+#Menu item 'Комплектующие'
+http://localhost:12345/products?type.menuItem=Part
+###
+
+#Menu item 'Прочее'
+http://localhost:12345/products?type.menuItem=Other
+###
+
+#Menu item 'Акции'
+#Not implemented yet
+###
+
+#CATEGORY PAGE
+
+#VERTICAL MENU REQUESTS
+
+#FILTER CONTENT REQUESTS
+
+#PRODUCT REQUESTS
+
+#Выбор в категории 'Гладкоствольное оружие'. Фильтрация по 'Емкость магазина' = 10
+http://localhost:12345/products?type.menuItem=Gladkostvol&capacity=10
+###
+
+#Выбор в категории 'Гладкоствольное оружие'. Фильтрация по 'Бренд' = brand-name1
+http://localhost:12345/products?type.menuItem=Gladkostvol&brand.shortName=brand-name1
+###
+
+#Выбор в категории 'Гладкоствольное оружие'. Фильтрация по 'Рейтинг магазина' = 2
+http://localhost:12345/products?type.menuItem=Gladkostvol&productInShop.shop.rating.value=2
+###
+
