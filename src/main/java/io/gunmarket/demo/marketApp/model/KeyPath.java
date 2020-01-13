@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
-import static io.gunmarket.demo.marketApp.model.FilterItem.FILTER_ITEM_TABLE;
 import static io.gunmarket.demo.marketApp.model.KeyPath.KEY_PATH_TABLE;
 
 @Entity
@@ -37,7 +37,7 @@ public class KeyPath {
     private String value;
 
     @JsonIgnore
-    @OneToOne(mappedBy = KEY_PATH_TABLE)
-    private FilterItem filterItem;
+    @OneToMany(mappedBy = KEY_PATH_TABLE)
+    private List<FilterItem> filterItem;
 
 }

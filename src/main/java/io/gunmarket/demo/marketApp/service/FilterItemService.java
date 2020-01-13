@@ -23,6 +23,25 @@ public class FilterItemService {
     private void determineValues(FilterItem filterItem) {
         KeyPath keyPath = filterItem.getKeyPath();
         List<String> values = filterItemRepo.selectFrom(keyPath.getTargetParam(), keyPath.getTargetEntity());
-        filterItem.setValues(values);
+        FilterItem.FilterType type = filterItem.getType();
+
+        if (type == FilterItem.FilterType.CHECKBOX) {
+            filterItem.setValues(values);
+        } else if (type == FilterItem.FilterType.RANGE) {
+            filterItem.setValues(getMinMax(values));
+        } else {
+            throw new UnsupportedOperationException("Filter type of " + filterItem.getFilterItemId() + " " + filterItem.getName() + " is wrong");
+        }
+    }
+
+    private List<String> getMinMax(List<String> values) {
+        double min = 99999999999d;
+        double max = 0d;
+        for (String value : values) {
+            double currentValue = Double.parseDouble(value);
+            min = Math.min(currentValue, min);
+            max = Math.max(currentValue, max);
+        }
+        return List.of(String.valueOf(min), String.valueOf(max));
     }
 }

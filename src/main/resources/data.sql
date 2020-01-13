@@ -89,16 +89,26 @@ INSERT INTO address (name,shop_id) VALUES ('address3',2);;
 INSERT INTO address (name,shop_id) VALUES ('address4',2);;
 
 INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('1:1','info', false, 'link', 10, 5, 1,  1, 0.1);;
-INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('2:1','info', true,  'link', 10, 0, 2,  1, 0.2);;
-INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('3:1','info', true,  'link', 10, 0, 3,  1, 0.3);;
-INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('4:1','info', true,  'link', 10, 0, 4,  1, 0.4);;
-INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('5:1','info', false, 'link', 10, 5, 5,  1, 0.5);;
-INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('6:2','info', false, 'link', 10, 5, 6,  2, 0.6);;
-INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('7:2','info', true,  'link', 10, 0, 7,  2, 0.7);;
-INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('8:2','info', true,  'link', 10, 0, 8,  2, 0.8);;
-INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('9:2','info', true,  'link', 10, 0, 9,  2, 0.9);;
-INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('10:2','info', false, 'link', 10, 5, 10, 2, 0.99);;
-INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('1:2','info', false, 'link', 10, 5, 1, 2, 0.99);;
+INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('2:1','info', true,  'link', 20, 0, 2,  1, 0.2);;
+INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('3:1','info', true,  'link', 30, 0, 3,  1, 0.3);;
+INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('4:1','info', true,  'link', 40, 0, 4,  1, 0.4);;
+INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('5:1','info', false, 'link', 50, 5, 5,  1, 0.5);;
+INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('6:2','info', false, 'link', 60, 5, 6,  2, 0.6);;
+INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('7:2','info', true,  'link', 70, 0, 7,  2, 0.7);;
+INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('8:2','info', true,  'link', 80, 0, 8,  2, 0.8);;
+INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('9:2','info', true,  'link', 90, 0, 9,  2, 0.9);;
+INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('10:2','info', false, 'link', 100, 5, 10, 2, 0.99);;
+INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link, price, sale, product_id, shop_id, popularity) VALUES ('1:2','info', false, 'link', 110, 5, 1, 2, 0.99);;
 
+-- ----------------------------------------------------------------1---------------------------------------------------------
 INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','brand','short_name','brand.shortName');;
 INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Gladkostvol', 'Бренд', 'CHECKBOX', 1);;
+-- ----------------------------------------------------------------2---------------------------------------------------------
+INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product_in_shop','price','productInShop.price');;
+INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Gladkostvol', 'Цена', 'RANGE', 2);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Nareznoe', 'Цена', 'RANGE', 2);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Ooop', 'Цена', 'RANGE', 2);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Shp',  'Цена', 'RANGE', 2);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Ammo', 'Цена', 'RANGE', 2);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Part', 'Цена', 'RANGE', 2);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Other','Цена', 'RANGE', 2);;

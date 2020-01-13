@@ -31,8 +31,8 @@ public class FilterItem {
     private String name;
 
     @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = KEY_PATH_ID, referencedColumnName = KEY_PATH_ID, unique = true)
+    @ManyToOne
+    @JoinColumn(name = KEY_PATH_ID, nullable = false)
     private KeyPath keyPath;
 
     @Column(name = FILTER_ITEM_TYPE)
@@ -50,7 +50,7 @@ public class FilterItem {
     @Transient
     List<String> values;
 
-    private enum FilterType {
+    public enum FilterType {
         RANGE, CHECKBOX
     }
 
