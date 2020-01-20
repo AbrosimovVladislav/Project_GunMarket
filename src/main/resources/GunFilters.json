@@ -1,0 +1,134 @@
+[
+  {
+    "filterItemId": 1,
+    "name": "Цена",
+    "type": "RANGE",
+    "menuItem": "Gladkostvol",
+    "rank": 1,
+    "values": [
+      "10.0",
+      "110.0"
+    ]
+  },
+  {
+    "filterItemId": 5,
+    "name": "Прицнип действия",
+    "type": "CHECKBOX",
+    "menuItem": "Gladkostvol",
+    "rank": 2,
+    "values": [
+      "Полуавтоматическое",
+      "Помповое",
+      "Продольно-скользящее"
+    ]
+  },
+  {
+    "filterItemId": 9,
+    "name": "Калибр",
+    "type": "CHECKBOX",
+    "menuItem": "Gladkostvol",
+    "rank": 3,
+    "values": [
+      "caliber-value1",
+      "caliber-value3",
+      "caliber-value4",
+      "caliber-value2"
+    ]
+  },
+  {
+    "filterItemId": 13,
+    "name": "Бренд",
+    "type": "CHECKBOX",
+    "menuItem": "Gladkostvol",
+    "rank": 4,
+    "values": [
+      "brand-name2",
+      "brand-name1",
+      "brand-name3"
+    ]
+  },
+  {
+    "filterItemId": 17,
+    "name": "Состояние",
+    "type": "CHECKBOX",
+    "menuItem": "Gladkostvol",
+    "rank": 5,
+    "values": [
+      "Новое"
+    ]
+  },
+  {
+    "filterItemId": 21,
+    "name": "Емкость магазина",
+    "type": "CHECKBOX",
+    "menuItem": "Gladkostvol",
+    "rank": 6,
+    "values": [
+      "10",
+      "15",
+      "17",
+      "2",
+      "30"
+    ]
+  },
+  {
+    "filterItemId": 25,
+    "name": "Длина ствола",
+    "type": "CHECKBOX",
+    "menuItem": "Gladkostvol",
+    "rank": 7,
+    "values": [
+      "b_l",
+      "weight",
+      null
+    ]
+  },
+  {
+    "filterItemId": 29,
+    "name": "Общая длина",
+    "type": "CHECKBOX",
+    "menuItem": "Gladkostvol",
+    "rank": 8,
+    "values": [
+      "1000",
+      "1001",
+      "1030",
+      "1040",
+      "1200",
+      "1220",
+      "1330"
+    ]
+  },
+  {
+    "filterItemId": 33,
+    "name": "Расположение стволов",
+    "type": "CHECKBOX",
+    "menuItem": "Gladkostvol",
+    "rank": 9,
+    "values": [
+      null
+    ]
+  },
+  {
+    "filterItemId": 37,
+    "name": "Вес",
+    "type": "CHECKBOX",
+    "menuItem": "Gladkostvol",
+    "rank": 10,
+    "values": [
+      "b_l",
+      "weight",
+      null
+    ]
+  },
+  {
+    "filterItemId": 41,
+    "name": "Страна происхождения",
+    "type": "CHECKBOX",
+    "menuItem": "Gladkostvol",
+    "rank": 11,
+    "values": [
+      null
+    ]
+  }
+]

@@ -36,6 +36,11 @@ public class Product implements BasicEntity {
     public static final String PRODUCT_TYPE = "productType";
     public static final String PRODUCT_RATING_ID = "ratingId";
     public static final String PRODUCT_OPERATING_PRINCIPAL = "operatingPrincipal";
+    public static final String PRODUCT_CONDITION = "condition";
+    public static final String PRODUCT_BARREL_ORIENTATION = "barrelOrientation";
+    public static final String PRODUCT_COUNTRY = "country";
+    public static final String AMMO_SLEEVE_MATERIAL = "sleeveMaterial";
+    public static final String AMMO_CHARGE_TYPE = "chargeType";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,8 +80,23 @@ public class Product implements BasicEntity {
     @Column(name = PART_PARAMS)
     private String params;
 
+    @Column(name = PRODUCT_COUNTRY)
+    private String country;
+
     @Column(name = PART_COLOR)
     private String color;
+
+    @Column(name = PRODUCT_CONDITION)
+    private String condition;
+
+    @Column(name = AMMO_SLEEVE_MATERIAL)
+    private String sleeveMaterial;
+
+    @Column(name = AMMO_CHARGE_TYPE)
+    private String chargeType;
+
+    @Column(name = PRODUCT_BARREL_ORIENTATION)
+    private String barrelOrientation;
 
     @ManyToOne
     @JoinColumn(name = BRAND_ID, nullable = false)

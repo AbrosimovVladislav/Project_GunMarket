@@ -23,7 +23,12 @@ public class ProductDto {
     /*@Nullable*/ private String params;
     /*@Nullable*/ private String color;
     private String operatingPrincipal;
-    /*@NonNull */private Brand brand;
+    private String condition;
+    private String barrelOrientation;
+    private String country;
+    private String sleeveMaterial;
+    private String chargeType;
+	/*@NonNull */private Brand brand;
     /*@NonNull */private Type type;
     /*@Nullable*/ private Caliber caliber;
     /*@Nullable*/ private WeaponPlatform weaponPlatform;

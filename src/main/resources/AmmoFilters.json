@@ -1,0 +1,58 @@
+[
+  {
+    "filterItemId": 45,
+    "name": "Цена",
+    "type": "RANGE",
+    "menuItem": "Ammo",
+    "rank": 1,
+    "values": [
+      "10.0",
+      "110.0"
+    ]
+  },
+  {
+    "filterItemId": 46,
+    "name": "Калибр",
+    "type": "CHECKBOX",
+    "menuItem": "Ammo",
+    "rank": 3,
+    "values": [
+      "caliber-value1",
+      "caliber-value3",
+      "caliber-value4",
+      "caliber-value2"
+    ]
+  },
+  {
+    "filterItemId": 47,
+    "name": "Бренд",
+    "type": "CHECKBOX",
+    "menuItem": "Ammo",
+    "rank": 4,
+    "values": [
+      "brand-name2",
+      "brand-name1",
+      "brand-name3"
+    ]
+  },
+  {
+    "filterItemId": 48,
+    "name": "Тип заряда",
+    "type": "CHECKBOX",
+    "menuItem": "Ammo",
+    "rank": 12,
+    "values": [
+      null
+    ]
+  },
+  {
+    "filterItemId": 49,
+    "name": "Материал гильзы",
+    "type": "CHECKBOX",
+    "menuItem": "Ammo",
+    "rank": 13,
+    "values": [
+      null
+    ]
+  }
+]
