@@ -24,7 +24,7 @@ public class FilterItemService {
 
     private void determineValues(FilterItem filterItem) {
         KeyPath keyPath = filterItem.getKeyPath();
-        List<String> values = filterItemRepo.selectFrom(keyPath.getTargetParam(), keyPath.getTargetEntity());
+        List<String> values = filterItemRepo.selectFromDistinct(keyPath.getTargetParam(), keyPath.getTargetEntity());
         FilterItem.FilterType type = filterItem.getType();
 
         if (type == FilterItem.FilterType.CHECKBOX) {

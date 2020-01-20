@@ -21,4 +21,10 @@ public class SelectFromRepoImpl implements SelectFromRepo {
     public List<String> selectFrom(String column, String table) {
         return (List<String>) entityManager.createNativeQuery("SELECT " + column + " FROM " + table).getResultList();
     }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<String> selectFromDistinct(String column, String table) {
+        return (List<String>) entityManager.createNativeQuery("SELECT DISTINCT " + column + " FROM " + table).getResultList();
+    }
 }

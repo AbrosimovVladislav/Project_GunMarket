@@ -25,6 +25,7 @@ public class ProductMapper {
 				.setBarrelLength(product.getBarrelLength())
 				.setParams(product.getParams())
 				.setColor(product.getColor())
+				.setOperatingPrincipal(product.getOperatingPrincipal())
 				.setBrand(product.getBrand())
 				.setType(product.getType())
 				.setCaliber(product.getCaliber())

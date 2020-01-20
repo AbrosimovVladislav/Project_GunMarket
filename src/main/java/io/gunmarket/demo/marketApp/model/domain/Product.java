@@ -35,6 +35,7 @@ public class Product implements BasicEntity {
     public static final String PART_PARAMS = "params";
     public static final String PRODUCT_TYPE = "productType";
     public static final String PRODUCT_RATING_ID = "ratingId";
+    public static final String PRODUCT_OPERATING_PRINCIPAL = "operatingPrincipal";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,6 +50,9 @@ public class Product implements BasicEntity {
 
     @Column(name = PRODUCT_LINK)
     private String link;
+
+    @Column(name = PRODUCT_OPERATING_PRINCIPAL)
+    private String operatingPrincipal;
 
     @Column(name = PRODUCT_IMAGE_LINK)
     private String imageLink;
