@@ -102,13 +102,13 @@ INSERT INTO product_in_shop (product_in_shop_id, additional_info, in_stock, link
 
 -- ----------------------------------------------------------------1---------------------------------------------------------
 INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','brand','short_name','brand.shortName');;
-INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Gladkostvol', 'Бренд', 'CHECKBOX', 1);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id,rank) VALUES ('Gladkostvol', 'Бренд', 'CHECKBOX', 1,2);;
 -- ----------------------------------------------------------------2---------------------------------------------------------
 INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product_in_shop','price','productInShop.price');;
-INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Gladkostvol', 'Цена', 'RANGE', 2);;
-INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Nareznoe', 'Цена', 'RANGE', 2);;
-INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Ooop', 'Цена', 'RANGE', 2);;
-INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Shp',  'Цена', 'RANGE', 2);;
-INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Ammo', 'Цена', 'RANGE', 2);;
-INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Part', 'Цена', 'RANGE', 2);;
-INSERT INTO filter_item (menu_item, name, type, key_path_id) VALUES ('Other','Цена', 'RANGE', 2);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Gladkostvol', 'Цена', 'RANGE', 2,1);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Nareznoe', 'Цена', 'RANGE', 2,1);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ooop', 'Цена', 'RANGE', 2,1);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Shp',  'Цена', 'RANGE', 2,1);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ammo', 'Цена', 'RANGE', 2,1);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Part', 'Цена', 'RANGE', 2,1);;
+INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Other','Цена', 'RANGE', 2,1);;

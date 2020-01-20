@@ -6,6 +6,7 @@ import io.gunmarket.demo.marketApp.repo.FilterItemRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -17,6 +18,7 @@ public class FilterItemService {
     public List<FilterItem> getFiltersByMenuItem(String menuItem) {
         List<FilterItem> filterItems = filterItemRepo.findAllByMenuItem(menuItem);
         filterItems.forEach(this::determineValues);
+        filterItems.sort(Comparator.comparing(FilterItem::getRank));
         return filterItems;
     }
 
