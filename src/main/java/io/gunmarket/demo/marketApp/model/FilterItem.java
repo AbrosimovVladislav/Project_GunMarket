@@ -1,6 +1,7 @@
 package io.gunmarket.demo.marketApp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.gunmarket.demo.marketApp.model.domain.BasicEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,13 +15,14 @@ import static io.gunmarket.demo.marketApp.model.KeyPath.KEY_PATH_ID;
 @Table(name = FILTER_ITEM_TABLE)
 @Getter
 @Setter
-public class FilterItem {
+public class FilterItem implements BasicEntity {
 
     public static final String FILTER_ITEM_TABLE = "filterItem";
     public static final String FILTER_ITEM_ID = "filterItemId";
     public static final String FILTER_ITEM_NAME = "name";
     public static final String FILTER_ITEM_TYPE = "type";
     public static final String FILTER_ITEM_MENU_ITEM = "menuItem";
+    public static final String FILTER_ITEM_RANK = "rank";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +43,9 @@ public class FilterItem {
 
     @Column(name = FILTER_ITEM_MENU_ITEM)
     private String menuItem;
+
+    @Column(name = FILTER_ITEM_RANK)
+    private int rank;
 
     /**
      * For different filter types :
