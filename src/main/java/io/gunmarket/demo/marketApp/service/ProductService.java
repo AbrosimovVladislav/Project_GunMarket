@@ -22,4 +22,8 @@ public class ProductService {
 	public Product getById(long id){
 		return productRepo.getOne(id);
 	}
+
+	public List<Product> search(String query){
+		return productRepo.searchByQuery(query);
+	}
 }

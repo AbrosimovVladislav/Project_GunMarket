@@ -47,4 +47,9 @@ public class ProductController {
 		Product product = productService.getById(productId);
 		return productMapper.map(product);
 	}
+
+	@GetMapping(value = "/product/search/{searchQuery}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Product> search(@PathVariable String searchQuery) {
+		return productService.search(searchQuery);
+	}
 }
