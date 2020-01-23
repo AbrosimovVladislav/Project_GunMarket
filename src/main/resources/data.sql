@@ -53,25 +53,25 @@ INSERT INTO weapon_platform (name) VALUES ('weapon_platform-name-2');;
 INSERT INTO weapon_platform (name) VALUES ('weapon_platform-name-3');;
 INSERT INTO weapon_platform (name) VALUES ('weapon_platform-name-4');;
 
-INSERT INTO product (condition, operating_principal, product_type, product_id,   model, weight, color, params, barrel_length, capacity, total_length, brand_id, caliber_id, type_id, weapon_platform_id)
+INSERT INTO product (condition, operating_principle, product_type, product_id,   model, weight, color, params, barrel_length, capacity, total_length, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Полуавтоматическое','GUN',  1, 'ak-47',   'b_l', 'capacity', 't_l', 'weight', '10',    '1000',     1, 1,    2, 1);;
-INSERT INTO product (condition, operating_principal,product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+INSERT INTO product (condition, operating_principle,product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Полуавтоматическое','GUN',  2, 'ak-47',   'b_l', '10', '1000', 'weight', null,    null,     2, 2,    3, 2);;
-INSERT INTO product (condition, operating_principal,product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+INSERT INTO product (condition, operating_principle,product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Полуавтоматическое','GUN',  3, 'ak-47',   'b_l', '10', '1000', 'weight', null,    null,     3, 2,    4, 3);;
-INSERT INTO product (condition, operating_principal,product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+INSERT INTO product (condition, operating_principle,product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Полуавтоматическое','GUN',  4, 'ak-47',   'b_l', '30', '1000', 'weight', null,    null,     1, 3,    5, 4);;
-INSERT INTO product (condition, operating_principal,product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+INSERT INTO product (condition, operating_principle,product_type, product_id,   model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Помповое','PART', 5, 'model',   null,  '10',     '1030',  null,     'color', 'params', 2, null, 7, 1);;
-INSERT INTO product (condition, operating_principal,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+INSERT INTO product (condition, operating_principle,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Помповое','PART', 6,  'model',   null,  '30',     '1330',  null,     'color', 'params', 2, null, 7, 2);;
-INSERT INTO product (condition, operating_principal,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+INSERT INTO product (condition, operating_principle,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Помповое','PART', 7,  'model',   null,  '15',     '1220',  null,     'color', 'params', 2, null, 7, 3);;
-INSERT INTO product (condition, operating_principal,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+INSERT INTO product (condition, operating_principle,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Продольно-скользящее','AMMO', 8,  '5.45 hp', null,  '17',     '1001',  'weight', null,    null,     2, 2,    6, null);;
-INSERT INTO product (condition, operating_principal,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+INSERT INTO product (condition, operating_principle,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Продольно-скользящее','AMMO', 9,  '5.45 hp', null,  '2',     '1200',  'weight', null,    null,     3, 3,    6, null);;
-INSERT INTO product (condition, operating_principal,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
+INSERT INTO product (condition, operating_principle,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Продольно-скользящее','AMMO', 10, '5.45 hp', null,  '10',     '1040',  'weight', null,    null,     3, 4,    6, null);;
 
 INSERT INTO rating (value) VALUES (2);;
@@ -108,8 +108,8 @@ INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Glad
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Nareznoe', 'Цена', 'RANGE', 1,1);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ooop', 'Цена', 'RANGE', 1,1);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Shp',  'Цена', 'RANGE', 1,1);;
--- ----------------------------------------------------------------2 OPERATING_PRINCIPAL---------------------------------------------------------
-INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','operating_principal','operating_principal');;
+-- ----------------------------------------------------------------2 OPERATING_principle---------------------------------------------------------
+INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','operating_principle','operating_principle');;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Gladkostvol', 'Прицнип действия', 'CHECKBOX', 2,2);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Nareznoe', 'Прицнип действия', 'CHECKBOX', 2,2);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ooop', 'Прицнип действия', 'CHECKBOX', 2,2);;

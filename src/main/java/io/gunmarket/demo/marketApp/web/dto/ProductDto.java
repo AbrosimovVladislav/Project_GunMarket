@@ -22,7 +22,7 @@ public class ProductDto {
     /*@Nullable*/ private String barrelLength;
     /*@Nullable*/ private String params;
     /*@Nullable*/ private String color;
-    private String operatingPrincipal;
+    private String operatingPrinciple;
     private String condition;
     private String barrelOrientation;
     private String country;

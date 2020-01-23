@@ -25,7 +25,7 @@ public class ProductMapper {
 				.setBarrelLength(product.getBarrelLength())
 				.setParams(product.getParams())
 				.setColor(product.getColor())
-				.setOperatingPrincipal(product.getOperatingPrincipal())
+				.setOperatingPrinciple(product.getOperatingPrinciple())
 				.setCondition(product.getCondition())
 				.setBarrelOrientation(product.getBarrelOrientation())
 				.setCountry(product.getCountry())

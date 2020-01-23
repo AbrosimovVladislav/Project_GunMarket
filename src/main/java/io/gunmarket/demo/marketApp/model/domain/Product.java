@@ -35,7 +35,7 @@ public class Product implements BasicEntity {
     public static final String PART_PARAMS = "params";
     public static final String PRODUCT_TYPE = "productType";
     public static final String PRODUCT_RATING_ID = "ratingId";
-    public static final String PRODUCT_OPERATING_PRINCIPAL = "operatingPrincipal";
+    public static final String PRODUCT_OPERATING_PRINCIPLE = "operatingPrinciple";
     public static final String PRODUCT_CONDITION = "condition";
     public static final String PRODUCT_BARREL_ORIENTATION = "barrelOrientation";
     public static final String PRODUCT_COUNTRY = "country";
@@ -56,8 +56,8 @@ public class Product implements BasicEntity {
     @Column(name = PRODUCT_LINK)
     private String link;
 
-    @Column(name = PRODUCT_OPERATING_PRINCIPAL)
-    private String operatingPrincipal;
+    @Column(name = PRODUCT_OPERATING_PRINCIPLE)
+    private String operatingPrinciple;
 
     @Column(name = PRODUCT_IMAGE_LINK)
     private String imageLink;
