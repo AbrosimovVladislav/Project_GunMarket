@@ -1,15 +1,19 @@
 #1. Get PRODUCTS order by RATING.VALUE
-http://localhost:12345/products?sort=rating.value,asc
+#http://localhost:12345/products?sort=rating.value,asc
 
 #2. Get PRODUCTS order by PRODUCTINSHOP.SHOP.ADDRESS.NAME
-http://localhost:12345/products?productInShop.shop.address.name=address1
+#http://localhost:12345/products?productInShop.shop.address.name=address1
 
-3. Get REVIEWS order by SHOPID
-http://localhost:12345/reviews/shop/
+#3. Get REVIEWS order by SHOPID
+#http://localhost:12345/reviews/shop/
 
-4. Post REVIEW to SHOP
+#4. Post REVIEW to SHOP
+
+
 POST http://localhost:12345/reviews/shop
-body : {
+Content-Type: application/json
+
+{
   "mark": "1",
   "pros": "+",
   "cons": "-",
@@ -18,3 +22,6 @@ body : {
   "productId": null,
   "userId": null
 }
+
+
+###
