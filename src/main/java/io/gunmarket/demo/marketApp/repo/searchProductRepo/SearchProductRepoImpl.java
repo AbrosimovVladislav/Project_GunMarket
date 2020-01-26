@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.repo.searchProductRepo;
 
-import io.gunmarket.demo.marketApp.model.domain.Product;
+import io.gunmarket.demo.marketApp.model.domain.product.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;

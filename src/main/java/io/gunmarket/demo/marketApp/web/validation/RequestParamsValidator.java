@@ -1,8 +1,8 @@
 package io.gunmarket.demo.marketApp.web.validation;
 
 import io.gunmarket.demo.marketApp.model.domain.BasicEntity;
-import io.gunmarket.demo.marketApp.model.domain.Product;
-import io.gunmarket.demo.marketApp.model.domain.ProductInShop;
+import io.gunmarket.demo.marketApp.model.domain.product.Product;
+import io.gunmarket.demo.marketApp.model.domain.offer.ProductInShop;
 import io.gunmarket.demo.marketApp.model.domain.attributes.Rating;
 import io.gunmarket.demo.marketApp.model.domain.attributes.Review;
 import io.gunmarket.demo.marketApp.web.webentities.FilterAndPageable;

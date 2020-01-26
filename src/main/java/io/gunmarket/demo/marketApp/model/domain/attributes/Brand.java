@@ -1,7 +1,7 @@
 package io.gunmarket.demo.marketApp.model.domain.attributes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.gunmarket.demo.marketApp.model.domain.Product;
+import io.gunmarket.demo.marketApp.model.domain.product.Product;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

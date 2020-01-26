@@ -1,8 +1,8 @@
 package io.gunmarket.demo.marketApp.web.mapper;
 
-import io.gunmarket.demo.marketApp.model.domain.Product;
+import io.gunmarket.demo.marketApp.model.domain.product.Product;
 import io.gunmarket.demo.marketApp.model.domain.attributes.Review;
-import io.gunmarket.demo.marketApp.model.domain.Shop;
+import io.gunmarket.demo.marketApp.model.domain.shop.Shop;
 import io.gunmarket.demo.marketApp.service.ProductService;
 import io.gunmarket.demo.marketApp.service.ShopService;
 import io.gunmarket.demo.marketApp.web.dto.ReviewDto;
