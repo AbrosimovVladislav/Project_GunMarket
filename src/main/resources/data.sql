@@ -68,11 +68,11 @@ VALUES ('Новое','Помповое','PART', 6,  'model',   null,  '30',     
 INSERT INTO product (condition, operating_principle,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
 VALUES ('Новое','Помповое','PART', 7,  'model',   null,  '15',     '1220',  null,     'color', 'params', 2, null, 7, 3);;
 INSERT INTO product (condition, operating_principle,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('Новое','Продольно-скользящее','AMMO', 8,  '5.45 hp', null,  '17',     '1001',  'weight', null,    null,     2, 2,    6, null);;
+VALUES ('Новое','ПродольноСкользящее','AMMO', 8,  '5.45 hp', null,  '17',     '1001',  'weight', null,    null,     2, 2,    6, null);;
 INSERT INTO product (condition, operating_principle,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('Новое','Продольно-скользящее','AMMO', 9,  '5.45 hp', null,  '2',     '1200',  'weight', null,    null,     3, 3,    6, null);;
+VALUES ('Новое','ПродольноСкользящее','AMMO', 9,  '5.45 hp', null,  '2',     '1200',  'weight', null,    null,     3, 3,    6, null);;
 INSERT INTO product (condition, operating_principle,product_type, product_id, model, barrel_length, capacity, total_length, weight, color, params, brand_id, caliber_id, type_id, weapon_platform_id)
-VALUES ('Новое','Продольно-скользящее','AMMO', 10, '5.45 hp', null,  '10',     '1040',  'weight', null,    null,     3, 4,    6, null);;
+VALUES ('Новое','ПродольноСкользящее','AMMO', 10, '5.45 hp', null,  '10',     '1040',  'weight', null,    null,     3, 4,    6, null);;
 
 INSERT INTO rating (value) VALUES (2);;
 INSERT INTO rating (value) VALUES (4);;

@@ -32,7 +32,6 @@ public class FilterItem implements BasicEntity {
     @Column(name = FILTER_ITEM_NAME)
     private String name;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = KEY_PATH_ID, nullable = false)
     private KeyPath keyPath;

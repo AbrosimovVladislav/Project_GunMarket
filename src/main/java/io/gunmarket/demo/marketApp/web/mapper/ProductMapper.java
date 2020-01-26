@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.web.mapper;
 
-import io.gunmarket.demo.marketApp.model.domain.Product;
+import io.gunmarket.demo.marketApp.model.domain.product.Product;
 import io.gunmarket.demo.marketApp.service.ProductInShopService;
 import io.gunmarket.demo.marketApp.web.dto.ProductDto;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ public class ProductMapper {
 				.setBarrelLength(product.getBarrelLength())
 				.setParams(product.getParams())
 				.setColor(product.getColor())
-				.setOperatingPrinciple(product.getOperatingPrinciple())
+				.setOperatingPrinciple(product.getOperatingPrinciple().name())
 				.setCondition(product.getCondition())
 				.setBarrelOrientation(product.getBarrelOrientation())
 				.setCountry(product.getCountry())

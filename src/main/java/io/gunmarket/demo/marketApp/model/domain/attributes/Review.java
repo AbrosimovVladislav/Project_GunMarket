@@ -2,8 +2,8 @@ package io.gunmarket.demo.marketApp.model.domain.attributes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gunmarket.demo.marketApp.model.domain.BasicEntity;
-import io.gunmarket.demo.marketApp.model.domain.Product;
-import io.gunmarket.demo.marketApp.model.domain.Shop;
+import io.gunmarket.demo.marketApp.model.domain.product.Product;
+import io.gunmarket.demo.marketApp.model.domain.shop.Shop;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -19,9 +19,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import static io.gunmarket.demo.marketApp.model.domain.Product.PRODUCT_ID;
+import static io.gunmarket.demo.marketApp.model.domain.product.Product.PRODUCT_ID;
 import static io.gunmarket.demo.marketApp.model.domain.attributes.Review.REVIEW_TABLE;
-import static io.gunmarket.demo.marketApp.model.domain.Shop.SHOP_ID;
+import static io.gunmarket.demo.marketApp.model.domain.shop.Shop.SHOP_ID;
 
 @Entity
 @Table(name = REVIEW_TABLE)

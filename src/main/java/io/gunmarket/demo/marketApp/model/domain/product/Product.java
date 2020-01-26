@@ -1,6 +1,8 @@
-package io.gunmarket.demo.marketApp.model.domain;
+package io.gunmarket.demo.marketApp.model.domain.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.gunmarket.demo.marketApp.model.domain.BasicEntity;
+import io.gunmarket.demo.marketApp.model.domain.offer.ProductInShop;
 import io.gunmarket.demo.marketApp.model.domain.attributes.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +12,7 @@ import java.util.Set;
 
 import static io.gunmarket.demo.marketApp.model.domain.attributes.Brand.BRAND_ID;
 import static io.gunmarket.demo.marketApp.model.domain.attributes.Caliber.CALIBER_ID;
-import static io.gunmarket.demo.marketApp.model.domain.Product.PRODUCT_TABLE;
+import static io.gunmarket.demo.marketApp.model.domain.product.Product.PRODUCT_TABLE;
 import static io.gunmarket.demo.marketApp.model.domain.attributes.Type.TYPE_ID;
 import static io.gunmarket.demo.marketApp.model.domain.attributes.WeaponPlatform.WEAPON_PLATFORM_ID;
 
@@ -57,7 +59,8 @@ public class Product implements BasicEntity {
     private String link;
 
     @Column(name = PRODUCT_OPERATING_PRINCIPLE)
-    private String operatingPrinciple;
+    @Enumerated(EnumType.STRING)
+    private OperatingPrinciple operatingPrinciple;
 
     @Column(name = PRODUCT_IMAGE_LINK)
     private String imageLink;
