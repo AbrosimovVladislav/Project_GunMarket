@@ -50,7 +50,8 @@ public class Product implements BasicEntity {
     private Long productId;
 
     @Column(name = PRODUCT_TYPE, nullable = false, updatable = false)
-    private String productType; // allow: GUN, PART, AMMO
+    @Enumerated(EnumType.STRING)
+    private ProductType productType; // allow: GUN, PART, AMMO
 
     @Column(name = PRODUCT_INFO)
     private String info;
@@ -84,22 +85,28 @@ public class Product implements BasicEntity {
     private String params;
 
     @Column(name = PRODUCT_COUNTRY)
-    private String country;
+    @Enumerated(EnumType.STRING)
+    private Country country;
 
     @Column(name = PART_COLOR)
-    private String color;
+    @Enumerated(EnumType.STRING)
+    private Color color;
 
     @Column(name = PRODUCT_CONDITION)
-    private String condition;
+    @Enumerated(EnumType.STRING)
+    private Condition condition;
 
     @Column(name = AMMO_SLEEVE_MATERIAL)
-    private String sleeveMaterial;
+    @Enumerated(EnumType.STRING)
+    private SleeveMaterial sleeveMaterial;
 
     @Column(name = AMMO_CHARGE_TYPE)
-    private String chargeType;
+    @Enumerated(EnumType.STRING)
+    private ChargeType chargeType;
 
     @Column(name = PRODUCT_BARREL_ORIENTATION)
-    private String barrelOrientation;
+    @Enumerated(EnumType.STRING)
+    private BarrelOrientation barrelOrientation;
 
     @ManyToOne
     @JoinColumn(name = BRAND_ID, nullable = false)
