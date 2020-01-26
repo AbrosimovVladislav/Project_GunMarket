@@ -1,14 +1,14 @@
 package io.gunmarket.demo.marketApp.model.domain.attributes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.gunmarket.demo.marketApp.model.domain.Shop;
+import io.gunmarket.demo.marketApp.model.domain.shop.Shop;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 import static io.gunmarket.demo.marketApp.model.domain.attributes.Address.ADDRESS_TABLE;
-import static io.gunmarket.demo.marketApp.model.domain.Shop.SHOP_ID;
+import static io.gunmarket.demo.marketApp.model.domain.shop.Shop.SHOP_ID;
 
 @Entity
 @Table(name = ADDRESS_TABLE)
