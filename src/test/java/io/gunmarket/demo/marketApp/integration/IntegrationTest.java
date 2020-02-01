@@ -42,7 +42,7 @@ public class IntegrationTest {
 	private Resource productsSortingByRating;
 	private static final String PRODUCTS_SORTING_BY_RATING = "?sort=rating.value,asc";
 
-	@Test
+//	@Test
 	public void testProductByFilter(){
 
 		Map<String, Resource> filterRestLineAndExpectedJson = new HashMap<>(){{
