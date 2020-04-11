@@ -10,7 +10,7 @@
 #4. Post REVIEW to SHOP
 
 
-POST http://localhost:12345/reviews/shop
+POST http://localhost:12345/reviews/product
 Content-Type: application/json
 
 {

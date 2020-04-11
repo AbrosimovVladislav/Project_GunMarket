@@ -64,15 +64,13 @@ public class RequestParamsValidator {
 
 	private static PageRequest getDefaultSortingProperty(Pageable pageable, Class<? extends BasicEntity> entityClass) {
 		String sortingProperty = "";
-		Sort.Direction dir = Sort.Direction.ASC;
+		Sort.Direction dir = Sort.Direction.DESC;
 		if (entityClass.isAssignableFrom(Product.class)) {
 			sortingProperty = Rating.RATING_VALUE_SORT;
 		} else if (entityClass.isAssignableFrom(ProductInShop.class)) {
 			sortingProperty = ProductInShop.PRODUCT_IN_SHOP_POPULARITY;
-			dir = Sort.Direction.DESC;
 		} else if (entityClass.isAssignableFrom(Review.class)) {
 			sortingProperty = Review.REVIEW_MARK;
-			dir = Sort.Direction.DESC;
 		}
 		return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(dir, sortingProperty));
 	}
