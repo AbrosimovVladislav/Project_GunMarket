@@ -21,3 +21,10 @@ spring:
 logging:
   level:
     io.gunmarket.demo: TRACE
+
+---
+spring:
+  profiles:
+    prod
+  datasource:
+    password: postgres
