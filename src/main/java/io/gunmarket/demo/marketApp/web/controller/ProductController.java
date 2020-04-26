@@ -1,48 +1,57 @@
 package io.gunmarket.demo.marketApp.web.controller;
 
-import io.gunmarket.demo.marketApp.domain.product.Product;
+import io.gunmarket.demo.marketApp.model.domain.product.Product;
 import io.gunmarket.demo.marketApp.service.ProductService;
-import org.springframework.data.domain.PageRequest;
+import io.gunmarket.demo.marketApp.web.dto.ProductDto;
+import io.gunmarket.demo.marketApp.web.mapper.ProductMapper;
+import io.gunmarket.demo.marketApp.web.validation.RequestParamsValidator;
+import io.gunmarket.demo.marketApp.web.webentities.FilterAndPageable;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.util.Pair;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
-
-import static io.gunmarket.demo.marketApp.domain.Rating.RATING_VALUE_SORT;
+import java.util.stream.Collectors;
 
 @RestController
+@RequiredArgsConstructor
 public class ProductController {
 
 	private final ProductService productService;
+	private final RequestParamsValidator validator;
+	private final ProductMapper productMapper;
 
-	public ProductController(ProductService productService) {
-		this.productService = productService;
+	private static final int DEFAULT_PAGE_NUMBER = 0;
+	private static final int DEFAULT_PAGE_SIZE = 10;
+
+	@CrossOrigin(origins = "http://localhost:4200")
+		@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<ProductDto> getAllByParams(@RequestParam Map<String, String> requestParams,
+	                                    @PageableDefault(size = DEFAULT_PAGE_SIZE, page = DEFAULT_PAGE_NUMBER)
+			                                    Pageable pageable) {
+		FilterAndPageable pairOfParamsAndPageable = validator.validate(requestParams, pageable, Product.class);
+		List<Product> products = productService.getAllByParameters(
+				pairOfParamsAndPageable.getFilter(),
+				pairOfParamsAndPageable.getPageable()
+		);
+		return products.stream().map(productMapper::map).collect(Collectors.toList());
 	}
 
-	@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Product> getAllByParams(@RequestParam Map<String, String> requestParams, Pageable pageable) {
-		Pair<Map<String, String>, Pageable> pairOfParamsAndPageable = validate(requestParams, pageable);
-		return productService.getAllByParameters(pairOfParamsAndPageable.getFirst(),
-				pairOfParamsAndPageable.getSecond());
+	@GetMapping(value = "/products/{productId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ProductDto getById(@PathVariable long productId) {
+		Product product = productService.getById(productId);
+		return productMapper.map(product);
 	}
 
-	private Pair<Map<String, String>, Pageable> validate(Map<String, String> requestParams, Pageable pageable) {
-		String sortParam = requestParams.remove("sort");
-		if (sortParam == null) return Pair.of(requestParams, getDefaultSortingProperty(pageable));
-		String sortProp = sortParam.substring(0, sortParam.indexOf(","));
-		Sort sort = Sort.by(pageable.getSort().getOrderFor(sortProp));
-		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
-		return Pair.of(requestParams, pageRequest);
+	@GetMapping(value = "/product/search/{searchQuery}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Product> search(@PathVariable String searchQuery) {
+		return productService.search(searchQuery);
 	}
-
-	private static PageRequest getDefaultSortingProperty(Pageable pageable) {
-		return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(RATING_VALUE_SORT));
-	}
-
 }

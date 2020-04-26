@@ -1,6 +1,6 @@
 package io.gunmarket.demo.marketApp.repo.querybuilder;
 
-import io.gunmarket.demo.marketApp.domain.BasicEntity;
+import io.gunmarket.demo.marketApp.model.domain.BasicEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -89,16 +89,3 @@ public class QueryBuilder {
 	}
 
 }
-
-		/*String propertyName = sortingPropertyKey.replace(
-				sortingPropertyKey.substring(
-						0,sortingPropertyKey.lastIndexOf(".")
-				),
-				""
-		);
-		String entitiesLine = sortingPropertyKey.replace(
-				sortingPropertyKey.substring(
-						sortingPropertyKey.lastIndexOf(".")
-				),
-				""
-		);*/
