@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION insertNewRatingOnNewShop() RETURNS TRIGGER AS $shopTrigger$
+CREATE OR REPLACE FUNCTION insertNewRatingOnNewShop() RETURNS TRIGGER SET search_path='public' AS $shopTrigger$
     DECLARE
         i BIGINT;
     BEGIN
