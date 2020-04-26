@@ -1,6 +1,5 @@
 package io.gunmarket.demo.marketApp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gunmarket.demo.marketApp.model.domain.BasicEntity;
 import lombok.Getter;
 import lombok.Setter;
