@@ -15,7 +15,8 @@ public class FilterItemMapper {
                 .setShowName(filterItem.getName())
                 .setFilterKey(filterItem.getKeyPath().getValue())
                 .setFilterType(filterItem.getType().name())
-                .setRank(filterItem.getRank());
+                .setRank(filterItem.getRank())
+                .setValue(filterItem.getValues());
     }
 
 }

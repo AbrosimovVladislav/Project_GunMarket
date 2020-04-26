@@ -2,8 +2,8 @@ package io.gunmarket.demo.marketApp.model.domain.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gunmarket.demo.marketApp.model.domain.BasicEntity;
-import io.gunmarket.demo.marketApp.model.domain.offer.ProductInShop;
 import io.gunmarket.demo.marketApp.model.domain.attributes.*;
+import io.gunmarket.demo.marketApp.model.domain.offer.ProductInShop;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,9 +12,9 @@ import java.util.Set;
 
 import static io.gunmarket.demo.marketApp.model.domain.attributes.Brand.BRAND_ID;
 import static io.gunmarket.demo.marketApp.model.domain.attributes.Caliber.CALIBER_ID;
-import static io.gunmarket.demo.marketApp.model.domain.product.Product.PRODUCT_TABLE;
 import static io.gunmarket.demo.marketApp.model.domain.attributes.Type.TYPE_ID;
 import static io.gunmarket.demo.marketApp.model.domain.attributes.WeaponPlatform.WEAPON_PLATFORM_ID;
+import static io.gunmarket.demo.marketApp.model.domain.product.Product.PRODUCT_TABLE;
 
 
 @Entity

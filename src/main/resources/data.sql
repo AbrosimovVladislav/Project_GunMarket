@@ -109,7 +109,7 @@ INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Nare
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ooop', 'Цена', 'RANGE', 1,1);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Shp',  'Цена', 'RANGE', 1,1);;
 -- ----------------------------------------------------------------2 OPERATING_principle---------------------------------------------------------
-INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','operating_principle','operating_principle');;
+INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','operating_principle','operatingPrinciple');;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Gladkostvol', 'Прицнип действия', 'CHECKBOX', 2,2);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Nareznoe', 'Прицнип действия', 'CHECKBOX', 2,2);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ooop', 'Прицнип действия', 'CHECKBOX', 2,2);;
@@ -139,19 +139,19 @@ INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Nare
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ooop', 'Емкость магазина', 'CHECKBOX',      6,6);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Shp',  'Емкость магазина', 'CHECKBOX',      6,6);;
 -- ----------------------------------------------------------------7 BARREL_LENGTH---------------------------------------------------------
-INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','barrel_length','barrel_length');;
+INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','barrel_length','barrelLength');;
 INSERT INTO filter_item (menu_item, name, type, key_path_id,rank) VALUES ('Gladkostvol', 'Длина ствола', 'CHECKBOX', 7,7);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Nareznoe', 'Длина ствола', 'CHECKBOX', 7,7);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ooop', 'Длина ствола', 'CHECKBOX', 7,7);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Shp',  'Длина ствола', 'CHECKBOX', 7,7);;
 -- ----------------------------------------------------------------8 TOTAL_LENGTH---------------------------------------------------------
-INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','total_length','total_length');;
+INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','total_length','totalLength');;
 INSERT INTO filter_item (menu_item, name, type, key_path_id,rank) VALUES ('Gladkostvol', 'Общая длина', 'CHECKBOX', 8,8);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Nareznoe', 'Общая длина', 'CHECKBOX',   8,8);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ooop', 'Общая длина', 'CHECKBOX',       8,8);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Shp', 'Общая длина', 'CHECKBOX',        8,8);;
 -- ----------------------------------------------------------------9 BARREL_ORIENTATION---------------------------------------------------------
-INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','barrel_orientation','barrel_orientation');;
+INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','barrel_orientation','barrelOrientation');;
 INSERT INTO filter_item (menu_item, name, type, key_path_id,rank) VALUES ('Gladkostvol', 'Расположение стволов', 'CHECKBOX', 9,9);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Nareznoe', 'Расположение стволов', 'CHECKBOX',  9,9);;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ooop', 'Расположение стволов', 'CHECKBOX',      9,9);;
@@ -178,10 +178,10 @@ INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ammo
 -- ----------------------------------------------------------------4 BRAND---------------------------------------------------------
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ammo', 'Бренд', 'CHECKBOX', 4,4);;
 -- ----------------------------------------------------------------12 CHARGE_TYPE---------------------------------------------------------
-INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','charge_type','charge_type');;
+INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','charge_type','chargeType');;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ammo', 'Тип заряда', 'CHECKBOX', 12,12);;
 -- ----------------------------------------------------------------13 SLEEVE_MATERIAL---------------------------------------------------------
-INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','sleeve_material','sleeve_material');;
+INSERT INTO key_path (source, target_entity, target_param, value) VALUES ('product','product','sleeve_material','sleeveMaterial');;
 INSERT INTO filter_item (menu_item, name, type, key_path_id, rank) VALUES ('Ammo', 'Материал гильзы', 'CHECKBOX', 13,13);;
 -- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

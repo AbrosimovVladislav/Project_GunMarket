@@ -6,6 +6,7 @@ import io.gunmarket.demo.marketApp.web.dto.FilterItemDto;
 import io.gunmarket.demo.marketApp.web.mapper.FilterItemMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,7 @@ public class FilterController {
     private final FilterItemMapper filterItemMapper;
 
     /*ToDo Выбрать колонку в которой лежат не строки и проверить работоспособность всей цепочки */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/product/filters/{menuItem}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<FilterItemDto> getFilterItemsByMenuItem(@PathVariable String menuItem) {
         List<FilterItem> filterItems = filterItemService.getFiltersByMenuItem(menuItem);
