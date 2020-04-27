@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE insertNewRatingOnNewShop() RETURNS TRIGGER SET search_path='public' AS $shopTrigger$
+CREATE OR REPLACE FUNCTION insertNewRatingOnNewShop() RETURNS TRIGGER AS $shopTrigger$
     DECLARE
         i BIGINT;
     BEGIN
@@ -12,9 +12,9 @@ $shopTrigger$ LANGUAGE plpgsql;;
 
 CREATE TRIGGER shopTrigger BEFORE INSERT ON shop
 FOR EACH ROW
-EXECUTE PROCEDURE insertNewRatingOnNewShop();;
+EXECUTE FUNCTION insertNewRatingOnNewShop();;
 
-CREATE OR REPLACE PROCEDURE insertNewRatingOnNewProduct() RETURNS TRIGGER AS $productTrigger$
+CREATE OR REPLACE FUNCTION insertNewRatingOnNewProduct() RETURNS TRIGGER AS $productTrigger$
     DECLARE
         i BIGINT;
     BEGIN
@@ -28,7 +28,7 @@ $productTrigger$ LANGUAGE plpgsql;;
 
 CREATE TRIGGER productTrigger BEFORE INSERT ON product
 FOR EACH ROW
-EXECUTE PROCEDURE insertNewRatingOnNewProduct();;
+EXECUTE FUNCTION insertNewRatingOnNewProduct();;
 
 INSERT INTO brand (full_name, short_name) VALUES ('brand-name1','brand-name1');;
 INSERT INTO brand (full_name, short_name) VALUES ('brand-name2','brand-name2');;
