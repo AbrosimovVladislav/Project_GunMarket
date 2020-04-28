@@ -31,7 +31,7 @@ public class ProductController {
 	private static final int DEFAULT_PAGE_NUMBER = 0;
 	private static final int DEFAULT_PAGE_SIZE = 10;
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:80"})
 		@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<ProductDto> getAllByParams(@RequestParam Map<String, String> requestParams,
 	                                    @PageableDefault(size = DEFAULT_PAGE_SIZE, page = DEFAULT_PAGE_NUMBER)
