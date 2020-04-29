@@ -7,13 +7,15 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 # front
 git clone https://github.com/AbrosimovVladislav/JackNorthon
+cd JackNorthon
 sudo apt install npm
 sudo npm install -g @angular/cli@9.1.1
 sudo npm cache clean -f
 sudo npm install -g n
 sudo n 12.14.1
 sudo ng update @angular/core@9.1.2
-cd JackNorthon || sudo ng build --prod || cd ..
+sudo ng build --prod
+cd ..
 # docker build -t front:1 JackNorthon
 # docker run --name front -p 80:80 -v /root/JackNorthon/nginx.conf:/etc/nginx/nginx.conf -d front:1
 
