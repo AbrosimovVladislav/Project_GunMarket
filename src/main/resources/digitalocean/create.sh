@@ -8,6 +8,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 # front
 git clone https://github.com/AbrosimovVladislav/JackNorthon
 cd JackNorthon
+git checkout feature/filter
 sudo apt install npm
 sudo npm install -g @angular/cli@9.1.1
 sudo npm cache clean -f
