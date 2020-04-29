@@ -2,7 +2,7 @@ sudo apt-get update
 
 # docker
 sudo apt install docker.io
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 # front
@@ -29,6 +29,6 @@ exit
 
 # back
 git clone https://github.com/AbrosimovVladislav/Project_GunMarket.git
-sudo apt-get install default-jdk
+sudo apt install default-jdk
 sudo apt install maven
 cd Project_GunMarket || git checkout develop || mvn clean package || java -jar target/GunMarket.jar
