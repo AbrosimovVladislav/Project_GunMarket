@@ -14,8 +14,8 @@ sudo npm install -g n
 sudo n 12.14.1
 sudo ng update @angular/core@9.1.2
 cd JackNorthon || sudo ng build --prod || cd ..
-docker build -t front:1 JackNorthon
-docker run --name front -p 80:80 -v /root/JackNorthon/nginx.conf:/etc/nginx/nginx.conf -d front:1
+# docker build -t front:1 JackNorthon
+# docker run --name front -p 80:80 -v /root/JackNorthon/nginx.conf:/etc/nginx/nginx.conf -d front:1
 
 # postgresql
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
