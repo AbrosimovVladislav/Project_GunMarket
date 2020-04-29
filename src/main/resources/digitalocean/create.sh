@@ -28,7 +28,7 @@ psql -c "CREATE DATABASE gunmarket"
 exit
 
 # back
-git clone https://github.com/AbrosimovVladislav/Project_GunMarket.git
+# git clone https://github.com/AbrosimovVladislav/Project_GunMarket.git
 sudo apt install default-jdk
 sudo apt install maven
 cd Project_GunMarket || git checkout develop || mvn clean package || java -jar target/GunMarket.jar
