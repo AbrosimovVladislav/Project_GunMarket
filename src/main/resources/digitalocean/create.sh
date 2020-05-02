@@ -1,7 +1,8 @@
-sudo apt-get update
+sudo apt update
+sudo apt remove nodejs
 
 # docker
-sudo apt install docker.io
+sudo apt -y install docker.io
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
@@ -9,16 +10,12 @@ sudo chmod +x /usr/local/bin/docker-compose
 git clone https://github.com/AbrosimovVladislav/JackNorthon
 cd JackNorthon
 git checkout feature/filter
-sudo apt install npm
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt -y install nodejs
 sudo npm install -g @angular/cli@9.1.1
-sudo npm cache clean -f
-sudo npm install -g n
-sudo n 12.14.1
-sudo ng update @angular/core@9.1.2
+sudo npm install
 sudo ng build --prod
 cd ..
-# docker build -t front:1 JackNorthon
-# docker run --name front -p 80:80 -v /root/JackNorthon/nginx.conf:/etc/nginx/nginx.conf -d front:1
 
 # postgresql
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
@@ -31,7 +28,6 @@ psql -c "CREATE DATABASE gunmarket"
 exit
 
 # back
-# git clone https://github.com/AbrosimovVladislav/Project_GunMarket.git
 sudo apt install default-jdk
 sudo apt install maven
-cd Project_GunMarket || git checkout develop || mvn clean package || java -jar target/GunMarket.jar
+cd Project_GunMarket | git checkout develop | mvn clean package
