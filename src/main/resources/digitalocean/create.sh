@@ -1,5 +1,4 @@
 sudo apt update
-sudo apt remove nodejs
 
 # docker
 sudo apt -y install docker.io
