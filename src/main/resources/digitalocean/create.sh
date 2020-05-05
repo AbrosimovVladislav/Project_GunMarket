@@ -22,10 +22,8 @@ echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main"
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt update
 sudo apt -y install postgresql-12 postgresql-client-12
-sudo su - postgres
-psql -c "ALTER USER postgres WITH PASSWORD 'root'"
-psql -c "CREATE DATABASE gunmarket"
-exit
+sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'root'"
+sudo -u postgres psql -c "CREATE DATABASE gunmarket"
 
 # back
 sudo apt install default-jdk
