@@ -25,8 +25,8 @@ sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'root'"
 sudo -u postgres psql -c "CREATE DATABASE gunmarket"
 
 # back
-sudo apt install default-jdk
-sudo apt install maven
+sudo apt -y install default-jdk
+sudo apt -y install maven
 cd Project_GunMarket
 git checkout develop
 mvn clean package
