@@ -1,13 +1,8 @@
 sudo apt update
 
-# docker
-sudo apt -y install docker.io
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-
 # front
 git clone https://github.com/AbrosimovVladislav/JackNorthon
-cd JackNorthon
+cd JackNorthon/
 git checkout feature/filter
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt -y install nodejs
@@ -27,7 +22,14 @@ sudo -u postgres psql -c "CREATE DATABASE gunmarket"
 # back
 sudo apt -y install default-jdk
 sudo apt -y install maven
-cd Project_GunMarket
+cd Project_GunMarket/
 git checkout develop
 mvn clean package
 cd ..
+
+# docker
+sudo apt -y install docker.io
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+cd JackNorthon/
+docker-compose up
