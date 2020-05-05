@@ -28,4 +28,7 @@ sudo -u postgres psql -c "CREATE DATABASE gunmarket"
 # back
 sudo apt install default-jdk
 sudo apt install maven
-cd Project_GunMarket | git checkout develop | mvn clean package
+cd Project_GunMarket
+git checkout develop
+mvn clean package
+cd ..
