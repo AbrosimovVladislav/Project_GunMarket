@@ -33,3 +33,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 cd JackNorthon/
 docker-compose up --build -d
+
+# network
+ufw allow 8080/tcp
+uwf allow 80/tcp
